@@ -18,6 +18,15 @@
             name: red-hat-service-interconnect-{{ item }}
           spec: {}
 
+    # https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/66
+    - name: 'Restart skupper-site-controller ( ugly work-a-round Issue #66 )'
+      kubernetes.core.k8s:
+        kubeconfig: "kubeconfig-data-center"
+        state: absent
+        kind: Pod
+        label_selectors:
+          - 'app.kubernetes.io/name=skupper-site-controller'
+
     - name: Start skupper at data-center
       kubernetes.core.k8s:
         state: present
