@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Local development :: Facilitator Guide</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/modules/stable/local-development.html">
+    <link rel="prev" href="development.html">
+    <meta name="generator" content="Antora 3.0.0">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://demo.redhat.com" target="_blank">
+        <img src="../../_/img/rhdp-logo.svg" height="35px" alt="Red Hat Demo Platform">
+      </a>
+      <a class="navbar-item" href="https://redhat-scholars.github.io/course-template">Facilitator Guide</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Help</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" target="_blank" href="https://redhat.service-now.com/help?id=sc_cat_item&sys_id=00c0316a1bf39450e43942a7bc4bcbd1">Open Support Case</a>
+            <a class="navbar-item" target="_blank" href="https://rhdp.statuspage.io/">Status Page</a>
+            <a class="navbar-item" target="_blank" href="https://demo.redhat.com/support">Solution Support: Service Level</a>
+            <a class="navbar-item" target="_blank" href="https://content.redhat.com/us/en/product/cross-portfolio-initiatives/rhdp.html">Learn more</a>
+            <a class="navbar-item" target="_blank" href="https://videos.learning.redhat.com/channel/RHPDS%2B-%2BRed%2BHat%2BProduct%2Band%2BPortfolio%2BDemo%2BSystem/277722533">How to videos</a>
+          </div>
+        </div>
+        <a class="navbar-item" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfwGW7ql2lDfaLDpg4Bgj_puFEVsM0El6-Nz8fyH48RnGLDrA/viewform">Feedback</a>
+        <a class="navbar-item" href="https://developers.redhat.com/events/" target="_blank">Upcoming Events</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="modules" data-version="stable">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html" class=" query-params-link">Facilitator guide</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="run-a-hackathon.html">🌟 Run a Hackathon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="development.html">Re-install edge-gateway</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="development.html">Setup Robot from Scratch</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="troubleshooting.html">Troubleshooting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="development.html">Development</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="local-development.html">Local Development</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Facilitator guide</span>
+    <span class="version">stable</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Facilitator guide</span>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="index.html">stable</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Facilitator guide</a></li>
+    <li><a href="development.html">Development</a></li>
+    <li><a href="local-development.html">Local Development</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/cloud-native-robotz-hackathon/infrastructure/edit/main/docs/modules/ROOT/pages/local-development.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Local development</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The goal is to improve the Workshops with just
+ * A cluster at demo.redhat.com (Data Center)
+ * OpenShift Local / CRC on your Laptop  (Edge gateway)
+ * One Robot</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prepare_the_robot"><a class="anchor" href="#_prepare_the_robot"></a>Prepare the robot</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_connect_robot_to_your_network_wired"><a class="anchor" href="#_connect_robot_to_your_network_wired"></a>Connect Robot to your Network (Wired)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Connect to wired network &amp; findout ip address</p>
+</li>
+<li>
+<p>Connect via SSH (wire) to robot</p>
+</li>
+<li>
+<p>The robot private keyfile needs to be named ~/.ssh/robot-hackathon</p>
+</li>
+<li>
+<p>Hostname should localhost: Set the hostname via
+<code>`
+echo "192.168.66.70 data.lan" | sudo tee -a /etc/hosts
+</code>`</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reset_microshift_at_the_robot"><a class="anchor" href="#_reset_microshift_at_the_robot"></a>Reset MicroShift at the Robot</h3>
+<div class="paragraph">
+<p>At the [cloud-native-robotz-hackathon/infrastructure](<a href="https://github.com/cloud-native-robotz-hackathon/infrastructure" class="bare">https://github.com/cloud-native-robotz-hackathon/infrastructure</a>) repo:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cd automation
+ansible-navigator run ./microshift-reset.yaml -l data.lan</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prepare_openshift_local_crc_edge_gateway"><a class="anchor" href="#_prepare_openshift_local_crc_edge_gateway"></a>Prepare OpenShift Local / CRC (Edge-Gateway)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_start_openshift_local"><a class="anchor" href="#_start_openshift_local"></a>Start OpenShift Local</h3>
+<div class="paragraph">
+<p>Minimal requiremntes:
+ * 16 GB RAM
+ * 8 CPU&#8217;s
+ * 120 GB Root disk</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fetch_credentials"><a class="anchor" href="#_fetch_credentials"></a>Fetch credentials</h3>
+<div class="paragraph">
+<p>At the [cloud-native-robotz-hackathon/infrastructure](<a href="https://github.com/cloud-native-robotz-hackathon/infrastructure" class="bare">https://github.com/cloud-native-robotz-hackathon/infrastructure</a>) repo:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cd automation
+export KUBECONFIG=$(pwd)/kubeconfig-edge-gateway
+
+crc console --credentials
+# Copy past oc admin login command
+oc login -u kubeadmin -p xxx-xx-xx-xxx https://api.crc.testing:6443</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deploy_configure"><a class="anchor" href="#_deploy_configure"></a>Deploy / Configure</h3>
+<div class="paragraph">
+<p>At the [cloud-native-robotz-hackathon/edge-gateway-gitops](<a href="https://github.com/cloud-native-robotz-hackathon/edge-gateway-gitops" class="bare">https://github.com/cloud-native-robotz-hackathon/edge-gateway-gitops</a>) repo:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc apply -k bootstrap/
+# Wait for all pods are ready in openshift-gitops namespace
+watch oc get pods -n openshift-gitops
+
+# Add cluster-admin role to ArgoCD
+ oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
+
+# Apply ArgoCD Application
+oc apply -f bootstrap/application.yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Login into [Argocd WebUI](<a href="https://openshift-gitops-server-openshift-gitops.apps-crc.testing/" class="bare">https://openshift-gitops-server-openshift-gitops.apps-crc.testing/</a>) with user "admin" and this [password](<a href="https://console-openshift-console.apps-crc.testing/k8s/ns/openshift-gitops/secrets/openshift-gitops-cluster" class="bare">https://console-openshift-console.apps-crc.testing/k8s/ns/openshift-gitops/secrets/openshift-gitops-cluster</a>) and sync all changes.</p>
+</div>
+<div class="paragraph">
+<p>![ArgocD screenshot](crc-argocd.png)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bring_data_center_edge_together"><a class="anchor" href="#_bring_data_center_edge_together"></a>Bring Data Center &amp; Edge together</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>At the [cloud-native-robotz-hackathon/infrastructure](<a href="https://github.com/cloud-native-robotz-hackathon/infrastructure" class="bare">https://github.com/cloud-native-robotz-hackathon/infrastructure</a>) repo:</p>
+</div>
+<div class="sect2">
+<h3 id="_fetch_credentials_of_data_center"><a class="anchor" href="#_fetch_credentials_of_data_center"></a>Fetch credentials of Data Center</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cd automation
+export KUBECONFIG=$(pwd)/kubeconfig-data-center
+oc login -u admin --insecure-skip-tls-verify https://api.cluster-...
+
+# Connect edge to data center via skupper tunnel
+ansible-navigator run ./create-skupper-tunnel.yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the playbook fails, this is propably due to a [bug](<a href="https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/66" class="bare">https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/66</a>) where the Interconnect Controller doesn&#8217;t initalize correctly. You can restart the Interconnect Pod (skupper-site-controller-xxx&#8230;&#8203;) in the openshift-operators project as a workaround. Once done, rerun the Ansible playbook.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash"># Connect robots and teams
+ansible-navigator run ./update-robot-to-team.yaml -l data.lan</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In case the ansible-navigator can not reach your openshift local, try to run the playbooks locally:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">ansible-galaxy collection install kubernetes.core
+ansible-galaxy collection install community.kubernetes
+ansible-galaxy collection install ansible.posix
+ansible-galaxy collection install community.general
+pip install jmespath
+pip install kubernetes
+
+ansible-playbook ./create-skupper-tunnel.yaml
+ansible-playbook ./update-robot-to-team.yaml -l data.lan\</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_add_robot_mapping_to_hubcontroller"><a class="anchor" href="#_add_robot_mapping_to_hubcontroller"></a>Add Robot Mapping to HubController</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In your Openshift Local open the ConfigMap [robot-mapping-configmap](<a href="https://console-openshift-console.apps-crc.testing/k8s/ns/hub-controller/configmaps/robot-mapping-configmap" class="bare">https://console-openshift-console.apps-crc.testing/k8s/ns/hub-controller/configmaps/robot-mapping-configmap</a>) and edit the Roboname (user_key) mapping(e.g. data )to your Robot hostname (e.g. data.lan)</p>
+</div>
+<div class="paragraph">
+<p>Restart the [Hubcontroller Pod](<a href="https://console-openshift-console.apps-crc.testing/k8s/ns/hub-controller/core" class="bare">https://console-openshift-console.apps-crc.testing/k8s/ns/hub-controller/core</a><sub>v1</sub>Pod)</p>
+</div>
+<div class="paragraph">
+<p>Now test the API Connection from the DC Cluster, for example from the WebTerminal (make sure to replace data your user_key) :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl http://hub-controller-live.red-hat-service-interconnect-data-center.svc.cluster.local:8080/robot/status?user_key=data.lan
+
+curl -X 'POST' 'http://hub-controller-live.red-hat-service-interconnect-data-center.svc.cluster.local:8080/robot/forward/1' -H 'accept: text/html' -H 'Content-Type: application/x-www-form-urlencoded' -d 'user_key=data.lan'</code></pre>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="development.html" class="query-params-link">Development</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../../_/js/vendor/clipboard.js"></script>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

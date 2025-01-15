@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: Facilitator Guide</title>
+    <link rel="canonical" href="https://redhat-scholars.github.io/course-template/modules/stable/run-a-hackathon.html">
+    <link rel="prev" href="index.html">
+    <link rel="next" href="development.html">
+    <meta name="generator" content="Antora 3.0.0">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://demo.redhat.com" target="_blank">
+        <img src="../../_/img/rhdp-logo.svg" height="35px" alt="Red Hat Demo Platform">
+      </a>
+      <a class="navbar-item" href="https://redhat-scholars.github.io/course-template">Facilitator Guide</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Help</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" target="_blank" href="https://redhat.service-now.com/help?id=sc_cat_item&sys_id=00c0316a1bf39450e43942a7bc4bcbd1">Open Support Case</a>
+            <a class="navbar-item" target="_blank" href="https://rhdp.statuspage.io/">Status Page</a>
+            <a class="navbar-item" target="_blank" href="https://demo.redhat.com/support">Solution Support: Service Level</a>
+            <a class="navbar-item" target="_blank" href="https://content.redhat.com/us/en/product/cross-portfolio-initiatives/rhdp.html">Learn more</a>
+            <a class="navbar-item" target="_blank" href="https://videos.learning.redhat.com/channel/RHPDS%2B-%2BRed%2BHat%2BProduct%2Band%2BPortfolio%2BDemo%2BSystem/277722533">How to videos</a>
+          </div>
+        </div>
+        <a class="navbar-item" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfwGW7ql2lDfaLDpg4Bgj_puFEVsM0El6-Nz8fyH48RnGLDrA/viewform">Feedback</a>
+        <a class="navbar-item" href="https://developers.redhat.com/events/" target="_blank">Upcoming Events</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="modules" data-version="stable">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html" class=" query-params-link">Facilitator guide</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="run-a-hackathon.html">🌟 Run a Hackathon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="development.html">Re-install edge-gateway</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="development.html">Setup Robot from Scratch</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="troubleshooting.html">Troubleshooting</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="development.html">Development</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="local-development.html">Local Development</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Facilitator guide</span>
+    <span class="version">stable</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Facilitator guide</span>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="index.html">stable</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Facilitator guide</a></li>
+    <li><a href="run-a-hackathon.html">🌟 Run a Hackathon</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/cloud-native-robotz-hackathon/infrastructure/edit/main/docs/modules/ROOT/pages/run-a-hackathon.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<div class="ulist">
+<ul>
+<li>
+<p>[Preparing to Run a Hackathon](#preparing-to-run-a-hackathon)</p>
+</li>
+<li>
+<p>[Setup OpenShift Environment](#setup-openshift-environment)</p>
+</li>
+<li>
+<p>[Configure \&amp; Deploy RHDP Catalog Item "Cloud Native Robot Hackathon"](#configure&#8212;&#8203;deploy-rhdp-catalog-item-cloud-native-robot-hackathon)</p>
+</li>
+<li>
+<p>[OpenShift Edge Gateway](#openshift-edge-gateway)</p>
+</li>
+<li>
+<p>[Hackathon On-Premise Setup](#hackathon-on-premise-setup)</p>
+</li>
+<li>
+<p>[WIFI Router](#wifi-router)</p>
+</li>
+<li>
+<p>[Edge Gateway](#edge-gateway)</p>
+</li>
+<li>
+<p>[Robots](#robots)</p>
+</li>
+<li>
+<p>[Connect RHDP Hackathon Cluster \&amp; Edge Gateway](#connect-rhdp-hackathon-cluster&#8212;&#8203;edge-gateway)</p>
+</li>
+<li>
+<p>[Fetch credentials of RHDP Cluster](#fetch-credentials-of-rhdp-cluster)</p>
+</li>
+<li>
+<p>[Connect edge to data center via skupper tunnel](#connect-edge-to-data-center-via-skupper-tunnel)</p>
+</li>
+<li>
+<p>[Building Hackathon Components](#building-hackathon-components)</p>
+</li>
+<li>
+<p>[Setup Robot from Scratch](#setup-robot-from-scratch)</p>
+</li>
+<li>
+<p>[Install image and prepare robot](#install-image-and-prepare-robot)</p>
+</li>
+<li>
+<p>[Network Setup](#network-setup)</p>
+</li>
+<li>
+<p>[Finish configuration](#finish-configuration)</p>
+</li>
+<li>
+<p>[Camera Setup (Raspi camera v2)](#camera-setup-raspi-camera-v2)</p>
+</li>
+<li>
+<p>[Microshift](#microshift)</p>
+</li>
+<li>
+<p>[Triton](#triton)</p>
+</li>
+<li>
+<p>[Setup Edge Gateway / SNO OpenShift](#setup-edge-gateway&#8212;&#8203;sno-openshift)</p>
+</li>
+<li>
+<p>[Troubleshooting](#troubleshooting)</p>
+</li>
+</ul>
+</div>
+<h1 id="_preparing_to_run_a_hackathon" class="sect0"><a class="anchor" href="#_preparing_to_run_a_hackathon"></a>Preparing to Run a Hackathon</h1>
+<div class="sect1">
+<h2 id="_setup_openshift_environment"><a class="anchor" href="#_setup_openshift_environment"></a>Setup OpenShift Environment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This includes deploying the hackathon environment in RHDP and making sure an Edge Gateway is available.</p>
+</div>
+<div class="sect2">
+<h3 id="_configure_deploy_rhdp_catalog_item_cloud_native_robot_hackathon"><a class="anchor" href="#_configure_deploy_rhdp_catalog_item_cloud_native_robot_hackathon"></a>Configure &amp; Deploy RHDP Catalog Item "Cloud Native Robot Hackathon"</h3>
+<div class="paragraph">
+<p>&#8594; Sizing</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_openshift_edge_gateway"><a class="anchor" href="#_openshift_edge_gateway"></a>OpenShift Edge Gateway</h3>
+<div class="paragraph">
+<p>The Edge Gateway is a OCP SNO instance running on-premise in the same WIFI network as the robots. All connections from the hackathon OCP cluster to the robots go through it.</p>
+</div>
+<div class="paragraph">
+<p>It is usually prepared and ready to use.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hackathon_on_premise_setup"><a class="anchor" href="#_hackathon_on_premise_setup"></a>Hackathon On-Premise Setup</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_wifi_router"><a class="anchor" href="#_wifi_router"></a>WIFI Router</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Start the WIFI router and attach to the local WIFI</p>
+</li>
+<li>
+<p>SSID: robot-hackathon-78b09 Wifi-Password: Stored in RH Bitwarden collection</p>
+</li>
+<li>
+<p>The router is a preconfigured GL.iNet AXT1800, the configuration to restore is here (always use latest!): [<a href="https://drive.google.com/file/d/14T-on2pO0IIXGgDSKp70ZaBU8B9nxKvV/view?usp=drive_link" class="bare">https://drive.google.com/file/d/14T-on2pO0IIXGgDSKp70ZaBU8B9nxKvV/view?usp=drive_link</a>](<a href="https://drive.google.com/drive/folders/19ZIPrv9bnL4JvYXGgUOYihp5AsKfzZPa?usp=drive_link" class="bare">https://drive.google.com/drive/folders/19ZIPrv9bnL4JvYXGgUOYihp5AsKfzZPa?usp=drive_link</a>) (RH internal only)</p>
+</li>
+<li>
+<p>Check connectivity to Internet</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_edge_gateway"><a class="anchor" href="#_edge_gateway"></a>Edge Gateway</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Power on after WIFI is available</p>
+</li>
+<li>
+<p>&#8594; How to check?</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_robots"><a class="anchor" href="#_robots"></a>Robots</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Attach robots to power and start up</p>
+</li>
+<li>
+<p>Wait a couple of minutes and run automation/move-robots.yaml Playbook from laptop attached to hackathon WIFI.</p>
+</li>
+<li>
+<p>All robots should do the dance!</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_connect_rhdp_hackathon_cluster_edge_gateway"><a class="anchor" href="#_connect_rhdp_hackathon_cluster_edge_gateway"></a>Connect RHDP Hackathon Cluster &amp; Edge Gateway</h3>
+<div class="paragraph">
+<p>At the [cloud-native-robotz-hackathon/infrastructure](<a href="https://github.com/cloud-native-robotz-hackathon/infrastructure" class="bare">https://github.com/cloud-native-robotz-hackathon/infrastructure</a>) repo:</p>
+</div>
+<div class="sect3">
+<h4 id="_fetch_credentials_of_rhdp_cluster"><a class="anchor" href="#_fetch_credentials_of_rhdp_cluster"></a>Fetch credentials of RHDP Cluster</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cd automation
+export KUBECONFIG=$(pwd)/kubeconfig-data-center
+oc login -u admin --insecure-skip-tls-verify https://api.cluster-...</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_connect_edge_to_data_center_via_skupper_tunnel"><a class="anchor" href="#_connect_edge_to_data_center_via_skupper_tunnel"></a>Connect edge to data center via skupper tunnel</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">ansible-navigator run ./create-skupper-tunnel.yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the playbook fails, this is propably due to a [bug](<a href="https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/66" class="bare">https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/66</a>) where the Interconnect Controller doesn&#8217;t initalize correctly. You can restart the Interconnect Pod (skupper-site-controller-xxx&#8230;&#8203;) in the openshift-operators project as a workaround. Once done, rerun the Ansible playbook.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h1 id="_building_hackathon_components" class="sect0"><a class="anchor" href="#_building_hackathon_components"></a>Building Hackathon Components</h1>
+<div class="paragraph">
+<p>The steps detailed here should only be done when rebuilding hackathon components which are normally ready to use.</p>
+</div>
+<div class="sect1">
+<h2 id="_setup_robot_from_scratch"><a class="anchor" href="#_setup_robot_from_scratch"></a>Setup Robot from Scratch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This should only be neccessary with a new robot or when repairing/updating/replacing a robot.</p>
+</div>
+<div class="sect2">
+<h3 id="_install_image_and_prepare_robot"><a class="anchor" href="#_install_image_and_prepare_robot"></a>Install image and prepare robot</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Image Ubuntu 22.04, Microshift 4.8 :  [ubuntu_2204_gopigobits-microshift48-edgectrl-shrink.img.tgz](<a href="https://drive.google.com/file/d/1I1zhFV3aXpyn30Eg-lO2gupraSWquO7B/view?usp=drive_link" class="bare">https://drive.google.com/file/d/1I1zhFV3aXpyn30Eg-lO2gupraSWquO7B/view?usp=drive_link</a>)</p>
+</li>
+<li>
+<p>Write to SD Card, will be resized to SD Card size at first boot
+<code>tar xzvf ubuntu_2204_gopigobits-microshift48-edgectrl-shrink.img.tgz</code>
+<code>sudo dd if=ubuntu_2204_gopigobits-microshift48-edgectrl-shrink.img of=/dev/sdXXX status=progress</code></p>
+</li>
+<li>
+<p>Attach network cable</p>
+</li>
+<li>
+<p>Login as root / password</p>
+</li>
+<li>
+<p>CHECK IF DONE IN IMAGE ALREADY: Configure WIFI</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_network_setup"><a class="anchor" href="#_network_setup"></a>Network Setup</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>For WLAN edit /etc/netplan/50-cloud-init.yaml and add your WLAN access point, run netplan apply. Config example:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">  network:
+      ethernets:
+          eth0:
+              dhcp4: true
+              optional: true
+      version: 2
+      wifis:
+        wlan0:
+          access-points:
+            "redhatrobos":
+              password: "password"
+          dhcp4: true</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_finish_configuration"><a class="anchor" href="#_finish_configuration"></a>Finish configuration</h3>
+<div class="paragraph">
+<p>Run Playbook <code>automation/configure-robot.yaml</code> against new robot to finish setup.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_camera_setup_raspi_camera_v2"><a class="anchor" href="#_camera_setup_raspi_camera_v2"></a>Camera Setup (Raspi camera v2)</h3>
+<div class="paragraph">
+<p>Playbook camera-test.yaml is here [<a href="https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot" class="bare">https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot</a>](<a href="https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot" class="bare">https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot</a>)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cable orientation: blue “bar” on cable oriented to USB ports, blue bar at camera away from lens</p>
+</li>
+<li>
+<p>Test camera is detected: vcgencmd get_camera</p>
+</li>
+<li>
+<p>Script to test image acquisition</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">  import cv2
+  # open camera
+  cap = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)
+
+  # set dimensions
+  cap.set(cv2.CAP_PROP_FRAME_WIDTH, 2560)
+  cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1440)
+
+  # take frame
+  ret, frame = cap.read()
+  # write frame to file
+  cv2.imwrite('/root/ramfilesystem/image.jpg', frame)
+  # release camera
+  cap.release()</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_microshift"><a class="anchor" href="#_microshift"></a>Microshift</h3>
+<div class="paragraph">
+<p>Playbook microshift-reset.yaml is here [<a href="https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot" class="bare">https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot</a>](<a href="https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot" class="bare">https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot</a>)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To reset Microshift: systemctl stop microshift.service; rm -rf /var/lib/microshift; systemctl start microshift.service</p>
+</li>
+<li>
+<p>To use oc locally: export KUBECONFIG=/var/lib/microshift/resources/kubeadmin/kubeconfig</p>
+</li>
+<li>
+<p>Or cat /var/lib/microshift/resources/kubeadmin/kubeconfig &gt; ~/.kube/config</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_triton"><a class="anchor" href="#_triton"></a>Triton</h3>
+<div class="paragraph">
+<p>[<a href="https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting\_started/quickstart.html" class="bare">https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting\_started/quickstart.html</a>](<a href="https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html" class="bare">https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html</a>)</p>
+</div>
+<div class="paragraph">
+<p>Check model
+<code>curl --location --request GET 'http://localhost:8000/v2/models/densenet_onnx/stats'</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_setup_edge_gateway_sno_openshift"><a class="anchor" href="#_setup_edge_gateway_sno_openshift"></a>Setup Edge Gateway / SNO OpenShift</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<h1 id="_troubleshooting" class="sect0"><a class="anchor" href="#_troubleshooting"></a>Troubleshooting</h1>
+
+<nav class="pagination">
+  <span class="prev"><a href="index.html" class="query-params-link">Facilitator guide</a></span>
+  <span class="next"><a href="development.html" class="query-params-link">Re-install edge-gateway</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../../_/js/vendor/clipboard.js"></script>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
