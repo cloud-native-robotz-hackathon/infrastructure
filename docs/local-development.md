@@ -133,9 +133,9 @@ curl -X 'POST' 'http://hub-controller-live.red-hat-service-interconnect-data-cen
 
 ## Custom user_key Mapping
 
-If you want to map another user_key to the robot you can set uo a mapping:
+If you want to map other user_key to the robot you can set up a mapping:
 
-In your Openshift Local open the ConfigMap [robot-mapping-configmap](https://console-openshift-console.apps-crc.testing/k8s/ns/hub-controller/configmaps/robot-mapping-configmap) and edit the Roboname (user_key) mapping(e.g. data )to your Robot hostname (e.g. data.lan)
+In your Openshift Local open the ConfigMap [robot-mapping-configmap](https://console-openshift-console.apps-crc.testing/k8s/ns/hub-controller/configmaps/robot-mapping-configmap) and edit the Roboname (user_key) mapping (e.g. data) to your Robot hostname (e.g. data.lan)
 
 Restart the [Hubcontroller Pod](https://console-openshift-console.apps-crc.testing/k8s/ns/hub-controller/core~v1~Pod)
 
