@@ -119,10 +119,9 @@ ansible-playbook ./update-robot-to-team.yaml -l data.lan
 </details>
 
 
-## Add Robot Mapping to HubController
-In your Openshift Local open the ConfigMap [robot-mapping-configmap](https://console-openshift-console.apps-crc.testing/k8s/ns/hub-controller/configmaps/robot-mapping-configmap) and edit the Roboname (user_key) mapping(e.g. data )to your Robot hostname (e.g. data.lan)
+## Testing the Robot Calls
 
-Restart the [Hubcontroller Pod](https://console-openshift-console.apps-crc.testing/k8s/ns/hub-controller/core~v1~Pod)
+You can test the calls bei adding the hostname or ip of the robot as user_key.
 
 Now test the API Connection from the DC Cluster, for example from the WebTerminal (make sure to replace data your user_key) :
 
@@ -131,4 +130,12 @@ curl http://hub-controller-live.red-hat-service-interconnect-data-center.svc.clu
 
 curl -X 'POST' 'http://hub-controller-live.red-hat-service-interconnect-data-center.svc.cluster.local:8080/robot/forward/1' -H 'accept: text/html' -H 'Content-Type: application/x-www-form-urlencoded' -d 'user_key=data.lan'
 ```
+
+## Custom user_key Mapping
+
+If you want to map another user_key to the robot you can set uo a mapping:
+
+In your Openshift Local open the ConfigMap [robot-mapping-configmap](https://console-openshift-console.apps-crc.testing/k8s/ns/hub-controller/configmaps/robot-mapping-configmap) and edit the Roboname (user_key) mapping(e.g. data )to your Robot hostname (e.g. data.lan)
+
+Restart the [Hubcontroller Pod](https://console-openshift-console.apps-crc.testing/k8s/ns/hub-controller/core~v1~Pod)
 
