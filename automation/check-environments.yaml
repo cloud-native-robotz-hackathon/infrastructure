@@ -1,0 +1,210 @@
+---
+
+- hosts: robots
+  gather_facts: false
+  tasks:
+    - name: "🤖 Robot  => http://robot.local:5000/"
+      tags:
+        - robot
+      ansible.builtin.uri:
+        url: "http://robot.local:5000/"
+        method: GET
+
+    - name: "💻 Laptop => 🤖 Robot http://🤖:5000/"
+      tags:
+        - robot
+      delegate_to: localhost
+      ansible.builtin.uri:
+        url: "http://{{ inventory_hostname }}:5000/"
+        method: GET
+
+#     # - name: Call hubcontroller runing on the edge-gateway
+#     #   # connection: local
+#     #   ansible.builtin.uri:
+#     #     url: "http://web-hub-controller.apps.edge-gateway.lan/robot/{{ test_function }}/{{ test_value }}"
+#     #     method: POST
+#     #     body: "user_key={{ inventory_hostname }}"
+
+#     # - name: Call hubcontroller via skupper tunnel
+#     #   # connection: local
+#     #   ansible.builtin.uri:
+#     #     url: "https://thbc-red-hat-service-interconnect-data-center.apps.cluster-zbrd4.zbrd4.sandbox1885.opentlc.com/robot/{{ test_function }}/{{ test_value }}"
+#     #     method: POST
+#     #     body: "user_key={{ inventory_hostname }}"
+
+
+- hosts: edge-gateway
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: "💻 Laptop => 🏭 Edge-gateway web-hub-controller.apps.edge-gateway.lan"
+      tags:
+        - edge-gateway
+      ansible.builtin.uri:
+        url: "http://web-hub-controller.apps.edge-gateway.lan/dashboard.html"
+        method: GET
+
+    - name: "💻 Laptop => 🏭 Edge-gateway web-hub-controller to 🤖 Robot's"
+      with_items: "{{ hostvars[inventory_hostname].groups.robots }}"
+      tags:
+        - edge-gateway
+      ansible.builtin.uri:
+        url: "http://web-hub-controller.apps.edge-gateway.lan/robot/status?user_key={{ item  }}"
+        method: GET
+
+# #     - name: "Check connection via svc 🏢 -(skupper)-> 🏭 -(hub-controller)-> 🤖 " 
+# #       with_items: "{{ hostvars[inventory_hostname].groups.robots }}"
+# #       kubernetes.core.k8s:
+# #         state: present
+# #         kubeconfig: "kubeconfig-edge-gateway"
+# #         wait: true
+# #         wait_condition:
+# #           type: Initialized
+# #           reason: "PodCompleted"
+# #         definition:
+# #           apiVersion: v1
+# #           kind: Pod
+# #           metadata:
+# #             generateName: check-connection-to-{{ item | split('.') | first }}-via-hub-controller-
+# #             namespace: red-hat-service-interconnect-edge-gateway
+# #           spec:
+# #             restartPolicy: Never
+# #             containers:
+# #               - name: checker
+# #                 image: registry.access.redhat.com/ubi9/ubi-minimal:latest
+# #                 command:
+# #                   - "/bin/sh"
+# #                   - "-c"
+# #                   - |
+# #                       set -x
+# #                       curl -v http://web-hub-controller.apps.edge-gateway.lan/robot/status?user_key={{ item  }}
+# #                       echo
+
+#     - name: "Check  🏭 web-hub-controller.apps.edge-gateway.lan" 
+#       kubernetes.core.k8s:
+#         state: present
+#         kubeconfig: "kubeconfig-edge-gateway"
+#         wait: true
+#         wait_condition:
+#           type: Initialized
+#           reason: "PodCompleted"
+#         definition:
+#           apiVersion: v1
+#           kind: Pod
+#           metadata:
+#             generateName: check-web-hub-controller-
+#             namespace: red-hat-service-interconnect-edge-gateway
+#           spec:
+#             restartPolicy: Never
+#             containers:
+#               - name: checker
+#                 image: registry.access.redhat.com/ubi9/ubi-minimal:latest
+#                 command:
+#                   - "/bin/sh"
+#                   - "-c"
+#                   - |
+#                       set -x
+#                       curl -v http://web-hub-controller.apps.edge-gateway.lan/dashboard.html
+#                       echo
+
+# #     - name: "Check connection via svc 🏢 -(skupper)-> 🏭 -(hub-controller)-> 🤖 " 
+# #       with_items: "{{ hostvars[inventory_hostname].groups.robots }}"
+# #       kubernetes.core.k8s:
+# #         state: present
+# #         kubeconfig: "kubeconfig-edge-gateway"
+# #         wait: true
+# #         wait_condition:
+# #           type: Initialized
+# #           reason: "PodCompleted"
+# #         definition:
+# #           apiVersion: v1
+# #           kind: Pod
+# #           metadata:
+# #             generateName: check-connection-to-{{ item | split('.') | first }}-via-hub-controller-
+# #             namespace: red-hat-service-interconnect-edge-gateway
+# #           spec:
+# #             restartPolicy: Never
+# #             containers:
+# #               - name: checker
+# #                 image: registry.access.redhat.com/ubi9/ubi-minimal:latest
+# #                 command:
+# #                   - "/bin/sh"
+# #                   - "-c"
+# #                   - |
+# #                       set -x
+# #                       curl -v http://web-hub-controller.apps.edge-gateway.lan/robot/status?user_key={{ item  }}
+# #                       echo
+
+
+- hosts: datacenter
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: "🏢 DataCenter - Check hub-controller-live service"
+      tags:
+        - datacenter
+      kubernetes.core.k8s_info:
+        kubeconfig: "kubeconfig-data-center"
+        namespace: "red-hat-service-interconnect-data-center"
+        api_version: v1
+        kind: Service
+        name: hub-controller-live
+        wait: true
+
+    - name: "🏢 DataCenter via skupper to 🏭 Edge-gateway (hub-controller-live)" 
+      tags:
+        - datacenter
+      kubernetes.core.k8s:
+        state: present
+        kubeconfig: "kubeconfig-data-center"
+        wait: true
+        wait_condition:
+          type: Initialized
+          reason: "PodCompleted"
+        definition:
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            generateName: check-skupper-connect
+            namespace: red-hat-service-interconnect-data-center
+          spec:
+            restartPolicy: Never
+            containers:
+              - name: checker
+                image: registry.access.redhat.com/ubi9/ubi-minimal:latest
+                command:
+                  - "/bin/sh"
+                  - "-c"
+                  - |
+                      set -x
+                      curl http://hub-controller-live.red-hat-service-interconnect-data-center.svc.cluster.local:8080/
+
+    - name: "🏢 DataCenter via skupper to 🏭 Edge-gateway(hub-controller-live) to 🤖 Robot"
+      tags:
+        - datacenter
+      with_items: "{{ hostvars[inventory_hostname].groups.robots }}"
+      kubernetes.core.k8s:
+        state: present
+        kubeconfig: "kubeconfig-data-center"
+        wait: true
+        wait_condition:
+          type: Initialized
+          reason: "PodCompleted"
+        definition:
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            generateName: check-connection-to-{{ item | split('.') | first }}-
+            namespace: red-hat-service-interconnect-data-center
+          spec:
+            restartPolicy: Never
+            containers:
+              - name: checker
+                image: registry.access.redhat.com/ubi9/ubi-minimal:latest
+                command:
+                  - "/bin/sh"
+                  - "-c"
+                  - |
+                      set -x
+                      curl -v http://hub-controller-live.red-hat-service-interconnect-data-center.svc.cluster.local:8080/robot/status?user_key={{ item  }}
+                      echo
