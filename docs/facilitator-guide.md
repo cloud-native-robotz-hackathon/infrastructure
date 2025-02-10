@@ -111,12 +111,14 @@ It is usually prepared and ready to use. Just connected the network wire to the 
   vim inventory.yaml
 
   # Run playbook
-  ansible-navigator run new-data-center.yaml  -l <select location / specific robot>
+  ansible-navigator run new-data-center.yaml  [-l <select location / specific robot>]
   ```
 
   Tip: If the playbook fails, this is propably due to a [bug](https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/66) where the Interconnect Controller doesn't initalize correctly. You can restart the Interconnect Pod (skupper-site-controller-xxx...) in the openshift-operators project as a workaround. Once done, rerun the Ansible playbook.
 
   </details>
+
+* Check all argocd applications at edge-gateway: <https://openshift-gitops-server-openshift-gitops.apps.edge-gateway.lan/>
 
 ## Assign team E-Mails to data center users
 
