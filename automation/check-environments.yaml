@@ -1,5 +1,4 @@
 ---
-
 - hosts: robots
   gather_facts: false
   tasks:
@@ -52,89 +51,28 @@
         url: "http://web-hub-controller.apps.edge-gateway.lan/robot/status?user_key={{ item  }}"
         method: GET
 
-# #     - name: "Check connection via svc 🏢 -(skupper)-> 🏭 -(hub-controller)-> 🤖 " 
-# #       with_items: "{{ hostvars[inventory_hostname].groups.robots }}"
-# #       kubernetes.core.k8s:
-# #         state: present
-# #         kubeconfig: "kubeconfig-edge-gateway"
-# #         wait: true
-# #         wait_condition:
-# #           type: Initialized
-# #           reason: "PodCompleted"
-# #         definition:
-# #           apiVersion: v1
-# #           kind: Pod
-# #           metadata:
-# #             generateName: check-connection-to-{{ item | split('.') | first }}-via-hub-controller-
-# #             namespace: red-hat-service-interconnect-edge-gateway
-# #           spec:
-# #             restartPolicy: Never
-# #             containers:
-# #               - name: checker
-# #                 image: registry.access.redhat.com/ubi9/ubi-minimal:latest
-# #                 command:
-# #                   - "/bin/sh"
-# #                   - "-c"
-# #                   - |
-# #                       set -x
-# #                       curl -v http://web-hub-controller.apps.edge-gateway.lan/robot/status?user_key={{ item  }}
-# #                       echo
+- hosts: robots
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: "🏭 edge-gateway => Fetch argocd applications"
+      tags:
+        - edge-gateway
+      kubernetes.core.k8s_info: 
+        kubeconfig: "kubeconfig-edge-gateway"
+        api_version: argoproj.io/v1alpha1
+        kind: Application
+        namespace: openshift-gitops
+        name: "{{ team }}-robot-gitops"
+      register: application
 
-#     - name: "Check  🏭 web-hub-controller.apps.edge-gateway.lan" 
-#       kubernetes.core.k8s:
-#         state: present
-#         kubeconfig: "kubeconfig-edge-gateway"
-#         wait: true
-#         wait_condition:
-#           type: Initialized
-#           reason: "PodCompleted"
-#         definition:
-#           apiVersion: v1
-#           kind: Pod
-#           metadata:
-#             generateName: check-web-hub-controller-
-#             namespace: red-hat-service-interconnect-edge-gateway
-#           spec:
-#             restartPolicy: Never
-#             containers:
-#               - name: checker
-#                 image: registry.access.redhat.com/ubi9/ubi-minimal:latest
-#                 command:
-#                   - "/bin/sh"
-#                   - "-c"
-#                   - |
-#                       set -x
-#                       curl -v http://web-hub-controller.apps.edge-gateway.lan/dashboard.html
-#                       echo
-
-# #     - name: "Check connection via svc 🏢 -(skupper)-> 🏭 -(hub-controller)-> 🤖 " 
-# #       with_items: "{{ hostvars[inventory_hostname].groups.robots }}"
-# #       kubernetes.core.k8s:
-# #         state: present
-# #         kubeconfig: "kubeconfig-edge-gateway"
-# #         wait: true
-# #         wait_condition:
-# #           type: Initialized
-# #           reason: "PodCompleted"
-# #         definition:
-# #           apiVersion: v1
-# #           kind: Pod
-# #           metadata:
-# #             generateName: check-connection-to-{{ item | split('.') | first }}-via-hub-controller-
-# #             namespace: red-hat-service-interconnect-edge-gateway
-# #           spec:
-# #             restartPolicy: Never
-# #             containers:
-# #               - name: checker
-# #                 image: registry.access.redhat.com/ubi9/ubi-minimal:latest
-# #                 command:
-# #                   - "/bin/sh"
-# #                   - "-c"
-# #                   - |
-# #                       set -x
-# #                       curl -v http://web-hub-controller.apps.edge-gateway.lan/robot/status?user_key={{ item  }}
-# #                       echo
-
+    - name: "🏭 edge-gateway => Check argocd applications"
+      tags:
+        - edge-gateway
+        - argocd-application
+      fail:
+        msg: "Sync is {{ application.resources[0].status.sync.status }}"
+      when: application.resources[0].status.sync.status is not search("Synced")
 
 - hosts: datacenter
   gather_facts: false
