@@ -24,5 +24,8 @@ List of all items you need to run the hackathon.
 | 
 | Huge USB Stick 
 | edge-gateway, for reinstallation. Details at edge-gateway-applicance-builder.adoc
-|
+
+| 
+| DuckTape
+| 
 |===
