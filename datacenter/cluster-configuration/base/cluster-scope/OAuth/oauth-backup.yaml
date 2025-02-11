@@ -1,0 +1,35 @@
+apiVersion: config.openshift.io/v1
+kind: OAuth
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: ServerSideApply=true,Validate=false
+    include.release.openshift.io/ibm-cloud-managed: "true"
+    include.release.openshift.io/self-managed-high-availability: "true"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"config.openshift.io/v1","kind":"OAuth","metadata":{"annotations":{"argocd.argoproj.io/sync-options":"ServerSideApply=true,Validate=false"},"name":"cluster"},"spec":{"templates":{"error":{"name":"errors-template"},"login":{"name":"login-template"},"providerSelection":{"name":"providers-template"}}}}
+    release.openshift.io/create-only: "true"
+  creationTimestamp: "2025-02-11T06:32:16Z"
+  generation: 3
+  name: cluster
+  ownerReferences:
+  - apiVersion: config.openshift.io/v1
+    kind: ClusterVersion
+    name: version
+    uid: dc56691e-6f69-4e98-bd5a-8a43455b27ed
+  resourceVersion: "779646"
+  uid: 4bee8521-13ca-458b-9cfa-2d5739826be3
+spec:
+  identityProviders:
+  - htpasswd:
+      fileData:
+        name: htpasswd
+    mappingMethod: claim
+    name: htpasswd_provider
+    type: HTPasswd
+  templates:
+    error:
+      name: errors-template
+    login:
+      name: login-template
+    providerSelection:
+      name: providers-template
