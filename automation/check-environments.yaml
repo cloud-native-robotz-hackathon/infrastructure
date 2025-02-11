@@ -3,18 +3,24 @@
   gather_facts: false
   tasks:
     - name: "🤖 Robot  => http://robot.local:5000/"
+      with_items:
+        - /distance
+        - /
       tags:
         - robots
       ansible.builtin.uri:
-        url: "http://robot.local:5000/"
+        url: "http://robot.local:5000{{ item }}"
         method: GET
 
     - name: "💻 Laptop => 🤖 Robot http://🤖:5000/"
+      with_items:
+        - /distance
+        - /
       tags:
         - robots
       delegate_to: localhost
       ansible.builtin.uri:
-        url: "http://{{ inventory_hostname }}:5000/"
+        url: "http://{{ inventory_hostname }}:5000{{ item }}"
         method: GET
 
 #     # - name: Call hubcontroller runing on the edge-gateway
@@ -53,9 +59,9 @@
 
 - hosts: robots
   gather_facts: false
-  connection: local
   tasks:
     - name: "🏭 edge-gateway => Fetch argocd applications"
+      delegate_to: localhost
       tags:
         - edge-gateway
       kubernetes.core.k8s_info: 
@@ -67,6 +73,7 @@
       register: application
 
     - name: "🏭 edge-gateway => Check argocd applications"
+      delegate_to: localhost
       tags:
         - edge-gateway
         - argocd-application
