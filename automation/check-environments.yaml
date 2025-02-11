@@ -4,14 +4,14 @@
   tasks:
     - name: "🤖 Robot  => http://robot.local:5000/"
       tags:
-        - robot
+        - robots
       ansible.builtin.uri:
         url: "http://robot.local:5000/"
         method: GET
 
     - name: "💻 Laptop => 🤖 Robot http://🤖:5000/"
       tags:
-        - robot
+        - robots
       delegate_to: localhost
       ansible.builtin.uri:
         url: "http://{{ inventory_hostname }}:5000/"
