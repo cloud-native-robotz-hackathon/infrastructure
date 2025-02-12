@@ -55,6 +55,18 @@ At the [cloud-native-robotz-hackathon/edge-gateway-gitops](https://github.com/cl
 
 
 ```bash
+
+oc apply -f - <<EOF
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: cs-redhat-operator-index
+  namespace: openshift-marketplace
+spec:
+  image: registry.redhat.io/redhat/redhat-operator-index:v4.16
+  sourceType: grpc
+EOF
+
 oc apply -k bootstrap/
 # Wait for all pods are ready in openshift-gitops namespace
 watch oc get pods -n openshift-gitops
