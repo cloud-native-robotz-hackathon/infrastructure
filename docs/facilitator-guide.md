@@ -28,6 +28,7 @@
 |Check|When|What|
 |---|---|---|
 | |Before 1-2 Days| [Order OpenShift Data Center env](#order-openshift-data-center-env) |
+| |Before 1-2 Days| [Adjust OpenShift design](#adjust-openshift-design) |
 | |Location|[Setting up the environment](#setting-up-the-environment)|
 
 ## Order OpenShift Data Center env
@@ -40,6 +41,22 @@ This includes deploying the hackathon environment in [demo.redhat.com](https://c
 |Region|Close as possible: `eu-central-1`|
 |GPU Worker Nodes (one GPU per Worker!)|For testing puropose only, workshop is not prepred to use GPU's!
 |Enable workshop user interface|True|
+
+## Adjust OpenShift design
+
+* Login in into OpenShift Cluster (data-center)
+
+* Go to `datacenter/cluster-configuration/base/namespace/openshift-config/Secret`
+* Adjust errors-template.html, login-template.html and providers-template.html
+* Run `./update-secrets.sh`
+
+* Go to `datacenter/cluster-configuration/base/namespace/openshift-config/ConfigMap`
+* Adjust openshift-robot.png (Optional the openshift-robot.xcf via Gimp and export as png )
+* Run `./update-secrets.sh`
+
+
+* Commit all changes and push it.
+* Open ArgoCD and refresh and sync cluster-configuration 
 
 ## Setting up the environment
 
