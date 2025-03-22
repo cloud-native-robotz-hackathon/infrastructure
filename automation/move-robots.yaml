@@ -12,12 +12,12 @@
         url:  http://robot.local:5000/forward/1
         method: POST
 
-    - name: 360 
+    - name: 25
       ansible.builtin.uri:
-        url:  http://robot.local:5000/left/360
+        url:  http://robot.local:5000/left/25
         method: POST
 
-    - name: 360 
+    - name: 25 
       ansible.builtin.uri:
-        url:  http://robot.local:5000/right/360
+        url:  http://robot.local:5000/right/25
         method: POST
