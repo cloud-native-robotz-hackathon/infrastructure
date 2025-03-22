@@ -12,6 +12,9 @@ www/*
 !www/.nojekyll
 
 *.html
+!errors-template.html
+!login-template.html
+!providers-template.html
 target/
 !.mvn/wrapper/maven-wrapper.jar
 audit.log
