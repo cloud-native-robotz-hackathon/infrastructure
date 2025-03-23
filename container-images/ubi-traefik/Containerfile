@@ -1,0 +1,12 @@
+FROM registry.access.redhat.com/ubi9/ubi-minimal:latest
+
+ADD helper/install-traefik.sh /usr/local/bin/
+
+RUN microdnf install -y diffutils tar gzip \
+ && install-traefik.sh
+
+COPY config.yaml /
+COPY provider-file.yaml /
+COPY entrypoint.sh /
+
+ENTRYPOINT "/entrypoint.sh"

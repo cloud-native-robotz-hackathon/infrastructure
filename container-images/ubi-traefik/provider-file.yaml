@@ -1,0 +1,23 @@
+tcp:
+  routers:
+    edge-controller:
+      rule: "HostSNI(`*`)"
+      entryPoints:
+        - edge-controller
+      service: "edge-controller"
+
+    k8s-api:
+      rule: "HostSNI(`*`)"
+      entryPoints:
+        - k8s-api
+      service: "k8s-api"
+
+  services:
+    edge-controller:
+      loadBalancer:
+        servers:
+          - address: "{{ env "HOST_IP" }}:5000"
+    k8s-api:
+      loadBalancer:
+        servers:
+          - address: "{{ env "HOST_IP" }}:6443"

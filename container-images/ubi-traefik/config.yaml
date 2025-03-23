@@ -1,0 +1,14 @@
+# enable: true 
+
+log:
+  level: debug
+
+entryPoints:
+  edge-controller:
+    address: ":5000"
+  k8s-api:
+    address: ":6443"
+
+providers:
+  file:
+    filename: provider-file.yaml
