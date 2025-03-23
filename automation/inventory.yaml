@@ -16,25 +16,26 @@ edge-gateway:
 
 robots:
   hosts:
-    gort.lan:
-      team: team-1
-    t-1000.lan:
-      team: team-2
-    marvin.lan:
-      team: team-3
-    c3po.lan:
-      team: team-4
-    r2d2.lan:
-      team: team-5
-    marc13.lan:
-      team: team-6
-    data.lan:
-      team: team-7
-    terminator.lan:
-      team: team-8
-    ultron.lan:
+    # gort.lan:
+    #   team: team-1
+    # t-1000.lan:
+    #   team: team-2
+    # marvin.lan:
+    #   team: team-3
+    # c3po.lan:
+    #   team: team-4
+    # r2d2.lan:
+    #   team: team-5
+    # marc13.lan:
+    #   team: team-6
+    # data.lan:
+    #   team: team-7
+    # terminator.lan:
+    #   team: team-8
+    # ultron.lan:
+    #   team: team-9
+    robocop:
       team: team-9
-    # robocop.lan:
 
 
 berlin:

@@ -1,33 +1,12 @@
 ---
+# Prepare the data-center
 - hosts: localhost
   gather_facts: false
-  connection: local
   tasks:
-
-    - name: Destroy a namespaces
-      tags:
-        - destroy
-      with_items:
-        - edge-gateway
-        - data-center
-      kubernetes.core.k8s:
-        state: absent
-        wait: true
-        kubeconfig: "kubeconfig-{{ item }}"
-        definition:
-          apiVersion: v1
-          kind: Namespace
-          metadata:
-            name: red-hat-service-interconnect-{{ item }}
-          spec: {}
-
     - name: Restart skupper-site-controller
-      with_items:
-        - edge-gateway
-        - data-center
       kubernetes.core.k8s:
         state: absent
-        kubeconfig: "kubeconfig-{{ item }}"
+        kubeconfig: "kubeconfig-data-center"
         namespace: openshift-operators
         api_version: v1
         kind: Pod
@@ -36,20 +15,29 @@
         wait_condition:
           type: Ready
           status: 'True'
-  
-    - name: Create a namespaces
-      with_items:
-        - edge-gateway
-        - data-center
+
+    - name: Destroy a namespaces
       kubernetes.core.k8s:
-        state: present
+        state: absent
         wait: true
-        kubeconfig: "kubeconfig-{{ item }}"
+        kubeconfig: "kubeconfig-data-center"
         definition:
           apiVersion: v1
           kind: Namespace
           metadata:
-            name: red-hat-service-interconnect-{{ item }}
+            name: robot
+          spec: {}
+
+    - name: Create a namespaces
+      kubernetes.core.k8s:
+        state: present
+        wait: true
+        kubeconfig: "kubeconfig-data-center"
+        definition:
+          apiVersion: v1
+          kind: Namespace
+          metadata:
+            name: robot
           spec: {}
 
     - name: Start skupper at data-center
@@ -61,7 +49,7 @@
           kind: ConfigMap
           metadata:
             name: skupper-site
-            namespace: red-hat-service-interconnect-data-center
+            namespace: robot
           data:
             cluster-permissions: "false"
             console: "true"
@@ -71,32 +59,7 @@
             enable-skupper-events: "true"
             flow-collector: "true"
             ingress: route
-            name: red-hat-service-interconnect-data-center
-            router-console: "false"
-            router-logging: ""
-            router-mode: interior
-            service-controller: "true"
-            service-sync: "true"
-
-    - name: Start skupper at edge-gateway
-      kubernetes.core.k8s:
-        kubeconfig: "kubeconfig-edge-gateway"
-        definition:
-          apiVersion: v1
-          kind: ConfigMap
-          metadata:
-            name: skupper-site
-            namespace: red-hat-service-interconnect-edge-gateway
-          data:
-            cluster-permissions: "true"
-            console: "false"
-            console-authentication: internal
-            console-password: ""
-            console-user: ""
-            enable-skupper-events: "true"
-            flow-collector: "false"
-            ingress: route
-            name: red-hat-service-interconnect-edge-gateway
+            name: data-center
             router-console: "false"
             router-logging: ""
             router-mode: interior
@@ -104,12 +67,9 @@
             service-sync: "true"
 
     - name: Wait for skupper-site
-      with_items:
-        - edge-gateway
-        - data-center
       kubernetes.core.k8s_info:
-        kubeconfig: "kubeconfig-{{ item }}"
-        namespace: "red-hat-service-interconnect-{{ item }}"
+        kubeconfig: "kubeconfig-data-center"
+        namespace: "robot"
         api_version: v1
         kind: Pods
         label_selectors:
@@ -118,7 +78,64 @@
         wait_condition:
           type: Ready
 
-    - name: Token request for edge-gateway
+- hosts: robots
+  gather_facts: false
+  tasks:
+
+    # - name: Reset MicroShift
+    #   ansible.builtin.include_role:
+    #     name: robot
+    #     tasks_from: reset-microshift.yaml
+
+    - name: Download kubeconfig
+      ansible.builtin.include_role:
+        name: robot
+        tasks_from: download-kubeconfig.yaml
+
+    - name: Destroy skupper a namespaces 
+      delegate_to: localhost
+      kubernetes.core.k8s:
+        state: absent
+        wait: true
+        kubeconfig: "kubeconfig-{{ inventory_hostname }}"
+        definition:
+          apiVersion: v1
+          kind: Namespace
+          metadata:
+            name: skupper
+          spec: {}
+
+    - name: Create skupper a namespaces 
+      delegate_to: localhost
+      kubernetes.core.k8s:
+        state: present
+        wait: true
+        kubeconfig: "kubeconfig-{{ inventory_hostname }}"
+        definition:
+          apiVersion: v1
+          kind: Namespace
+          metadata:
+            name: skupper
+          spec: {}
+    
+    - name: Download skupper
+      ansible.builtin.get_url:
+        url: https://github.com/skupperproject/skupper/releases/download/1.8.3/skupper-cli-1.8.3-linux-arm64.tgz
+        dest: /tmp/skupper.tgz
+        checksum: md5:6950f429a712fcd6cec0d67bc87a6f2f
+
+    - name: Unarchive skupper
+      ansible.builtin.unarchive:
+        src: /tmp/skupper.tgz
+        dest: /usr/local/bin
+        remote_src: yes
+
+    - name: Init Skupper
+      ansible.builtin.shell:
+        cmd: "/usr/local/bin/skupper init --ingress none --namespace skupper --site-name {{ inventory_hostname }}"
+
+    - name: Token request for robot
+      delegate_to: localhost
       kubernetes.core.k8s:
         state: present
         kubeconfig: "kubeconfig-data-center"
@@ -126,18 +143,19 @@
           apiVersion: v1
           kind: Secret
           metadata:
-            namespace: red-hat-service-interconnect-data-center
+            namespace: robot
             labels:
               skupper.io/type: connection-token-request
-            name: edge-gateway
+            name: "{{ inventory_hostname }}"
 
     - name: Fetch secret from data-center
+      delegate_to: localhost
       kubernetes.core.k8s_info:
         kubeconfig: "kubeconfig-data-center"
         api_version: v1
         kind: Secret
-        name: edge-gateway
-        namespace: red-hat-service-interconnect-data-center
+        name: "{{ inventory_hostname }}"
+        namespace: robot
       register: token_secret
       retries: 10
       until: token_secret.resources[0].metadata.labels['skupper.io/type'] == "connection-token"
@@ -148,91 +166,128 @@
       vars:
         to_change:
           metadata:
-            namespace: red-hat-service-interconnect-edge-gateway
+            namespace: skupper
             resourceVersion:
             uid:
             creationTimestamp:
 
-    - name: Apply token at edge-gateway
+    - name: Apply token at robot
+      delegate_to: localhost
       kubernetes.core.k8s:
         state: present
-        kubeconfig: "kubeconfig-edge-gateway"
+        kubeconfig: "kubeconfig-{{ inventory_hostname  }}"
         definition: "{{ token  }}"
 
-    # skupper expose --target-namespace hub-controller deployment hub-controller-live  --port 8080
-    - name: Expose hub-controller-live
-      kubernetes.core.k8s:
-        kind: ConfigMap
-        state: present
-        kubeconfig: "kubeconfig-edge-gateway"
-        name: skupper-services
-        namespace: red-hat-service-interconnect-edge-gateway
-        resource_definition:
-          apiVersion: v1
-          kind: ConfigMap
-          metadata:
-            name: skupper-services
-            namespace: red-hat-service-interconnect-edge-gateway
-          data:
-            hub-controller-live: '{"address":"hub-controller-live","protocol":"tcp","ports":[8080],"exposeIngress":"","targets":[{"name":"hub-controller-live","selector":"app=hub-controller-live","targetPorts":{"8080":8080},"namespace":"hub-controller"}]}'
-
-    - name: Expose hub-controll-live via route for testing purpose
+    - name: Deploy reverse proxy
+      delegate_to: localhost
       kubernetes.core.k8s:
         state: present
-        kubeconfig: "kubeconfig-data-center"
-        definition:
-          apiVersion: route.openshift.io/v1
-          kind: Route
-          metadata:
-            name: thbc
-            namespace: red-hat-service-interconnect-data-center
-          spec:
-            port:
-              targetPort: port8080
-            tls:
-              insecureEdgeTerminationPolicy: Redirect
-              termination: edge
-            to:
-              kind: Service
-              name: hub-controller-live
-              weight: 100
-            wildcardPolicy: None
-
-    - name: Wait for hub-controller-live service
-      tags:
-        - check
-      kubernetes.core.k8s_info:
-        kubeconfig: "kubeconfig-data-center"
-        namespace: "red-hat-service-interconnect-data-center"
-        api_version: v1
-        kind: Service
-        name: hub-controller-live
-        wait: true
-
-    - name: Run check pod
-      tags:
-        - check
-      kubernetes.core.k8s:
-        state: present
-        kubeconfig: "kubeconfig-data-center"
-        wait: true
+        kubeconfig: "kubeconfig-{{ inventory_hostname  }}"
+        wait: yes
         wait_condition:
-          type: Initialized
-          reason: "PodCompleted"
+          type: Available
+          status: "True"
+          reason: MinimumReplicasAvailable
         definition:
-          apiVersion: v1
-          kind: Pod
+          apiVersion: apps/v1
+          kind: Deployment
           metadata:
-            generateName: check-skupper-connect
-            namespace: red-hat-service-interconnect-data-center
+            name: "{{ inventory_hostname }}"
+            namespace: skupper
+            labels:
+              app: reverse-proxy
+              app.openshift.io/runtime: traefik
+              app.kubernetes.io/part-of: reverse-proxy
           spec:
-            restartPolicy: Never
-            containers:
-              - name: checker
-                image: registry.access.redhat.com/ubi9/ubi-minimal:latest
-                command:
-                  - "/bin/sh"
-                  - "-c"
-                  - |
-                      set -x
-                      curl http://hub-controller-live.red-hat-service-interconnect-data-center.svc.cluster.local:8080/
+            replicas: 1
+            strategy:
+              type: Recreate
+            selector:
+              matchLabels:
+                app: reverse-proxy
+            template:
+              metadata:
+                labels:
+                  app: reverse-proxy
+              spec:
+                automountServiceAccountToken: false
+                containers:
+                  - image: quay.io/cloud-native-robotz-hackathon/ubi-traefik:20250323T171302
+                    name: traefik
+                    ports:
+                      - name: edge-controller
+                        containerPort: 5000
+                      - name: k8s-api
+                        containerPort: 6443
+                    env:
+                      - name: HOST_IP
+                        valueFrom:
+                          fieldRef:
+                            fieldPath: status.hostIP        
+
+      # skupper expose deployment --namespace skupper reverse-proxy
+      # deployment reverse-proxy exposed as reverse-proxy
+    - name: Expose reverse-proxy
+      ansible.builtin.shell:
+        cmd: "/usr/local/bin/skupper expose deployment --namespace skupper {{ inventory_hostname }}"
+
+    # - name: Expose hub-controll-live via route for testing purpose
+    #   kubernetes.core.k8s:
+    #     state: present
+    #     kubeconfig: "kubeconfig-data-center"
+    #     definition:
+    #       apiVersion: route.openshift.io/v1
+    #       kind: Route
+    #       metadata:
+    #         name: thbc
+    #         namespace: red-hat-service-interconnect-data-center
+    #       spec:
+    #         port:
+    #           targetPort: port8080
+    #         tls:
+    #           insecureEdgeTerminationPolicy: Redirect
+    #           termination: edge
+    #         to:
+    #           kind: Service
+    #           name: hub-controller-live
+    #           weight: 100
+    #         wildcardPolicy: None
+
+    # - name: Wait for hub-controller-live service
+    #   tags:
+    #     - check
+    #   kubernetes.core.k8s_info:
+    #     kubeconfig: "kubeconfig-data-center"
+    #     namespace: "red-hat-service-interconnect-data-center"
+    #     api_version: v1
+    #     kind: Service
+    #     name: hub-controller-live
+    #     wait: true
+
+    # - name: Run check pod
+    #   tags:
+    #     - check
+    #   kubernetes.core.k8s:
+    #     state: present
+    #     kubeconfig: "kubeconfig-data-center"
+    #     wait: true
+    #     wait_condition:
+    #       type: Initialized
+    #       reason: "PodCompleted"
+    #     definition:
+    #       apiVersion: v1
+    #       kind: Pod
+    #       metadata:
+    #         generateName: check-skupper-connect
+    #         namespace: red-hat-service-interconnect-data-center
+    #       spec:
+    #         restartPolicy: Never
+    #         containers:
+    #           - name: checker
+    #             image: registry.access.redhat.com/ubi9/ubi-minimal:latest
+    #             command:
+    #               - "/bin/sh"
+    #               - "-c"
+    #               - |
+    #                   set -x
+    #                   curl http://hub-controller-live.red-hat-service-interconnect-data-center.svc.cluster.local:8080/
