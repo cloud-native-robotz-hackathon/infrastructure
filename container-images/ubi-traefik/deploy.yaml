@@ -1,0 +1,56 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reverse-proxy
+  labels:
+    app: reverse-proxy
+    app.openshift.io/runtime: traefik
+    app.kubernetes.io/part-of: reverse-proxy
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: reverse-proxy
+  template:
+    metadata:
+      labels:
+        app: reverse-proxy
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - image: quay.io/openshift-examples/ubi-traefik:20250224T222205
+          name: traefik
+          ports:
+            - name: edge-controller
+              containerPort: 5000
+            - name: k8s-api
+              containerPort: 6443
+          env:
+            - name: HOST_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: reverse-proxy
+  name: reverse-proxy
+spec:
+  ports:
+    - name: edge-controller
+      port: 5000
+      protocol: TCP
+      targetPort: edge-controller
+    - name: k8s-api
+      port: 6443
+      protocol: TCP
+      targetPort: k8s-api
+  selector:
+    app: reverse-proxy
+  sessionAffinity: None
+  type: ClusterIP
