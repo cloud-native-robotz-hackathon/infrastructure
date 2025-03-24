@@ -8,42 +8,10 @@
         msg: Please configure a team for the robot!
       when: team is not defined
 
-    - name: Fetch kubeconfig
-      ansible.builtin.fetch:
-        src: "/var/lib/microshift/resources/kubeadmin/kubeconfig"
-        dest: "kubeconfig-{{ inventory_hostname }}"
-        flat: yes
-
-    - name: Read kubeconfig
-      connection: local
-      include_vars:
-        file: "kubeconfig-{{ inventory_hostname }}"
-        name: kubeconfig
-
-    - name: Rebuild new kubeconfig
-      set_fact:
-        kubeconfig: "{{ kubeconfig | combine(fields_to_change, recursive=true) }}"
-      vars:
-        fields_to_change:
-          clusters:
-            - name: "{{ inventory_hostname.split('.') | first }}"
-              cluster:
-                server: "https://{{ inventory_hostname }}:6443"
-                insecure-skip-tls-verify: true
-          contexts:
-            - name: "{{ inventory_hostname.split('.') | first }}"
-              context: 
-                cluster: "{{ inventory_hostname.split('.') | first }}"
-                namespace: "default"
-                user: "user"
-          current-context: "{{ inventory_hostname.split('.') | first }}"
-  
-    - name: "Write kubeconfig-{{ inventory_hostname }}"
-      connection: local
-      copy:
-        content: "{{ kubeconfig | to_nice_yaml }}"
-        dest: "kubeconfig-{{ inventory_hostname }}"
-
+    - name: Download kubeconfig
+      ansible.builtin.include_role:
+        name: robot
+        tasks_from: download-kubeconfig.yaml
 
     - name: Build config
       ansible.builtin.set_fact:
@@ -57,10 +25,10 @@
           }
 
     - name: Create a argocd cluster secret
-      connection: local
+      delegate_to: localhost
       kubernetes.core.k8s:
         state: present
-        kubeconfig: "kubeconfig-edge-gateway"
+        kubeconfig: "kubeconfig-data-center"
         definition:
           apiVersion: v1
           kind: Secret
@@ -72,12 +40,11 @@
               argocd.argoproj.io/secret-type: cluster
           stringData:
             name: "{{ inventory_hostname }}"
-            server: "https://{{ inventory_hostname }}:6443"
+            server: "https://{{ inventory_hostname }}.robot.svc.cluster.local.:6443"
             config: "{{ config | to_json  }}"
 
-
     - name: Get git url from data-center
-      connection: local
+      delegate_to: localhost
       kubernetes.core.k8s_info:
         kubeconfig: "kubeconfig-data-center"
         api_version: route.openshift.io/v1
@@ -92,11 +59,11 @@
     # - debug:
     #     var: team  
 
-    - name: Apply AppProject to edge-gateway
-      connection: local
+    - name: Apply AppProject to data-center
+      delegate_to: localhost
       kubernetes.core.k8s:
         state: present
-        kubeconfig: "kubeconfig-edge-gateway"
+        kubeconfig: "kubeconfig-data-center"
         definition:
           apiVersion: argoproj.io/v1alpha1
           kind: AppProject
@@ -113,21 +80,21 @@
             destinations:
             - name: '*'
               namespace: '*'
-              server: https://{{ inventory_hostname }}:6443
+              server: :"https://{{ inventory_hostname }}.robot.svc.cluster.local.:6443"
             roles:
             - groups:
-              - system:authenticated:oauth
+              - "{{ team  }}"
               name: "{{ team }}-admin"
               policies:
               - "p, proj:{{ team }}:{{ team }}-admin, applications, *, {{ team }}/*, allow"
             sourceRepos:
             - '*'
 
-    - name: Apply Application to edge-gateway
-      connection: local
+    - name: Apply Application to data-center
+      delegate_to: localhost
       kubernetes.core.k8s:
         state: present
-        kubeconfig: "kubeconfig-edge-gateway"
+        kubeconfig: "kubeconfig-data-center"
         definition:
           apiVersion: argoproj.io/v1alpha1
           kind: Application
@@ -136,7 +103,7 @@
             namespace: openshift-gitops
           spec:
             destination:
-              server: "https://{{ inventory_hostname }}:6443"
+              server: "https://{{ inventory_hostname }}.robot.svc.cluster.local.:6443"
             project: "{{ team }}"
             source:
               path: base/
