@@ -2,6 +2,8 @@
 # Prepare the data-center
 - hosts: localhost
   gather_facts: false
+  tags:
+    - data-center
   tasks:
     - name: Restart skupper-site-controller
       kubernetes.core.k8s:
@@ -80,6 +82,8 @@
 
 - hosts: robots
   gather_facts: false
+  tags: 
+    -  robots
   tasks:
 
     # - name: Reset MicroShift
@@ -212,13 +216,17 @@
               spec:
                 automountServiceAccountToken: false
                 containers:
-                  - image: quay.io/cloud-native-robotz-hackathon/ubi-traefik:20250323T171302
+                  - image: quay.io/cloud-native-robotz-hackathon/ubi-traefik:20250324T164622
                     name: traefik
                     ports:
                       - name: edge-controller
                         containerPort: 5000
                       - name: k8s-api
                         containerPort: 6443
+                      - name: ingress-http
+                        containerPort: 80
+                      - name: ingress-https
+                        containerPort: 443
                     env:
                       - name: HOST_IP
                         valueFrom:
@@ -231,63 +239,46 @@
       ansible.builtin.shell:
         cmd: "/usr/local/bin/skupper expose deployment --namespace skupper {{ inventory_hostname }}"
 
-    # - name: Expose hub-controll-live via route for testing purpose
-    #   kubernetes.core.k8s:
-    #     state: present
-    #     kubeconfig: "kubeconfig-data-center"
-    #     definition:
-    #       apiVersion: route.openshift.io/v1
-    #       kind: Route
-    #       metadata:
-    #         name: thbc
-    #         namespace: red-hat-service-interconnect-data-center
-    #       spec:
-    #         port:
-    #           targetPort: port8080
-    #         tls:
-    #           insecureEdgeTerminationPolicy: Redirect
-    #           termination: edge
-    #         to:
-    #           kind: Service
-    #           name: hub-controller-live
-    #           weight: 100
-    #         wildcardPolicy: None
+    - name: Wait robot services
+      delegate_to: localhost
+      tags:
+        - check
+      kubernetes.core.k8s_info:
+        kubeconfig: "kubeconfig-data-center"
+        namespace: "robot"
+        api_version: v1
+        kind: Service
+        name: "{{ inventory_hostname }}"
+        wait: true
 
-    # - name: Wait for hub-controller-live service
-    #   tags:
-    #     - check
-    #   kubernetes.core.k8s_info:
-    #     kubeconfig: "kubeconfig-data-center"
-    #     namespace: "red-hat-service-interconnect-data-center"
-    #     api_version: v1
-    #     kind: Service
-    #     name: hub-controller-live
-    #     wait: true
-
-    # - name: Run check pod
-    #   tags:
-    #     - check
-    #   kubernetes.core.k8s:
-    #     state: present
-    #     kubeconfig: "kubeconfig-data-center"
-    #     wait: true
-    #     wait_condition:
-    #       type: Initialized
-    #       reason: "PodCompleted"
-    #     definition:
-    #       apiVersion: v1
-    #       kind: Pod
-    #       metadata:
-    #         generateName: check-skupper-connect
-    #         namespace: red-hat-service-interconnect-data-center
-    #       spec:
-    #         restartPolicy: Never
-    #         containers:
-    #           - name: checker
-    #             image: registry.access.redhat.com/ubi9/ubi-minimal:latest
-    #             command:
-    #               - "/bin/sh"
-    #               - "-c"
-    #               - |
-    #                   set -x
-    #                   curl http://hub-controller-live.red-hat-service-interconnect-data-center.svc.cluster.local:8080/
+    - name: Run check pod
+      delegate_to: localhost
+      tags:
+        - check
+      kubernetes.core.k8s:
+        state: present
+        kubeconfig: "kubeconfig-data-center"
+        wait: true
+        wait_condition:
+          type: Initialized
+          reason: "PodCompleted"
+        definition:
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            generateName: "check-skupper-connect-{{ inventory_hostname }}"
+            namespace: robot
+          spec:
+            restartPolicy: Never
+            containers:
+              - name: checker
+                image: registry.access.redhat.com/ubi9/ubi-minimal:latest
+                command:
+                  - "/bin/sh"
+                  - "-c"
+                  - |
+                      set -x
+                      curl http://{{ inventory_hostname }}.robot.svc.cluster.local:5000/
+                      curl -k https://{{ inventory_hostname }}.robot.svc.cluster.local:6443/
+                      curl http://{{ inventory_hostname }}.robot.svc.cluster.local:80/
+                      curl -k https://{{ inventory_hostname }}.robot.svc.cluster.local:443/
