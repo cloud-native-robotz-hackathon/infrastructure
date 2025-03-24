@@ -8,6 +8,10 @@ entryPoints:
     address: ":5000"
   k8s-api:
     address: ":6443"
+  ingress-http:
+    address: ":80"
+  ingress-https:
+    address: ":443"
 
 providers:
   file:

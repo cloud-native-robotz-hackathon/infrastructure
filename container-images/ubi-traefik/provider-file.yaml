@@ -12,6 +12,18 @@ tcp:
         - k8s-api
       service: "k8s-api"
 
+    ingress-http:
+      rule: "HostSNI(`*`)"
+      entryPoints:
+        - ingress-http 
+      service: "ingress-http"
+
+    ingress-https:
+      rule: "HostSNI(`*`)"
+      entryPoints:
+        - ingress-https 
+      service: "ingress-https"
+
   services:
     edge-controller:
       loadBalancer:
@@ -21,3 +33,12 @@ tcp:
       loadBalancer:
         servers:
           - address: "{{ env "HOST_IP" }}:6443"
+    ingress-http:
+      loadBalancer:
+        servers:
+          - address: "{{ env "HOST_IP" }}:80"
+    ingress-https:
+      loadBalancer:
+        servers:
+          - address: "{{ env "HOST_IP" }}:443"
+
