@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: hub-controller-live
+    app.kubernetes.io/managed-by: quarkus
+    app.openshift.io/runtime: quarkus
+  name: hub-controller-live
+  annotations:
+    app.openshift.io/vcs-uri: git@github.com:cloud-native-robotz-hackathon/hubcontroller-rest-quarkus.git
+    app.quarkus.io/vcs-uri: https://github.com/cloud-native-robotz-hackathon/hubcontroller-rest-quarkus.git
+spec:
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: hub-controller-live
+  type: ClusterIP

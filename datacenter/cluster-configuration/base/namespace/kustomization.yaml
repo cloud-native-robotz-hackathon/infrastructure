@@ -4,3 +4,4 @@ resources:
 - redhat-ods-applications/
 - image-puller/
 - openshift-config/
+- hub-controller/
