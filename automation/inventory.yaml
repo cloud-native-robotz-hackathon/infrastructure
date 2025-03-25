@@ -45,39 +45,3 @@ robots:
       team: team-9
     # robocop:
     #   team: team-3
-
-berlin:
-  hosts:
-    number5:
-      team: team-1
-
-munich:
-  hosts:
-    #data:
-    #terminator:
-    #
-    t-1000:
-    c3po:
-    marc13:
-    r2d2:
-    marvin:
-    gort:
-
-thebox:
-  hosts:
-    data:
-    t-1000:
-    c3po:
-    marc13:
-    r2d2:
-    marvin:
-    gort:
-    ultron:
-
-
-
-
-
-
-
-
