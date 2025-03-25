@@ -175,6 +175,12 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="2NCrSsslIywnJmTF8YJs-8" value="&lt;div&gt;OpenShift GitOps&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="110" y="307.5" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="2NCrSsslIywnJmTF8YJs-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="4Dibi0irPK0UU5uyRhIs-12" target="4Dibi0irPK0UU5uyRhIs-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
