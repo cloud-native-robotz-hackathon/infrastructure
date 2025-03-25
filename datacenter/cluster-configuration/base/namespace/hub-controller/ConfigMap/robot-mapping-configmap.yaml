@@ -2,7 +2,15 @@ apiVersion: v1
 data:
   MAP: |
     {
-      "someRobotToken": "someRobotAddress"
+      "gort": "gort.robot.svc.cluster.local.",
+      "t-1000": "t-1000.robot.svc.cluster.local.",
+      "marvin": "marvin.robot.svc.cluster.local.",
+      "c3po": "c3po.robot.svc.cluster.local.",
+      "r2d2": "r2d2.robot.svc.cluster.local.",
+      "marc13": "marc13.robot.svc.cluster.local.",
+      "data": "data.robot.svc.cluster.local.",
+      "terminator": "terminator.robot.svc.cluster.local.",
+      "ultron": "ultron.robot.svc.cluster.local."
     }
 immutable: false
 kind: ConfigMap
