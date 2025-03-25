@@ -184,6 +184,9 @@
 
     - name: Deploy reverse proxy
       delegate_to: localhost
+      tags:
+        - deploy-reverse-proxy
+        - reverse-proxy
       kubernetes.core.k8s:
         state: present
         kubeconfig: "kubeconfig-{{ inventory_hostname  }}"
@@ -236,8 +239,74 @@
       # skupper expose deployment --namespace skupper reverse-proxy
       # deployment reverse-proxy exposed as reverse-proxy
     - name: Expose reverse-proxy
+      tags:
+        - reverse-proxy
+        - expose-reverse-proxy
       ansible.builtin.shell:
         cmd: "/usr/local/bin/skupper expose deployment --namespace skupper {{ inventory_hostname }}"
+
+    - name: Get ingress domain
+      delegate_to: localhost
+      tags:
+        - check
+      kubernetes.core.k8s_info:
+        kubeconfig: "kubeconfig-data-center"
+        namespace: "openshift-ingress-operator"
+        api_version: operator.openshift.io/v1
+        kind: IngressController
+        name: "default"
+      register: raw_ingress_controller
+
+
+    - name: Create wildcard-http
+      delegate_to: localhost
+      kubernetes.core.k8s:
+        state: present
+        wait: true
+        kubeconfig: "kubeconfig-data-center"
+        definition:
+          apiVersion: route.openshift.io/v1
+          kind: Route
+          metadata:
+            name: "{{ inventory_hostname }}-http"
+            namespace: robot
+          spec:
+            host: "wildcard-http.{{ inventory_hostname }}.{{ raw_ingress_controller.resources[0].status.domain  }}"
+            path: /
+            to:
+              name: gort
+              weight: 100
+              kind: Service
+            port:
+              targetPort: port80
+            wildcardPolicy: Subdomain
+            alternateBackends: []
+
+    - name: Create wildcard-https
+      delegate_to: localhost
+      kubernetes.core.k8s:
+        state: present
+        wait: true
+        kubeconfig: "kubeconfig-data-center"
+        definition:
+          apiVersion: route.openshift.io/v1
+          kind: Route
+          metadata:
+            name: "{{ inventory_hostname }}-https"
+            namespace: robot
+          spec:
+            host: "wildcard-https.{{ inventory_hostname }}.{{ raw_ingress_controller.resources[0].status.domain  }}"
+            to:
+              name: gort
+              weight: 100
+              kind: Service
+            port:
+              targetPort: port443
+            tls:
+              termination: passthrough
+              insecureEdgeTerminationPolicy: None
+            wildcardPolicy: Subdomain
+            alternateBackends: []
 
     - name: Wait robot services
       delegate_to: localhost
