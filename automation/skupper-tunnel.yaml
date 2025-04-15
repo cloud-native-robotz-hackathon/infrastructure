@@ -335,7 +335,7 @@
           apiVersion: v1
           kind: Pod
           metadata:
-            generateName: "check-skupper-connect-{{ inventory_hostname }}"
+            generateName: "check-skupper-connect-{{ inventory_hostname }}-"
             namespace: robot
           spec:
             restartPolicy: Never
