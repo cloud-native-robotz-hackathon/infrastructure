@@ -6,8 +6,14 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
 spec:
+  selector:
+    matchLabels:
+      app: populate-backup-model
   template:
     spec:
+      metadata:
+        labels:
+          app: populate-backup-model
       restartPolicy: Never
       containers:
       - name: upload
