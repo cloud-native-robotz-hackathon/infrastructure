@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: storage-initiator
+  namespace: {{ .Values.namespacePermissions.user }}-ai
+spec:
+  template:
+    spec:
+      volumes:
+        - name: object-detection-training-pvc
+          persistentVolumeClaim:
+            claimName: object-detection-training-pvc
+        - name: shared-memory-pvc
+          persistentVolumeClaim:
+            claimName: shared-memory-pvc
+        
+      restartPolicy: Never
+      containers:
+      - name: micro
+        imagePullPolicy: Always
+        image: registry.access.redhat.com/ubi10/ubi-micro:10.0
+        volumeMounts:
+          - name: object-detection-training-pvc
+            mountPath: /object-detection-training-pvc
+          - name: shared-memory-pvc
+            mountPath: /shared-memory-pvc
+  backoffLimit: 4
