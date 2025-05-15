@@ -3,6 +3,8 @@ kind: Job
 metadata:
   name: populate-backup-model
   namespace: {{ .Values.namespacePermissions.user }}-ai
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
 spec:
   template:
     spec:
