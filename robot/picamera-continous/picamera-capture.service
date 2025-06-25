@@ -1,0 +1,30 @@
+[Unit]
+Description=Picamera2 Continuous Image Capture Service
+After=network.target multi-user.target
+
+[Service]
+# User and Group under which the service will run
+# Replace 'pi' with your actual username if different
+User=root
+Group=root
+
+# Working directory for the script
+# This is where 'captured_images' (or 'my_live_feed') directory will be created
+# Make sure this path is where your script resides or where you want images saved
+WorkingDirectory=/root/
+
+# The command to execute when the service starts
+# Ensure the path to your Python script is correct
+ExecStart=/usr/bin/python3 /root/two_image_capture.py
+
+# Restart policy:
+# 'always' will restart the service if it exits for any reason (e.g., script crash)
+Restart=always
+RestartSec=5s # Wait 5 seconds before attempting to restart
+
+# Standard output and error will be directed to journald
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
