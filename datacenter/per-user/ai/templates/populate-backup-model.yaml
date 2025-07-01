@@ -3,25 +3,24 @@ kind: Job
 metadata:
   name: populate-backup-model
   namespace: {{ .Values.namespacePermissions.user }}-ai
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
 spec:
+  manualSelector: true
+  selector:
+    matchLabels:
+      app: populate-backup-model
   template:
+    metadata:
+      labels:
+        app: populate-backup-model
     spec:
       restartPolicy: Never
       containers:
       - name: upload
-        image: quay.io/cloud-native-robotz-hackathon/model-container:trained-uploader-1.25.83
+        image: quay.io/cloud-native-robotz-hackathon/model-container:trained-uploader-1.25.83-20250701T092029
         envFrom:
         - secretRef:
             name: workbench-bucket-ai-connection
-        command:
-        - /bin/sh
-        - -c
-        - |
-          set -x
-          aws configure list
-          aws s3 --no-verify-ssl cp \
-            /model/robot_onnx/1/model.onnx \
-            s3://$AWS_S3_BUCKET/backup/model-latest.onnx \
-            --endpoint-url $AWS_S3_ENDPOINT
   backoffLimit: 4
 
