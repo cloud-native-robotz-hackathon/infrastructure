@@ -4,4 +4,5 @@ resources:
 - ClusterRole/
 - ClusterRoleBinding/
 - Console/
-- OAuth/
+# Disabled: https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/182
+# - OAuth/
