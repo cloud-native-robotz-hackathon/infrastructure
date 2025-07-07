@@ -2,6 +2,7 @@ kind: ImageStream
 apiVersion: image.openshift.io/v1
 metadata:
   annotations:
+    opendatahub.io/notebook-image-url: https://github.com/cloud-native-robotz-hackathon/odh-tec
     opendatahub.io/notebook-image-name: "S3 Browser"
     opendatahub.io/notebook-image-order: "2"
     opendatahub.io/notebook-image-desc: >-
@@ -26,6 +27,7 @@ spec:
       referencePolicy:
         type: Local
       annotations:
+        opendatahub.io/notebook-build-commit: 56eb8b2
         opendatahub.io/notebook-python-dependencies: ''
         opendatahub.io/notebook-software: ''
         opendatahub.io/workbench-image-recommended: "true"
