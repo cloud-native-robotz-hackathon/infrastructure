@@ -20,136 +20,100 @@
         - robots
       delegate_to: localhost
       ansible.builtin.uri:
-        url: "http://{{ inventory_hostname }}:5000{{ item }}"
+        url: "http://{{ ansible_host }}:5000{{ item }}"
         method: GET
-
-#     # - name: Call hubcontroller runing on the edge-gateway
-#     #   # connection: local
-#     #   ansible.builtin.uri:
-#     #     url: "http://web-hub-controller.apps.edge-gateway.lan/robot/{{ test_function }}/{{ test_value }}"
-#     #     method: POST
-#     #     body: "user_key={{ inventory_hostname }}"
-
-#     # - name: Call hubcontroller via skupper tunnel
-#     #   # connection: local
-#     #   ansible.builtin.uri:
-#     #     url: "https://thbc-red-hat-service-interconnect-data-center.apps.cluster-zbrd4.zbrd4.sandbox1885.opentlc.com/robot/{{ test_function }}/{{ test_value }}"
-#     #     method: POST
-#     #     body: "user_key={{ inventory_hostname }}"
-
-
-- hosts: edge-gateway
-  gather_facts: false
-  connection: local
-  tasks:
-    - name: "💻 Laptop => 🏭 Edge-gateway web-hub-controller.apps.edge-gateway.lan"
-      tags:
-        - edge-gateway
-      ansible.builtin.uri:
-        url: "http://web-hub-controller.apps.edge-gateway.lan/dashboard.html"
-        method: GET
-
-    - name: "💻 Laptop => 🏭 Edge-gateway web-hub-controller to 🤖 Robot's"
-      with_items: "{{ hostvars[inventory_hostname].groups.robots }}"
-      tags:
-        - edge-gateway
-      ansible.builtin.uri:
-        url: "http://web-hub-controller.apps.edge-gateway.lan/robot/status?user_key={{ item  }}"
-        method: GET
-
-- hosts: robots
-  gather_facts: false
-  tasks:
-    - name: "🏭 edge-gateway => Fetch argocd applications"
-      delegate_to: localhost
-      tags:
-        - edge-gateway
-      kubernetes.core.k8s_info: 
-        kubeconfig: "kubeconfig-edge-gateway"
-        api_version: argoproj.io/v1alpha1
-        kind: Application
-        namespace: openshift-gitops
-        name: "{{ team }}-robot-gitops"
-      register: application
-
-    - name: "🏭 edge-gateway => Check argocd applications"
-      delegate_to: localhost
-      tags:
-        - edge-gateway
-        - argocd-application
-      fail:
-        msg: "Sync is {{ application.resources[0].status.sync.status }}"
-      when: application.resources[0].status.sync.status is not search("Synced")
 
 - hosts: datacenter
   gather_facts: false
   connection: local
   tasks:
-    - name: "🏢 DataCenter - Check hub-controller-live service"
+    - name: "🏢 DataCenter - Check robot service"
+      tags:
+        - datacenter
+      with_items: "{{ hostvars[inventory_hostname].groups.robots }}"
+      kubernetes.core.k8s_info:
+        kubeconfig: "kubeconfig-data-center"
+        namespace: "robot"
+        api_version: v1
+        kind: Service
+        name: "{{ item }}"
+        wait: true
+
+    - name: "🏢 DataCenter - Get web-hub-controller"
       tags:
         - datacenter
       kubernetes.core.k8s_info:
         kubeconfig: "kubeconfig-data-center"
-        namespace: "red-hat-service-interconnect-data-center"
+        namespace: "hub-controller"
         api_version: v1
-        kind: Service
-        name: hub-controller-live
+        kind: Route
+        name: "web"
         wait: true
+      register: web_hub_controller
 
-    - name: "🏢 DataCenter via skupper to 🏭 Edge-gateway (hub-controller-live)" 
-      tags:
-        - datacenter
-      kubernetes.core.k8s:
-        state: present
-        kubeconfig: "kubeconfig-data-center"
-        wait: true
-        wait_condition:
-          type: Initialized
-          reason: "PodCompleted"
-        definition:
-          apiVersion: v1
-          kind: Pod
-          metadata:
-            generateName: check-skupper-connect
-            namespace: red-hat-service-interconnect-data-center
-          spec:
-            restartPolicy: Never
-            containers:
-              - name: checker
-                image: registry.access.redhat.com/ubi9/ubi-minimal:latest
-                command:
-                  - "/bin/sh"
-                  - "-c"
-                  - |
-                      set -x
-                      curl http://hub-controller-live.red-hat-service-interconnect-data-center.svc.cluster.local:8080/
-
-    - name: "🏢 DataCenter via skupper to 🏭 Edge-gateway(hub-controller-live) to 🤖 Robot"
-      tags:
-        - datacenter
+    - name: "💻 Laptop => 🏢 DataCenter (web-hub-controller) => 🤖 Robot's"
       with_items: "{{ hostvars[inventory_hostname].groups.robots }}"
-      kubernetes.core.k8s:
-        state: present
+      tags:
+        - datacenter
+      ansible.builtin.uri:
+        url: "https://{{ web_hub_controller.resources[0].spec.host }}/robot/status?user_key={{ item  }}"
+        method: GET
+
+    - name: "💻 Laptop => web-hub-controller dashboard "
+      tags:
+        - datacenter
+      ansible.builtin.uri:
+        url: "https://{{ web_hub_controller.resources[0].spec.host }}/dashboard.html"
+        method: GET
+
+
+    - name: "🏢 DataCenter => Fetch argocd applications"
+      tags:
+        - datacenter
+      kubernetes.core.k8s_info:
         kubeconfig: "kubeconfig-data-center"
-        wait: true
-        wait_condition:
-          type: Initialized
-          reason: "PodCompleted"
-        definition:
-          apiVersion: v1
-          kind: Pod
-          metadata:
-            generateName: check-connection-to-{{ item | split('.') | first }}-
-            namespace: red-hat-service-interconnect-data-center
-          spec:
-            restartPolicy: Never
-            containers:
-              - name: checker
-                image: registry.access.redhat.com/ubi9/ubi-minimal:latest
-                command:
-                  - "/bin/sh"
-                  - "-c"
-                  - |
-                      set -x
-                      curl -v http://hub-controller-live.red-hat-service-interconnect-data-center.svc.cluster.local:8080/robot/status?user_key={{ item  }}
-                      echo
+        api_version: argoproj.io/v1alpha1
+        kind: Application
+        namespace: openshift-gitops
+      register: application
+
+    # - debug: var=item
+    #   with_items: "{{ application.resources }}"
+
+    - name: "🏢 DataCenter => Check argocd applications"
+      tags:
+        - datacenter
+      fail:
+        msg: "Sync is {{ item.status.sync.status }}"
+      when: item.status.sync.status is not search("Synced")
+      with_items: "{{ application.resources }}"
+
+    # - name: "🏢 DataCenter via skupper to 🏭 Edge-gateway(hub-controller-live) to 🤖 Robot"
+    #   tags:
+    #     - datacenter
+    #   with_items: "{{ hostvars[inventory_hostname].groups.robots }}"
+    #   kubernetes.core.k8s:
+    #     state: present
+    #     kubeconfig: "kubeconfig-data-center"
+    #     wait: true
+    #     wait_condition:
+    #       type: Initialized
+    #       reason: "PodCompleted"
+    #     definition:
+    #       apiVersion: v1
+    #       kind: Pod
+    #       metadata:
+    #         generateName: check-connection-to-{{ item | split('.') | first }}-
+    #         namespace: red-hat-service-interconnect-data-center
+    #       spec:
+    #         restartPolicy: Never
+    #         containers:
+    #           - name: checker
+    #             image: registry.access.redhat.com/ubi9/ubi-minimal:latest
+    #             command:
+    #               - "/bin/sh"
+    #               - "-c"
+    #               - |
+    #                   set -x
+    #                   curl -v http://hub-controller-live.red-hat-service-interconnect-data-center.svc.cluster.local:8080/robot/status?user_key={{ item  }}
+    #                   echo
