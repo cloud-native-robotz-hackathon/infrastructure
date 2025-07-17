@@ -274,7 +274,7 @@
             host: "wildcard-http.{{ inventory_hostname }}.{{ raw_ingress_controller.resources[0].status.domain  }}"
             path: /
             to:
-              name: gort
+              name: "{{ inventory_hostname }}"
               weight: 100
               kind: Service
             port:
@@ -297,7 +297,7 @@
           spec:
             host: "wildcard-https.{{ inventory_hostname }}.{{ raw_ingress_controller.resources[0].status.domain  }}"
             to:
-              name: gort
+              name: "{{ inventory_hostname }}"
               weight: 100
               kind: Service
             port:
