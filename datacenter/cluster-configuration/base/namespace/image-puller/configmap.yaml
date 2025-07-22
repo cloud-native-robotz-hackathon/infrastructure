@@ -12,6 +12,7 @@ data:
     s3-browser-v1-2-0=quay.io/rh-aiservices-bu/odh-tec:1.2.0;
     openvino-model0-server=quay.io/modh/openvino_model_server@sha256:428c00232cbf3b38a3929a0d22d0e13c6388ce353e3853cc2956d175eacf6724;
     odh-modelmesh-runtime-adapter-rhel8=registry.redhat.io/rhoai/odh-modelmesh-runtime-adapter-rhel8@sha256:2d4636ad760ea3a2ef2e85af2b4f2095d61c56c3fd367503bd9fadda74835e7e;
+    object-detection-pipeline-runtime-v2-2-5=quay.io/cloud-native-robotz-hackathon/pipeline-runtime-image:v2.25;
   DAEMONSET_NAME: image-puller
   CACHING_INTERVAL_HOURS: "1"
   NAMESPACE: image-puller
