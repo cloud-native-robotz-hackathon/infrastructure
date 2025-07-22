@@ -2,17 +2,57 @@
 - hosts: robots
   gather_facts: true
   tasks:
-
     - name: Slurp /robot-image-version
       ansible.builtin.slurp:
         src: /robot-image-version
       register: robot_image_version
-    
+
     - name: Check robot image version
       fail:
         msg: "Please check robot image version"
       #when: robot_image_version['content'] | b64decode == robot-hackathon-image.20240726
       when: robot_image_version['content'] != "cm9ib3QtaGFja2F0aG9uLWltYWdlLjIwMjQwNzI2Cg=="
+
+    - name: Stop and remove edgehub.service systemd unit
+      ignore_errors: true
+      ansible.builtin.systemd:
+        name: edgehub.service
+        force: true
+        state: stopped
+
+    # Remove old edge-controller aka edgehub
+    - name: Remove old edge-controller aka edgehub
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - /lib/systemd/system/edgehub.service
+        - /usr/local/bin/edgehub.py
+
+    - name: Rollout new version of edge-controller v2.0.0
+      ansible.builtin.git:
+        repo: https://github.com/cloud-native-robotz-hackathon/edge-controller
+        dest: /opt/edge-controller
+        version: v2.0.0
+
+    - name: Install systemd.service
+      ansible.builtin.copy:
+        remote_src: true
+        src: /opt/edge-controller/edge-controller.service
+        dest: /etc/systemd/system/edge-controller.service
+
+    - name: Enable and start edgehub.service
+      ansible.builtin.systemd:
+        name: edge-controller.service
+        enabled: true
+        state: started
+
+    - name: Check version
+      ansible.builtin.uri:
+        url: "http://{{ansible_host}}:5000/version"
+        body: 'v2.0.0'
+        status_code:
+          - 200
 
     - name: Rollout /etc/issue
       ansible.builtin.copy:
