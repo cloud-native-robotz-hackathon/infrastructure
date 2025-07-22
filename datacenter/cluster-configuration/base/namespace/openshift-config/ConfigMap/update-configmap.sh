@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
     oc create configmap console-custom-logo \
-        --from-file=console-custom-logo.png=openshift-robot.png \
+        --from-file=openshift-robot-black.png=openshift-robot-black.png \
+        --from-file=openshift-robot-white.png=openshift-robot-white.png \
         -n openshift-config \
         --dry-run=client \
         -o yaml > console-custom-logo.yaml
