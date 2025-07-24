@@ -6,13 +6,16 @@ data:
   IMAGES: |
     object-detection-v2-1-0=quay.io/cloud-native-robotz-hackathon/workbench-object-detection:v2.1.0;
     object-detection-runtime-v2-1-0=quay.io/mmurakam/runtimes:object-detection-v2.1.0;
-    code-rhel9=registry.redhat.io/devspaces/code-rhel9@sha256:5c94e2cb003be58873ad9d90fe695da7633cafe435a164e330b43cff7430e63c;
+    code-rhel9=registry.redhat.io/devspaces/code-rhel9@sha256:50e457ca3c17e0c471a8fb44ee7f9c9c650d422087f7f52e774b88c84ce741fd;
+    traefik-rhel9=registry.redhat.io/devspaces/traefik-rhel9@sha256:780c2a69b8910067d9435877b94d93c8cf168a424bfa99c90f2f0ddb7b20c2a5;
     devworkspace-project-clone-rhel9=registry.redhat.io/devworkspace/devworkspace-project-clone-rhel9@sha256:afa28466d9b8c9d6421bb7789bccb68ecde9ea2c38617825e75c53ba357d4b76;
     udi-rhel8=registry.redhat.io/devspaces/udi-rhel8@sha256:bc5d28c434089a312ab0944662e7702481ca4e898ef278cf61c0f683f35718df;
-    s3-browser-v1-2-0=quay.io/rh-aiservices-bu/odh-tec:1.2.0;
-    openvino-model0-server=quay.io/modh/openvino_model_server@sha256:428c00232cbf3b38a3929a0d22d0e13c6388ce353e3853cc2956d175eacf6724;
-    odh-modelmesh-runtime-adapter-rhel8=registry.redhat.io/rhoai/odh-modelmesh-runtime-adapter-rhel8@sha256:2d4636ad760ea3a2ef2e85af2b4f2095d61c56c3fd367503bd9fadda74835e7e;
+    s3-browser-v1-2-0=quay.io/cloud-native-robotz-hackathon/odh-tec:56eb8b2;
+    openvino-model0-server=quay.io/modh/openvino_model_server@sha256:5225aaf5a581ccb8e6f934a5d9fdd9d3d5ad90009dcee6b75d422acce29c33f3;
+    odh-modelmesh-runtime-adapter-rhel8=registry.redhat.io/rhoai/odh-modelmesh-runtime-adapter-rhel8@sha256:b24773d3d2d60701c4b967d20682ea0ab4cd4b378652e214e148a0a575151cac;
     object-detection-pipeline-runtime-v2-2-5=quay.io/cloud-native-robotz-hackathon/pipeline-runtime-image:v2.25;
+    ubi-awscli=quay.io/cloud-native-robotz-hackathon/ubi-awscli:1.25.83;
+    buildah=registry.redhat.io/ubi9/buildah:9.4;
   DAEMONSET_NAME: image-puller
   CACHING_INTERVAL_HOURS: "1"
   NAMESPACE: image-puller
