@@ -4,9 +4,6 @@
 cd infrastructure/automation/
 export KUBECONFIG=kubeconfig-data-center
 oc login -u admin --insecure-skip-tls-verify https://api.cluster-...
-
-export KUBECONFIG=kubeconfig-edge-gateway
-oc login -u admin --insecure-skip-tls-verify https://edge-gateway.lan:6443
 ```
 
 ## Rebuild execution environment
