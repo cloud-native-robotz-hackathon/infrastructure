@@ -2,10 +2,19 @@ apiVersion: operator.openshift.io/v1
 kind: Console
 metadata:
   name: cluster
-  annotations:
-    argocd.argoproj.io/sync-options: "ServerSideApply=true,Validate=false"
+# Do not patch because:
+#  https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/188#issuecomment-3112469266
+#  annotations:
+#    argocd.argoproj.io/sync-options: "ServerSideApply=true,Validate=false"
 spec:
   customization:
+    capabilities:
+    - name: LightspeedButton
+      visibility:
+        state: Enabled
+    - name: GettingStartedBanner
+      visibility:
+        state: Enabled
     logos:
       - type: Masthead
         themes:
@@ -21,3 +30,30 @@ spec:
               key: openshift-robot-white.png
               name: console-custom-logo
             from: ConfigMap
+    developerCatalog:
+      types:
+        state: Enabled
+    perspectives:
+    - id: dev
+      visibility:
+        state: Disabled
+    projectAccess: {}
+    quickStarts: {}
+  ingress:
+    clientDownloadsURL: ""
+    consoleURL: ""
+  logLevel: Normal
+  managementState: Managed
+  observedConfig: null
+  operatorLogLevel: Normal
+  plugins:
+  - odf-console
+  - networking-console-plugin
+  - monitoring-plugin
+  providers: {}
+  route:
+    hostname: ""
+    secret:
+      name: ""
+  unsupportedConfigOverrides: null
+
