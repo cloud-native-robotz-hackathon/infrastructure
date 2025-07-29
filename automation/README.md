@@ -1,7 +1,6 @@
 # Automation
 
 ```bash
-cd infrastructure/automation/
 export KUBECONFIG=kubeconfig-data-center
 oc login -u admin --insecure-skip-tls-verify https://api.cluster-...
 ```

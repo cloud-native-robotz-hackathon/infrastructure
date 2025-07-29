@@ -47,6 +47,7 @@
         enabled: true
         state: started
 
+    # Wait or retry
     - name: Check version
       ansible.builtin.uri:
         url: "http://{{ansible_host}}:5000/version"
