@@ -1,6 +1,14 @@
 ---
 - hosts: robots
   gather_facts: true
+  vars:
+    edge_controller_version: v2.1.1
+  handlers:
+    - name: restart edge-controller
+      ansible.builtin.systemd:
+        name: edge-controller.service
+        state: restarted
+        daemon_reload: true
   tasks:
     - name: Slurp /robot-image-version
       ansible.builtin.slurp:
@@ -29,31 +37,44 @@
         - /lib/systemd/system/edgehub.service
         - /usr/local/bin/edgehub.py
 
-    - name: Rollout new version of edge-controller v2.0.0
+    - name: Rollout new version of edge-controller "{{ edge_controller_version  }}"
       ansible.builtin.git:
         repo: https://github.com/cloud-native-robotz-hackathon/edge-controller
         dest: /opt/edge-controller
-        version: v2.0.0
+        version: "{{ edge_controller_version  }}"
+      register: git_result
 
     - name: Install systemd.service
       ansible.builtin.copy:
         remote_src: true
         src: /opt/edge-controller/edge-controller.service
         dest: /etc/systemd/system/edge-controller.service
+        mode: '0644'
 
-    - name: Enable and start edgehub.service
+    - name: Enable edge-controller service
       ansible.builtin.systemd:
         name: edge-controller.service
         enabled: true
-        state: started
+        daemon_reload: true
 
-    # Wait or retry
+    - name: Restart edge-controller
+      ansible.builtin.systemd:
+        name: edge-controller.service
+        state: restarted
+        daemon_reload: true
+      when: git_result.changed
+
     - name: Check version
       ansible.builtin.uri:
         url: "http://{{ansible_host}}:5000/version"
-        body: 'v2.0.0'
+        method: GET
+        return_content: true
         status_code:
           - 200
+      register: version_check
+      until: version_check is not failed and edge_controller_version in version_check.content
+      retries: 10
+      delay: 2
 
     - name: Rollout /etc/issue
       ansible.builtin.copy:
