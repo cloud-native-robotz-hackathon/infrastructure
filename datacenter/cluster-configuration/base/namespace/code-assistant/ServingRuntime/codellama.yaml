@@ -8,38 +8,8 @@ metadata:
     opendatahub.io/recommended-accelerators: '["nvidia.com/gpu"]'
     opendatahub.io/template-display-name: vLLM NVIDIA GPU ServingRuntime for KServe
     opendatahub.io/template-name: vllm-cuda-runtime
-    openshift.io/display-name: codellama2
-  name: codellama1
-  managedFields:
-    - apiVersion: serving.kserve.io/v1alpha1
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:metadata':
-          'f:annotations':
-            .: {}
-            'f:opendatahub.io/accelerator-name': {}
-            'f:opendatahub.io/apiProtocol': {}
-            'f:opendatahub.io/hardware-profile-name': {}
-            'f:opendatahub.io/recommended-accelerators': {}
-            'f:opendatahub.io/template-display-name': {}
-            'f:opendatahub.io/template-name': {}
-            'f:openshift.io/display-name': {}
-          'f:labels':
-            .: {}
-            'f:opendatahub.io/dashboard': {}
-        'f:spec':
-          .: {}
-          'f:annotations':
-            .: {}
-            'f:prometheus.io/path': {}
-            'f:prometheus.io/port': {}
-          'f:containers': {}
-          'f:multiModel': {}
-          'f:supportedModelFormats': {}
-          'f:volumes': {}
-      manager: unknown
-      operation: Update
-      time: '2025-08-19T15:50:18Z'
+    openshift.io/display-name: codellama
+  name: codellama
   namespace: codeassistant
   labels:
     opendatahub.io/dashboard: 'true'
