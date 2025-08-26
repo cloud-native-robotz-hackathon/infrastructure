@@ -1,0 +1,78 @@
+apiVersion: serving.kserve.io/v1alpha1
+kind: ServingRuntime
+metadata:
+  annotations:
+    opendatahub.io/accelerator-name: migrated-gpu
+    opendatahub.io/apiProtocol: REST
+    opendatahub.io/hardware-profile-name: migrated-gpu-mglzi-serving
+    opendatahub.io/recommended-accelerators: '["nvidia.com/gpu"]'
+    opendatahub.io/template-display-name: vLLM NVIDIA GPU ServingRuntime for KServe
+    opendatahub.io/template-name: vllm-cuda-runtime
+    openshift.io/display-name: codellama2
+  name: codellama1
+  managedFields:
+    - apiVersion: serving.kserve.io/v1alpha1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:opendatahub.io/accelerator-name': {}
+            'f:opendatahub.io/apiProtocol': {}
+            'f:opendatahub.io/hardware-profile-name': {}
+            'f:opendatahub.io/recommended-accelerators': {}
+            'f:opendatahub.io/template-display-name': {}
+            'f:opendatahub.io/template-name': {}
+            'f:openshift.io/display-name': {}
+          'f:labels':
+            .: {}
+            'f:opendatahub.io/dashboard': {}
+        'f:spec':
+          .: {}
+          'f:annotations':
+            .: {}
+            'f:prometheus.io/path': {}
+            'f:prometheus.io/port': {}
+          'f:containers': {}
+          'f:multiModel': {}
+          'f:supportedModelFormats': {}
+          'f:volumes': {}
+      manager: unknown
+      operation: Update
+      time: '2025-08-19T15:50:18Z'
+  namespace: codeassistant
+  labels:
+    opendatahub.io/dashboard: 'true'
+spec:
+  annotations:
+    prometheus.io/path: /metrics
+    prometheus.io/port: '8080'
+  containers:
+    - args:
+        - '--port=8080'
+        - '--model=/mnt/models'
+        - '--served-model-name={{.Name}}'
+      command:
+        - python
+        - '-m'
+        - vllm.entrypoints.openai.api_server
+      env:
+        - name: HF_HOME
+          value: /tmp/hf_home
+      image: 'quay.io/modh/vllm@sha256:67822ff98835488ee34c25c2349b7b3d8c401928c45181b46ed533a9ccd7caba'
+      name: kserve-container
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      volumeMounts:
+        - mountPath: /dev/shm
+          name: shm
+  multiModel: false
+  supportedModelFormats:
+    - autoSelect: true
+      name: vLLM
+  volumes:
+    - emptyDir:
+        medium: Memory
+        sizeLimit: 2Gi
+      name: shm
