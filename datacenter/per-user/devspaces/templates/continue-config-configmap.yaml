@@ -1,0 +1,54 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: continue-config
+  namespace: {{ .Values.namespacePermissions.user }}-devspaces
+immutable: false
+data:
+  config.json: |-
+    {
+      "models": [
+        {
+          "title": "CodeLlama 7B (OpenShift)",
+          "provider": "openai",
+          "model": "codellama2",
+          "apiBase": "https://codellama-codeassistant.apps.cluster-xxx.opentlc.com/v1"
+        }
+      ],
+      "tabAutocompleteModel": {
+        "title": "CodeLlama 7B Autocomplete",
+        "provider": "openai",
+        "model": "codellama2",
+        "apiBase": "https://codellama-codeassistant.apps.cluster-xxx.opentlc.com/v1"
+      },
+      "customCommands": [
+        {
+          "name": "explain",
+          "prompt": "Please explain the following code:\n\n{{{ input }}}"
+        },
+        {
+          "name": "fix",
+          "prompt": "Please fix any bugs or issues in the following code:\n\n{{{ input }}}"
+        },
+        {
+          "name": "optimize",
+          "prompt": "Please optimize the following code for better performance:\n\n{{{ input }}}"
+        },
+        {
+          "name": "document",
+          "prompt": "Please add comprehensive documentation/comments to the following code:\n\n{{{ input }}}"
+        }
+      ],
+      "modelRoles": {
+        "default": "You are a helpful coding assistant. Provide clear, concise, and accurate code suggestions and explanations."
+      },
+      "contextLength": 8192,
+      "temperature": 0.1,
+      "completionOptions": {
+        "temperature": 0.1,
+        "maxTokens": 1024,
+        "topP": 0.9,
+        "presencePenalty": 0.0,
+        "frequencyPenalty": 0.0
+      }
+    }
