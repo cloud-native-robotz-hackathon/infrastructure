@@ -6,3 +6,4 @@ resources:
 - openshift-config/
 - hub-controller/
 - openshift-ingress-operator/
+- code-assistant/
