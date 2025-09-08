@@ -34,9 +34,10 @@ spec:
           memory: 4Gi
           nvidia.com/gpu: '1'
       runtime: codellama
-      storage:
-        key: workbench-bucket-ai-connection
-        path: codellama
+      storageUri: oci://registry.redhat.io/rhelai1/modelcar-granite-8b-code-instruct:1.4
+      #storage:
+      #  key: workbench-bucket-ai-connection
+      #  path: codellama
     tolerations:
       - effect: NoSchedule
         key: nvidia.com/gpu
