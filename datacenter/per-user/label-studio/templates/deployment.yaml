@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: label-studio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: label-studio
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        component: label-studio
+    spec:
+      containers:
+        - name: label-studio
+          image: quay.io/cloud-native-robotz-hackathon/label-studio:20250908T143742
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              scheme: HTTP
+              port: 8080
+
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              port: 8080
+          ports:
+            - name: http
+              protocol: TCP
+              containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: label-studio-config
+          volumeMounts:
+            - name: label-studio-data
+              mountPath: /label-studio
+      volumes:
+        - name: label-studio-data
+          persistentVolumeClaim:
+            claimName: label-studio-data
