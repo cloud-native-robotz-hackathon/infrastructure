@@ -7,3 +7,9 @@ namespacePermissions:
   user: kubeadmin
   # Which role to grant the user on the namespace
   role: admin
+
+# Label Studio init password
+password: "openshift"
+
+# Label Studio init username
+username: team
