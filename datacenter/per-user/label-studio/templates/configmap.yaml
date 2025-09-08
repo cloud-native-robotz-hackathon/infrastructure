@@ -5,6 +5,6 @@ metadata:
   name: label-studio-config
   namespace: {{ .Values.namespacePermissions.user }}-label-studio
 data:
-  LABEL_STUDIO_USERNAME: {{ .Values.username }}@example.com
+  LABEL_STUDIO_USERNAME: "{{ .Values.username }}@example.com"
   LABEL_STUDIO_PASSWORD: {{ .Values.password }}
   USE_ENFORCE_CSRF_CHECKS: "False"
