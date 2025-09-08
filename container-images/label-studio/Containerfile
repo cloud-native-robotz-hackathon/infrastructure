@@ -1,0 +1,15 @@
+FROM registry.access.redhat.com/ubi9/python-312:9.6
+
+RUN pip install -U label-studio
+
+ENTRYPOINT ["label-studio"]
+
+env LABEL_STUDIO_BASE_DATA_DIR=/label-studio/data
+env LABEL_STUDIO_LOCAL_FILES_SERVING_ENABLED=true
+env LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT=/label-studio/files
+env LABEL_STUDIO_DISABLE_SIGNUP_WITHOUT_LINK=true
+
+env LABEL_STUDIO_USERNAME=admin
+env LABEL_STUDIO_PASSWORD=admin 
+
+CMD ["start"]
