@@ -11,15 +11,15 @@ data:
         {
           "title": "CodeLlama 7B (OpenShift)",
           "provider": "openai",
-          "model": "codellama2",
-          "apiBase": "https://codellama-codeassistant.apps.cluster-xxx.opentlc.com/v1"
+          "model": "codellama",
+          "apiBase": "http://codellama-predictor.code-assistant.svc.cluster.local/v1"
         }
       ],
       "tabAutocompleteModel": {
         "title": "CodeLlama 7B Autocomplete",
         "provider": "openai",
-        "model": "codellama2",
-        "apiBase": "https://codellama-codeassistant.apps.cluster-xxx.opentlc.com/v1"
+        "model": "codellama",
+        "apiBase": "http://codellama-predictor.code-assistant.svc.cluster.local/v1"
       },
       "customCommands": [
         {
