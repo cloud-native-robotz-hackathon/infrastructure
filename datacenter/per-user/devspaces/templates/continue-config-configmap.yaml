@@ -24,19 +24,19 @@ data:
       "customCommands": [
         {
           "name": "explain",
-          "prompt": "Please explain the following code:\n\n{{{ input }}}"
+          "prompt": "Please explain the following code:\n\n{{ "{{{" }} input {{ "}}}" }}"
         },
         {
           "name": "fix",
-          "prompt": "Please fix any bugs or issues in the following code:\n\n{{{ input }}}"
+          "prompt": "Please fix any bugs or issues in the following code:\n\n{{ "{{{" }} input {{ "}}}" }}"
         },
         {
           "name": "optimize",
-          "prompt": "Please optimize the following code for better performance:\n\n{{{ input }}}"
+          "prompt": "Please optimize the following code for better performance:\n\n{{ "{{{" }} input {{ "}}}" }}"
         },
         {
           "name": "document",
-          "prompt": "Please add comprehensive documentation/comments to the following code:\n\n{{{ input }}}"
+          "prompt": "Please add comprehensive documentation/comments to the following code:\n\n{{ "{{{" }} input {{ "}}}" }}"
         }
       ],
       "modelRoles": {
