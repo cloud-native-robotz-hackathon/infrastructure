@@ -96,10 +96,24 @@ hooks:
   - hooks/sha256_filter.py
 
 nav:
+  - Run a Event: run-a-event/index.md
+  - Component:
+      - component/index.md
+      - Robot: component/robot.md
+
+  - Troubleshooting: troubleshooting/index.md
+  - Development: 
+      - development/index.md
+      - Local: development/local.md
+      
   - Tags: tags.md
   - Impressum: impressum.md
 
-not_in_nav: |
-    /README.md
+# not_in_nav: |
+#     /README.md
+
+extra_css:
+  - assets/stylesheets/powered-by.css
 
 docs_dir: content/
+

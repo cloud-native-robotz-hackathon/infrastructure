@@ -1,11 +1,17 @@
+---
+title: Troubleshooting
+linktitle: Troubleshooting
+icon: material/weather-hail
+---
+
 # Troubleshooting
 
-## Runtimes missing from some DataSience projects 
+## Runtimes missing from some DataSience projects
 
-image::troubleshooting/missing-runtime.png[]  
+![](missing-runtime.png)
 
-**Solution** 
-~
+### Solution
+
 * Delete Workbench
 * Check if pipelineserver is running
 * Recreate Workbench
@@ -19,7 +25,8 @@ oc logs -n openshift-operators deployment/skupper-site-controller
 ```
 
 If you see something like this
-```
+
+```log
 2025/01/24 14:06:52 Initialising skupper site ...
 2025/01/24 14:06:52 Error initialising skupper: OpenShift cluster not detected for --ingress type route
 E0124 14:06:52.543358 1 controller.go:204] OpenShift cluster not detected for --ingress type route
@@ -30,11 +37,11 @@ E0124 14:06:52.543358 1 controller.go:204] OpenShift cluster not detected for --
 
 => Restart the pod
 
-## Runtimes missing from some DS projects 
+## Runtimes missing from some DS projects
 
 In short: Re-create workbench
 
 * Delete Workbench
 * Check if pipeline server is running
 * Recreate Workbench
-** Use the pre-existing PVC
+    * Use the pre-existing PVC
