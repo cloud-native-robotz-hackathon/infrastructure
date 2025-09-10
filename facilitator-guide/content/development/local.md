@@ -1,6 +1,12 @@
-# Local development
+---
+title: Local Development
+icon: material/laptop
+---
+
+# Local Development
 
 The goal is to improve the Workshops with just
+
  * A cluster at demo.redhat.com (Data Center)
  * OpenShift Local / CRC on your Laptop  (Edge gateway)
  * One Robot
