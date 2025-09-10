@@ -1,0 +1,105 @@
+site_name: Facilitator guide
+
+site_author: Robot Team
+site_url: https://cloud-native-robotz-hackathon.github.io/
+
+# Repository
+repo_name: cloud-native-robotz-hackathon/infrastructure
+repo_url: https://github.com/cloud-native-robotz-hackathon/infrastructure
+edit_uri: edit/main/content/
+# Copyright
+# copyright: <a href="impressum/">Impressum</a>
+
+# Configuration
+theme:
+  name: material
+  language: en
+  custom_dir: overrides
+  logo: images/robot.png
+  favicon: images/favicon-32x32.png
+  palette:
+    - toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+    - scheme: slate
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+  font:
+    text: Overpass
+    code: Overpass Mono
+  icon:
+    # logo: robot
+    repo: fontawesome/brands/github
+  features:
+    - navigation.instant
+    - navigation.top
+    - navigation.indexes
+    - navigation.tracking
+    - content.code.copy
+
+# Extras
+extra:
+  version:
+    provider: mike
+  social:
+    - icon: fontawesome/brands/github
+      link: http://github.com/cloud-native-robotz-hackathon
+
+extra_javascript:
+  - https://viewer.diagrams.net/js/viewer-static.min.js
+  - javascripts/drawio-reload.js
+# Extensions
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight:
+      linenums: true
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+  - pymdownx.tasklist
+  # Use --8<-- "content/cluster-lifecycle/backup/pod.yaml"
+  - pymdownx.snippets:
+      check_paths: true
+  - meta
+  - attr_list
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+      fallback_to_build_date: false
+      type: timeago
+  - git-authors
+    #   exclude:
+    #     - kubevirt/ansible/README.md
+    #     - networking/network-policy/network-policy-demo/README.md
+  - tags:
+      tags_file: tags.md
+  - macros:
+      verbose: false
+  - glightbox
+  - drawio:
+      toolbar: false    # control if hovering on a diagram shows a toolbar for zooming or not (default: true)
+      tooltips: false   # control if tooltips will be shown (default: true)
+      edit: false       # control if edit button will be shown in the lightbox view (default: true)
+      border: 0         # increase or decrease the border / margin around your diagrams (default: 5)
+
+hooks:
+  - hooks/sha256_filter.py
+
+nav:
+  - Tags: tags.md
+  - Impressum: impressum.md
+
+not_in_nav: |
+    /README.md
+
+docs_dir: content/
