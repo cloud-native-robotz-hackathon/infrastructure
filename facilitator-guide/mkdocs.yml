@@ -105,7 +105,8 @@ nav:
   - Development: 
       - development/index.md
       - Local: development/local.md
-      
+
+  - Changelog: Changelog.md
   - Tags: tags.md
   - Impressum: impressum.md
 

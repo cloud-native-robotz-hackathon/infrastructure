@@ -18,14 +18,16 @@ This repository contains all infrastructure components needed to set up and mana
 
 ![Infrastructure Overview](overview.drawio.v2.png)
 
+Detailed informations are available in the [facilitator-guide](https://cloud-native-robotz-hackathon.github.io/infrastructure/)
+
 ## Architecture Components
 
 | Component | Description | Purpose |
 |-----------|-------------|---------|
 | **[datacenter/](datacenter/)** | Main OpenShift Cluster for training and development | Provides the central hub for AI/ML workloads, data processing, and participant development environments |
-| **[edge-gateway/](edge-gateway/)** | Single Node OpenShift to manage all robots | Acts as the edge computing gateway, coordinating robot fleet management and local processing |
 | **[robot/](robot/)** | Robot provisioning and configuration management | Contains all scripts, services, and configurations for individual robot setup and maintenance |
 | **[automation/](automation/)** | End-to-end automation and orchestration | Ansible playbooks and automation scripts for final configuration and robot fleet automation |
+| **[facilitator-guide/](https://cloud-native-robotz-hackathon.github.io/infrastructure/)** | Source of the facilitator guide |
 
 ## Network Configuration
 
@@ -75,3 +77,9 @@ This spreadsheet contains:
 5. **Individual Robots**: Follow [robot/](robot/) documentation for specific robot configurations
 
 For detailed setup instructions, refer to the README files in each component directory.
+
+## How to build/start facilitator-guide local
+
+```shell
+./facilitator-guide/run-local.sh
+```
