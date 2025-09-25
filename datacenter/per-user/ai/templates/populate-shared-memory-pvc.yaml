@@ -18,7 +18,7 @@ spec:
       volumes:
         - name: pvc
           persistentVolumeClaim:
-            claimName: object-detection-training-pvc
+            claimName: shared-memory-pvc
       restartPolicy: Never
       containers:
         - name: download
