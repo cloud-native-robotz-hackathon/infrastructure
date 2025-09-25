@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: populate-object-detection-training-pvc
+  namespace: {{ .Values.namespacePermissions.user }}-ai
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
+spec:
+  manualSelector: true
+  selector:
+    matchLabels:
+      app: populate-object-detection-training-pvc
+  template:
+    metadata:
+      labels:
+        app: populate-object-detection-training-pvc
+    spec:
+      volumes:
+        - name: pvc
+          persistentVolumeClaim:
+            claimName: object-detection-training-pvc
+      restartPolicy: Never
+      containers:
+        - name: download
+          image: registry.access.redhat.com/ubi9/s2i-base:9.6
+          volumeMounts:
+            - name: pvc
+              mountPath: /pvc
+          workingDir: /pvc
+          command:
+            - /bin/sh
+            - '-c'
+            - |
+
+              curl -L -O https://github.com/cloud-native-robotz-hackathon/model-training-data/archive/refs/heads/master.tar.gz
+              tar  --strip-components=1 -xzvf master.tar.gz
+              rm master.tar.gz
+  backoffLimit: 4
+
