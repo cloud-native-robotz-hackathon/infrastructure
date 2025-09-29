@@ -8,16 +8,18 @@ icon: material/run
 
 Please make sure the following prerequisites are available at the location to ensure event execution :
 
-* An RJ-45 / Ethernet socket with direct internet connection
+* Stable Wifi with Internet access for the participants
+* An RJ-45 / Ethernet socket with direct internet connection (preferred)
+    * Alternative : Wifi-Bridging by using the local Wifi is also possible but can be spotty
     * A power socket in close proximity
 * Enough floor space to test the robots
-* Stable Wifi for the participant laptops
 * Per robot / team:
-    * A least one participant laptop per team
-        * Should have Chrome or Firefox installed
-        * VPN adn Adblockers should be disbaled during the event
     * Multi-powersockets for the robot and the participant laptops
     * A table
     * Chairs in the number of participants in the team
     * A Red Hat Marketing Fedora
+* Participants should bring:
+    *  Laptop
+        * Chrome or Firefox installed
+        * VPN and Adblockers should be disabled during the event
 
