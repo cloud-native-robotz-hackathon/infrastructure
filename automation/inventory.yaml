@@ -16,32 +16,6 @@ edge-gateway:
 
 robots:
   hosts:
-    gort:
-      ansible_host: 192.168.8.105
+    number5:
+      ansible_host: 192.168.8.110
       team: team-1
-    t-1000:
-      ansible_host: 192.168.8.106
-      team: team-2
-    marvin:
-      ansible_host: 192.168.8.104
-      team: team-3
-    c3po:
-      ansible_host: 192.168.8.109
-      team: team-4
-    r2d2:
-      ansible_host: 192.168.8.108
-      team: team-5
-    marc13:
-      ansible_host: 192.168.8.107
-      team: team-6
-    data:
-      ansible_host: 192.168.8.103
-      team: team-7
-    terminator:
-      ansible_host: 192.168.8.100
-      team: team-8
-    ultron:
-      ansible_host: 192.168.8.102
-      team: team-9
-    # robocop:
-    #   team: team-3
