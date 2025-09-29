@@ -75,9 +75,10 @@ plugins:
   - search
   - git-revision-date-localized:
       enable_creation_date: true
-      fallback_to_build_date: false
+      fallback_to_build_date: true
       type: timeago
-  - git-authors
+# Disabled git-authors for container builds due to missing .git directory
+  # - git-authors
     #   exclude:
     #     - kubevirt/ansible/README.md
     #     - networking/network-policy/network-policy-demo/README.md
@@ -100,6 +101,7 @@ nav:
       - run-a-event/index.md
       - "Format: Full day": run-a-event/full-day.md
       - "Format: Booth/Demo": run-a-event/booth-demo.md
+      - "On-Site Prerequisites": run-a-event/on-site-prerequisites.md
   - Component:
       - component/index.md
       - Robot: component/robot.md

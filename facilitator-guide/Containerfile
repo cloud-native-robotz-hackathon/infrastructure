@@ -14,12 +14,13 @@ RUN dnf -y update \
  && dnf clean all
 
 # Copying in source code
-COPY requirements.txt /tmp/src/
+COPY . /tmp/src/
 # Change file ownership to the assemble user. Builder image must support chown command.
 RUN chown -R 1001:0 /tmp/src
 USER 1001
 
-RUN /usr/libexec/s2i/assemble && rm /opt/app-root/src/requirements.txt
+# Install Python dependencies first
+RUN pip install -r /tmp/src/requirements.txt
 
 USER root
 ADD assemble /usr/libexec/s2i/assemble
@@ -27,6 +28,8 @@ ADD assemble /usr/libexec/s2i/assemble
 RUN rm -f /usr/share/rubygems/rubygems/defaults/operating_system.rb
 USER 1001
 
+# Skip pre-building docs for development - let mkdocs serve build from mounted volume
+
 EXPOSE 8080/tcp
 WORKDIR /opt/app-root/src
-CMD mkdocs serve --dev-addr 0.0.0.0:8080 --no-livereload
+CMD mkdocs serve --dev-addr 0.0.0.0:8080
