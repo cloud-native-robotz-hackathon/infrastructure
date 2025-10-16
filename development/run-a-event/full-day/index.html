@@ -396,25 +396,31 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adjust-openshift-design" class="md-nav__link">
+    <nav class="md-nav" aria-label="Order OpenShift Data Center env">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-gitops-sync-state" class="md-nav__link">
     <span class="md-ellipsis">
-      Adjust OpenShift design
+      Check GitOps sync state
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#setting-up-the-environment" class="md-nav__link">
+  <a href="#setting-up-the-environment-on-site" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting up the environment
+      Setting up the environment on site
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Setting up the environment">
+    <nav class="md-nav" aria-label="Setting up the environment on site">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -436,9 +442,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#openshift-edge-gateway" class="md-nav__link">
+  <a href="#conntect-robots-to-data-center" class="md-nav__link">
     <span class="md-ellipsis">
-      OpenShift Edge Gateway
+      Conntect 🤖 Robot's to Data Center
     </span>
   </a>
   
@@ -450,9 +456,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#assign-team-e-mails-to-data-center-users" class="md-nav__link">
+  <a href="#assign-team-e-mails-to-users" class="md-nav__link">
     <span class="md-ellipsis">
-      Assign team E-Mails to data center users
+      Assign team E-Mails to users
     </span>
   </a>
   
@@ -548,6 +554,8 @@
       
         
       
+        
+      
     
     
     
@@ -605,6 +613,31 @@
   
   <span class="md-ellipsis">
     Robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../component/data-center/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1M9 5h1V3H9zm0 8h1v-2H9zm0 8h1v-2H9zM5 3v2h2V3zm0 8v2h2v-2zm0 8v2h2v-2z"></path></svg>
+  
+  <span class="md-ellipsis">
+    Data Center
     
   </span>
   
@@ -840,25 +873,31 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adjust-openshift-design" class="md-nav__link">
+    <nav class="md-nav" aria-label="Order OpenShift Data Center env">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-gitops-sync-state" class="md-nav__link">
     <span class="md-ellipsis">
-      Adjust OpenShift design
+      Check GitOps sync state
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#setting-up-the-environment" class="md-nav__link">
+  <a href="#setting-up-the-environment-on-site" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting up the environment
+      Setting up the environment on site
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Setting up the environment">
+    <nav class="md-nav" aria-label="Setting up the environment on site">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -880,9 +919,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#openshift-edge-gateway" class="md-nav__link">
+  <a href="#conntect-robots-to-data-center" class="md-nav__link">
     <span class="md-ellipsis">
-      OpenShift Edge Gateway
+      Conntect 🤖 Robot's to Data Center
     </span>
   </a>
   
@@ -894,9 +933,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#assign-team-e-mails-to-data-center-users" class="md-nav__link">
+  <a href="#assign-team-e-mails-to-users" class="md-nav__link">
     <span class="md-ellipsis">
-      Assign team E-Mails to data center users
+      Assign team E-Mails to users
     </span>
   </a>
   
@@ -976,8 +1015,8 @@
 <td>Close as possible: <code>eu-central-1</code></td>
 </tr>
 <tr>
-<td>GPU Worker Nodes (one GPU per Worker!)</td>
-<td>For testing puropose only, workshop is not prepred to use GPU's!</td>
+<td>GPU Worker Nodes</td>
+<td>At least one for the Code Assistent</td>
 </tr>
 <tr>
 <td>Enable workshop user interface</td>
@@ -985,31 +1024,10 @@
 </tr>
 </tbody>
 </table>
-<h2 id="adjust-openshift-design">Adjust OpenShift design<a class="headerlink" href="#adjust-openshift-design" title="Permanent link">¶</a></h2>
-<ul>
-<li>
-<p>Login in into OpenShift Cluster (data-center)</p>
-</li>
-<li>
-<p>Go to <code>datacenter/cluster-configuration/base/namespace/openshift-config/Secret</code></p>
-</li>
-<li>Adjust errors-template.html, login-template.html and providers-template.html</li>
-<li>
-<p>Run <code>./update-secrets.sh</code></p>
-</li>
-<li>
-<p>Go to <code>datacenter/cluster-configuration/base/namespace/openshift-config/ConfigMap</code></p>
-</li>
-<li>Adjust openshift-robot.png (Optional the openshift-robot.xcf via Gimp and export as png )</li>
-<li>
-<p>Run <code>./update-secrets.sh</code></p>
-</li>
-<li>
-<p>Commit all changes and push it.</p>
-</li>
-<li>Open ArgoCD and refresh and sync cluster-configuration </li>
-</ul>
-<h2 id="setting-up-the-environment">Setting up the environment<a class="headerlink" href="#setting-up-the-environment" title="Permanent link">¶</a></h2>
+<h3 id="check-gitops-sync-state">Check GitOps sync state<a class="headerlink" href="#check-gitops-sync-state" title="Permanent link">¶</a></h3>
+<div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>%<span class="w"> </span>oc<span class="w"> </span>get<span class="w"> </span>applications.argoproj.io<span class="w"> </span>-n<span class="w"> </span>openshift-gitops
+</span></code></pre></div></td></tr></tbody></table></div>
+<h2 id="setting-up-the-environment-on-site">Setting up the environment on site<a class="headerlink" href="#setting-up-the-environment-on-site" title="Permanent link">¶</a></h2>
 <h3 id="wifi-router">Wifi Router<a class="headerlink" href="#wifi-router" title="Permanent link">¶</a></h3>
 <ul>
 <li>Start the Wifi router and attach to the local Wifi or wire</li>
@@ -1025,81 +1043,61 @@
 <li>Boot all Robots.</li>
 <li>Wait a couple of minutes...</li>
 <li>Connect your Laptop to Wifi <code>robot-hackathon-78b09</code></li>
-<li>Check connection via ansile</li>
-</ul>
-<details>
-  <summary>Details</summary>
-
-  At the infrastructure repo:
-
-  <div class="language-bash highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>%<span class="w"> </span>ansible-navigator<span class="w"> </span>run<span class="w"> </span>./ping-all.yaml
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>...
+<li>
+<p>Check connection via ansile</p>
+<p>At the infrastructure repo:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>%<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>automation/
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>%<span class="w"> </span>ansible-navigator<span class="w"> </span>run<span class="w"> </span>./ping-all.yaml
 </span></code></pre></div></td></tr></tbody></table></div>
-
-  And let it dance via:
-
-  <div class="language-bash highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>%<span class="w"> </span>ansible-navigator<span class="w"> </span>run<span class="w"> </span>./move-robots.yaml
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>...
+<p>And let it dance via:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>%<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>automation/
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>%<span class="w"> </span>ansible-navigator<span class="w"> </span>run<span class="w"> </span>./move-robots.yaml
 </span></code></pre></div></td></tr></tbody></table></div>
-  </details>
-
-<h3 id="openshift-edge-gateway">OpenShift Edge Gateway<a class="headerlink" href="#openshift-edge-gateway" title="Permanent link">¶</a></h3>
-<p>The Edge Gateway is a OCP SNO instance running on-premise in the same Wifi network as the robots. All connections from the hackathon OCP cluster to the robots go through it.</p>
-<p>It is usually prepared and ready to use. Just connected the network wire to the router.</p>
-<ul>
-<li>Power on after Wifi is available</li>
-<li>Login into <a href="https://console-openshift-console.apps.edge-gateway.lan/">OpenShift Console</a> and check all operators</li>
-<li>User: kubeadmin</li>
-<li>Password: <em>stored at bitwarden</em></li>
-<li>Login into <a href="https://openshift-gitops-server-openshift-gitops.apps.edge-gateway.lan/">OpenShift GitOps</a> and check everything is in synced</li>
-<li>Connect edge-date with data center</li>
+</li>
 </ul>
-<details>
-  <summary>Run playbooks...</summary>
-
-  At the [cloud-native-robotz-hackathon/infrastructure](https://github.com/cloud-native-robotz-hackathon/infrastructure) repo:
-
-  <div class="language-bash highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#__codelineno-2-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>infrastructure/automation/
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="c1"># Login into data center</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">KUBECONFIG</span><span class="o">=</span>kubeconfig-data-center
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>oc<span class="w"> </span>login<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>--insecure-skip-tls-verify<span class="w"> </span>https://api.cluster-...
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="c1"># Login into edge gateway</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">KUBECONFIG</span><span class="o">=</span>kubeconfig-edge-gateway
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>oc<span class="w"> </span>login<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>--insecure-skip-tls-verify<span class="w"> </span>https://edge-gateway.lan:6443
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="c1"># Optional: Adjust robot to team configuration</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a>vim<span class="w"> </span>inventory.yaml
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="c1"># Run playbook</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a>ansible-navigator<span class="w"> </span>run<span class="w"> </span>new-data-center.yaml<span class="w">  </span><span class="o">[</span>-l<span class="w"> </span>&lt;<span class="k">select</span><span class="w"> </span>location<span class="w"> </span>/<span class="w"> </span>specific<span class="w"> </span>robot&gt;<span class="o">]</span>
+<h3 id="conntect-robots-to-data-center">Conntect 🤖 Robot's to Data Center<a class="headerlink" href="#conntect-robots-to-data-center" title="Permanent link">¶</a></h3>
+<p>Connect robots to data center, via Skupper.</p>
+<p>At the <a href="https://github.com/cloud-native-robotz-hackathon/infrastructure">cloud-native-robotz-hackathon/infrastructure</a> repo:</p>
+<div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>infrastructure/automation/
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1"># Login into data center</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">KUBECONFIG</span><span class="o">=</span>kubeconfig-data-center
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a>rm<span class="w"> </span><span class="nv">$KUBECONFIG</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a>oc<span class="w"> </span>login<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>--insecure-skip-tls-verify<span class="w"> </span>https://api.cluster-...
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="c1"># Reset MicroShift at all robots</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a>ansible-navigator<span class="w"> </span>run<span class="w"> </span>microshift-reset.yaml
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="c1"># Setup skupper tunnels</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a>ansible-navigator<span class="w"> </span>run<span class="w"> </span>skupper-tunnel.yaml
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="c1"># Update the robot to team mapping</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a>ansible-navigator<span class="w"> </span>run<span class="w"> </span>update-robot-to-team.yaml
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="c1"># Finally check the different network connections:</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a>ansible-navigator<span class="w"> </span>run<span class="w"> </span>check-environments.yaml
 </span></code></pre></div></td></tr></tbody></table></div>
-
-  Tip: If the playbook fails, this is propably due to a [bug](https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/66) where the Interconnect Controller doesn't initalize correctly. You can restart the Interconnect Pod (skupper-site-controller-xxx...) in the openshift-operators project as a workaround. Once done, rerun the Ansible playbook.
-
-  </details>
-
-<ul>
-<li>Check all argocd applications at edge-gateway: <a href="https://openshift-gitops-server-openshift-gitops.apps.edge-gateway.lan/">https://openshift-gitops-server-openshift-gitops.apps.edge-gateway.lan/</a></li>
-</ul>
-<h2 id="assign-team-e-mails-to-data-center-users">Assign team E-Mails to data center users<a class="headerlink" href="#assign-team-e-mails-to-data-center-users" title="Permanent link">¶</a></h2>
+<h2 id="assign-team-e-mails-to-users">Assign team E-Mails to users<a class="headerlink" href="#assign-team-e-mails-to-users" title="Permanent link">¶</a></h2>
+<p>At demo.redhat.com workshop interface, add the E-Mail addresses to the users:</p>
 <table>
 <thead>
 <tr>
@@ -1170,7 +1168,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="September 18, 2025 12:19:45 UTC"><span class="timeago" datetime="2025-09-18T12:19:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="September 18, 2025 12:19:45 UTC">2025-09-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="October 16, 2025 13:51:37 UTC"><span class="timeago" datetime="2025-10-16T13:51:37+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="October 16, 2025 13:51:37 UTC">2025-10-16</span>
   </span>
 
     
