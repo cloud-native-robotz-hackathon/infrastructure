@@ -20,26 +20,17 @@ This includes deploying the hackathon environment in [demo.redhat.com](https://c
 |---|---|
 |OpenShift User Count|`9`|
 |Region|Close as possible: `eu-central-1`|
-|GPU Worker Nodes (one GPU per Worker!)|For testing puropose only, workshop is not prepred to use GPU's!
+|GPU Worker Nodes|At least one for the Code Assistent|
 |Enable workshop user interface|True|
 
-## Adjust OpenShift design
+### Check GitOps sync state
 
-* Login in into OpenShift Cluster (data-center)
+```shell
+% oc get applications.argoproj.io -n openshift-gitops
 
-* Go to `datacenter/cluster-configuration/base/namespace/openshift-config/Secret`
-* Adjust errors-template.html, login-template.html and providers-template.html
-* Run `./update-secrets.sh`
+```
 
-* Go to `datacenter/cluster-configuration/base/namespace/openshift-config/ConfigMap`
-* Adjust openshift-robot.png (Optional the openshift-robot.xcf via Gimp and export as png )
-* Run `./update-secrets.sh`
-
-
-* Commit all changes and push it.
-* Open ArgoCD and refresh and sync cluster-configuration 
-
-## Setting up the environment
+## Setting up the environment on site
 
 ### Wifi Router
 
@@ -58,67 +49,50 @@ This includes deploying the hackathon environment in [demo.redhat.com](https://c
 * Connect your Laptop to Wifi `robot-hackathon-78b09`
 * Check connection via ansile
 
-  <details>
-  <summary>Details</summary>
+    At the infrastructure repo:
 
-  At the infrastructure repo:
+    ```bash
+    % cd automation/
+    % ansible-navigator run ./ping-all.yaml
+    ```
 
-  ```bash
-  % ansible-navigator run ./ping-all.yaml
-  ...
-  ```
+    And let it dance via:
 
-  And let it dance via:
+    ```bash
+    % cd automation/
+    % ansible-navigator run ./move-robots.yaml
+    ```
 
-  ```bash
-  % ansible-navigator run ./move-robots.yaml
-  ...
-  ```
-  </details>
+### Conntect 🤖 Robot's to Data Center
 
-### OpenShift Edge Gateway
+Connect robots to data center, via Skupper.
 
-The Edge Gateway is a OCP SNO instance running on-premise in the same Wifi network as the robots. All connections from the hackathon OCP cluster to the robots go through it.
+At the [cloud-native-robotz-hackathon/infrastructure](https://github.com/cloud-native-robotz-hackathon/infrastructure) repo:
 
-It is usually prepared and ready to use. Just connected the network wire to the router.
+```shell
+cd infrastructure/automation/
 
-* Power on after Wifi is available
-* Login into [OpenShift Console](https://console-openshift-console.apps.edge-gateway.lan/) and check all operators
-  * User: kubeadmin
-  * Password: *stored at bitwarden*
-* Login into [OpenShift GitOps](https://openshift-gitops-server-openshift-gitops.apps.edge-gateway.lan/) and check everything is in synced
-* Connect edge-date with data center
+# Login into data center
+export KUBECONFIG=kubeconfig-data-center
+rm $KUBECONFIG
+oc login -u admin --insecure-skip-tls-verify https://api.cluster-...
 
-  <details>
-  <summary>Run playbooks...</summary>
+# Reset MicroShift at all robots
+ansible-navigator run microshift-reset.yaml
 
-  At the [cloud-native-robotz-hackathon/infrastructure](https://github.com/cloud-native-robotz-hackathon/infrastructure) repo:
+# Setup skupper tunnels
+ansible-navigator run skupper-tunnel.yaml
 
-  ```bash
-  cd infrastructure/automation/
+# Update the robot to team mapping
+ansible-navigator run update-robot-to-team.yaml
 
-  # Login into data center
-  export KUBECONFIG=kubeconfig-data-center
-  oc login -u admin --insecure-skip-tls-verify https://api.cluster-...
+# Finally check the different network connections:
+ansible-navigator run check-environments.yaml
+```
 
-  # Login into edge gateway
-  export KUBECONFIG=kubeconfig-edge-gateway
-  oc login -u admin --insecure-skip-tls-verify https://edge-gateway.lan:6443
+## Assign team E-Mails to users
 
-  # Optional: Adjust robot to team configuration
-  vim inventory.yaml
-
-  # Run playbook
-  ansible-navigator run new-data-center.yaml  [-l <select location / specific robot>]
-  ```
-
-  Tip: If the playbook fails, this is propably due to a [bug](https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/66) where the Interconnect Controller doesn't initalize correctly. You can restart the Interconnect Pod (skupper-site-controller-xxx...) in the openshift-operators project as a workaround. Once done, rerun the Ansible playbook.
-
-  </details>
-
-* Check all argocd applications at edge-gateway: <https://openshift-gitops-server-openshift-gitops.apps.edge-gateway.lan/>
-
-## Assign team E-Mails to data center users
+At demo.redhat.com workshop interface, add the E-Mail addresses to the users:
 
 |E-Mail|User|
 |---|---|

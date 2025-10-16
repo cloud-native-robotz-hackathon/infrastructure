@@ -105,6 +105,7 @@ nav:
   - Component:
       - component/index.md
       - Robot: component/robot.md
+      - Data Center: component/data-center.md
 
   - Troubleshooting: troubleshooting/index.md
   - Development: 
