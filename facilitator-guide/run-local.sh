@@ -16,6 +16,7 @@ echo ""
 
 podman run -ti --rm \
   -v $(pwd):/opt/app-root/src:z \
+  --workdir /opt/app-root/src/facilitator-guide/ \
   -p 8080:8080 \
   --name docs-local \
   $IMAGE
