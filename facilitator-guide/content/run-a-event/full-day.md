@@ -25,9 +25,53 @@ This includes deploying the hackathon environment in [demo.redhat.com](https://c
 
 ### Check GitOps sync state
 
+via Command line:
+```shell
+oc get applications.argoproj.io -n openshift-gitops
+```
+
+everything should by Synced and Healthy!
+
 ```shell
 % oc get applications.argoproj.io -n openshift-gitops
-
+NAME                    SYNC STATUS   HEALTH STATUS
+cluster-configuration   Synced        Healthy
+team-1-ai               Synced        Healthy
+team-1-dev              Synced        Healthy
+team-1-devspaces        Synced        Healthy
+team-1-label-studio     Synced        Healthy
+team-2-ai               Synced        Healthy
+team-2-dev              Synced        Healthy
+team-2-devspaces        Synced        Healthy
+team-2-label-studio     Synced        Healthy
+team-3-ai               Synced        Healthy
+team-3-dev              Synced        Healthy
+team-3-devspaces        Synced        Healthy
+team-3-label-studio     Synced        Healthy
+team-4-ai               Synced        Healthy
+team-4-dev              Synced        Healthy
+team-4-devspaces        Synced        Healthy
+team-4-label-studio     Synced        Healthy
+team-5-ai               Synced        Healthy
+team-5-dev              Synced        Healthy
+team-5-devspaces        Synced        Healthy
+team-5-label-studio     Synced        Healthy
+team-6-ai               Synced        Healthy
+team-6-dev              Synced        Healthy
+team-6-devspaces        Synced        Healthy
+team-6-label-studio     Synced        Healthy
+team-7-ai               Synced        Healthy
+team-7-dev              Synced        Healthy
+team-7-devspaces        Synced        Healthy
+team-7-label-studio     Synced        Healthy
+team-8-ai               Synced        Healthy
+team-8-dev              Synced        Healthy
+team-8-devspaces        Synced        Healthy
+team-8-label-studio     Synced        Healthy
+team-9-ai               Synced        Healthy
+team-9-dev              Synced        Healthy
+team-9-devspaces        Synced        Healthy
+team-9-label-studio     Synced        Healthy
 ```
 
 ## Setting up the environment on site
