@@ -12,14 +12,14 @@ data:
           "title": "Granite 8B Code Instruct (OpenShift)",
           "provider": "openai",
           "model": "granite-8b-code",
-          "apiBase": "http://code-assistant-predictor.code-assistant.svc.cluster.local/v1"
+          "apiBase": "http://granite-8b-code-predictor.code-assistant.svc.cluster.local/v1"
         }
       ],
       "tabAutocompleteModel": {
         "title": "Granite 8B Code Instruct Autocomplete",
         "provider": "openai",
         "model": "granite-8b-code",
-        "apiBase": "http://code-assistant-predictor.code-assistant.svc.cluster.local/v1"
+        "apiBase": "http://granite-8b-code-predictor.code-assistant.svc.cluster.local/v1"
       },
       "customCommands": [
         {
