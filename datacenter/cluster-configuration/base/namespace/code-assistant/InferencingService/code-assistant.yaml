@@ -2,9 +2,9 @@ apiVersion: serving.kserve.io/v1beta1
 kind: InferenceService
 metadata:
   annotations:
-    openshift.io/display-name: codellama
+    openshift.io/display-name: granite-8b-code
     serving.kserve.io/deploymentMode: RawDeployment
-  name: codellama
+  name: granite-8b-code
   namespace: code-assistant
   finalizers:
     - odh.inferenceservice.finalizers
@@ -33,11 +33,8 @@ spec:
           cpu: '1'
           memory: 4Gi
           nvidia.com/gpu: '1'
-      runtime: codellama
+      runtime: granite-8b-code
       storageUri: oci://registry.redhat.io/rhelai1/modelcar-granite-8b-code-instruct:1.4
-      #storage:
-      #  key: workbench-bucket-ai-connection
-      #  path: codellama
     tolerations:
       - effect: NoSchedule
         key: nvidia.com/gpu
