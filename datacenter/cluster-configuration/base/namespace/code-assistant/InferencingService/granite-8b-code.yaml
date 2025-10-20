@@ -33,7 +33,7 @@ spec:
           cpu: '1'
           memory: 4Gi
           nvidia.com/gpu: '1'
-      runtime: granite-8b-code
+      runtime: code-assistant
       storageUri: oci://registry.redhat.io/rhelai1/modelcar-granite-8b-code-instruct:1.4
     tolerations:
       - effect: NoSchedule
