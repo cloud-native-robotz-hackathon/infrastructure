@@ -8,9 +8,9 @@ metadata:
     opendatahub.io/recommended-accelerators: '["nvidia.com/gpu"]'
     opendatahub.io/template-display-name: vLLM NVIDIA GPU ServingRuntime for KServe
     opendatahub.io/template-name: vllm-cuda-runtime
-    openshift.io/display-name: codellama
-  name: codellama
-  namespace: codeassistant
+    openshift.io/display-name: code-assistant
+  name: code-assistant
+  namespace: code-assistant
   labels:
     opendatahub.io/dashboard: 'true'
 spec:
