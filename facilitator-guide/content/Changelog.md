@@ -7,7 +7,7 @@ icon: material/receipt-text-clock
 
 # Changelog
 
-## In Development
+## v2 - 2025-10-24
 
 * [Include a LLM code assistent in dev spaces](https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/154)
 * [Add Label Studio installation to RHDP CI](https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/202)
