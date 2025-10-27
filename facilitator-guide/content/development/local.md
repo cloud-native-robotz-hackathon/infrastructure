@@ -5,26 +5,42 @@ icon: material/laptop
 
 # Local Development
 
-The goal is to improve the Workshops with just
+Creating a local setup to test the assets.
 
- * A cluster at demo.redhat.com (Data Center)
- * OpenShift Local / CRC on your Laptop  (Edge gateway)
+You will need :
+
+ * A Robot Hackathon Cluster at demo.redhat.com (Data Center)
  * One Robot
 
 ## Prepare the robot
 
-### Connect Robot to your Network (Wired)
+### Connect Robot to your Network
 
 * Connect to wired network & findout ip address
 * Connect via SSH (wire) to robot
 * The robot private keyfile needs to be named ~/.ssh/robot-hackathon
+* You will want to connect the robot via Wifi now
+  * If you have Slate Router, you can connect it the same way this is done for actual workshops
+  * Alternatively you can connect the robot directly to another wifi router
+  * Note down the IP address
 
 ### Update inventory
 
-In `automation/inventory.yaml` update the section:
+The default workshop `automation/inventory.yaml` looks like this:
 
 From
 ```yaml
+---
+all:
+  vars:
+    ansible_user: root
+    ansible_ssh_private_key_file: ~/.ssh/robot-hackathon
+
+datacenter:
+  hosts:
+    🏢-datacenter:
+      ansible_connection: local
+
 robots:
   hosts:
     gort:
@@ -54,24 +70,40 @@ robots:
     ultron:
       ansible_host: 192.168.8.102
       team: team-9
+    # robocop:
+    #   team: team-3
+
 ```
 
-to 
+For your local setup, copy the file to `automation/local_inventory.yaml` and modify with the name and IP of your robot.
+
+e.g.:
+
 ```yaml
+---
+all:
+  vars:
+    ansible_user: root
+    ansible_ssh_private_key_file: ~/.ssh/robot-hackathon
+
+datacenter:
+  hosts:
+    🏢-datacenter:
+      ansible_connection: local
 robots:
   hosts:
-    your-robot:
-      ansible_host: 192.168.66.70 
+    number5:
+      ansible_host: 192.168.8.110
       team: team-1
 ```
 
-### Reset MicroShift at the Robot
+### Reset MicroShift at the Robot (Only required once)
 
 At the [cloud-native-robotz-hackathon/infrastructure](https://github.com/cloud-native-robotz-hackathon/infrastructure) repo:
 
 ```bash
 cd automation
-ansible-navigator run ./microshift-reset.yaml
+ansible-navigator run ./microshift-reset.yaml -i ./local_inventory.yaml
 ```
 
 ## Bring Data Center & Robot together
@@ -86,11 +118,11 @@ export KUBECONFIG=$(pwd)/kubeconfig-data-center
 oc login -u admin --insecure-skip-tls-verify https://api.cluster-...
 
 # Run
-ansible-navigator run ./skupper-tunnel.yaml
+ansible-navigator run ./skupper-tunnel.yaml -i ./local_inventory.yaml
 
 # Connect robots and teams / ArgoCD
 
-ansible-navigator run ./update-robot-to-team.yaml 
+ansible-navigator run ./update-robot-to-team.yaml -i ./local_inventory.yaml
 ```
 
 ## Testing the Robot Calls
@@ -107,7 +139,7 @@ curl -X 'POST' 'http://api.hub-controller.svc.cluster.local./robot/forward/1' -H
 
 ## Custom user_key Mapping
 
-If you want to map other user_key to the robot you can set up a mapping:
+If you want to map another other user_key to the robot you can set up a mapping:
 
 In your Data Center open the ConfigMap `robot-mapping-configmap` in namespace `hub-controller` and edit the Roboname (user_key) mapping (e.g. data) to your Robot hostname (e.g. data.lan)
 

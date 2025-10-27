@@ -1,5 +1,6 @@
 automation/camera-test*
 automation/kubeconfig-*
+automation/local_inventory.yaml
 inventory/custom_hosts.ini
 context/
 ansible-navigator.v1
