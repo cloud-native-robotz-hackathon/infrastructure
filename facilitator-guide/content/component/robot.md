@@ -113,3 +113,12 @@ Playbook microshift-reset.yaml is here [https://github.com/cloud-native-robotz-h
 
 Check model
 `curl --location --request GET 'http://localhost:8000/v2/models/densenet_onnx/stats'`
+
+## Bill of materials
+
+|#|Item|price in Euro|Example Shop|
+|---|---|---|---|
+|1|GoPiGo Kits|178|<https://gopigo.io/gopigo/>|
+|2|Raspberry Pi 4 B - 8 GB Memory Version|79|<https://www.berrybase.de/raspberry-pi-4-computer-modell-b-8gb-ram>|
+|3|Raspberry Pi Camera Modules v2|17|<https://www.berrybase.de/raspberry-pi-camera-module-8mp-v2>|
+|4|3D Printed Camera Mounts Custom, you have to print it.|30|<https://github.com/cloud-native-robotz-hackathon/3dprint-parts>|
