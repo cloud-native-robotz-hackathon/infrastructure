@@ -20,6 +20,22 @@ This should only be neccessary with a new robot or when repairing/updating/repla
 * The image is preconfigured with:
   * Automatic connection to the hackathon WIFI "robot-hackathon-78b09"
   * Robot hackathon SSH key (Bitwarden Collection)
+* Adjust inventory `automation/inventory.yaml`, add the robot to `robots`, for example:
+  ```yaml
+  robots:
+  hosts:
+    ....
+    <NAME OF THE ROBOT>:
+      team: team-X
+      ansible_host: 192.168.8.xxx
+  ```
+* Run playbook to configure the robot
+  ```
+  ansible-navigator run ./configure-robot.yaml -l <NAME OF THE ROBOT>
+  ```
+* Login into the robot and reboot.
+* Now the boot screen should look like this:
+  ![](bootscreen.png)
 
 ### Network Setup
 
