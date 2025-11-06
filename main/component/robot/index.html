@@ -965,70 +965,89 @@
 <li>The image is preconfigured with:</li>
 <li>Automatic connection to the hackathon WIFI "robot-hackathon-78b09"</li>
 <li>Robot hackathon SSH key (Bitwarden Collection)</li>
+<li>Adjust inventory <code>automation/inventory.yaml</code>, add the robot to <code>robots</code>, for example:
+  <div class="language-yaml highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nt">robots</span><span class="p">:</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nt">hosts</span><span class="p">:</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">....</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&lt;NAME OF THE ROBOT&gt;</span><span class="p p-Indicator">:</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="nt">team</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-X</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.8.xxx</span>
+</span></code></pre></div></td></tr></tbody></table></div></li>
+<li>Run playbook to configure the robot
+  <div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>ansible-navigator run ./configure-robot.yaml -l &lt;NAME OF THE ROBOT&gt;
+</span></code></pre></div></td></tr></tbody></table></div></li>
+<li>Login into the robot and reboot.</li>
+<li>Now the boot screen should look like this:
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="bootscreen.png" data-desc-position="bottom"><img alt="" src="bootscreen.png"></a></li>
 </ul>
 <h3 id="network-setup">Network Setup<a class="headerlink" href="#network-setup" title="Permanent link">¶</a></h3>
 <ul>
 <li>If you want to configure another WIFI, attach a network cable and SSH into the robot (root / <pw> from Bitwarden collection) </pw></li>
 <li>
 <p>For WLAN edit /etc/netplan/50-cloud-init.yaml and add your WLAN access point, reboot or run <code>netplan apply</code>. Config example:</p>
-<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#__codelineno-1-11">11</a></span>
-<span class="normal"><a href="#__codelineno-1-12">12</a></span>
-<span class="normal"><a href="#__codelineno-1-13">13</a></span>
-<span class="normal"><a href="#__codelineno-1-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>network:
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>    ethernets:
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>        eth0:
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>            dhcp4: true
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>            optional: true
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>    version: 2
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>    Wifis:
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a>        wlan0:
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a>        access-points: 
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a>        "robot-hackathon-78b09":
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a>            password: "PASSWORD"
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a>        "otherssid":
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a>            password: "&lt;PASSWORD&gt;"
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a>        dhcp4: true
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>network:
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>    ethernets:
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>        eth0:
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>            dhcp4: true
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a>            optional: true
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a>    version: 2
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a>    Wifis:
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a>        wlan0:
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a>        access-points: 
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a>        "robot-hackathon-78b09":
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a>            password: "PASSWORD"
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a>        "otherssid":
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a>            password: "&lt;PASSWORD&gt;"
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a>        dhcp4: true
 </span></code></pre></div></td></tr></tbody></table></div>
 </li>
 </ul>
 <h3 id="finish-configuration">Finish configuration<a class="headerlink" href="#finish-configuration" title="Permanent link">¶</a></h3>
 <p>To finish the configuration, run the Playbook <code>[automation/configure-robot.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/configure-robot.yaml)</code> against the robot.</p>
 <p>Example inventory:</p>
-<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>---
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>all:
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>  vars:
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>    ansible_user: root
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>    ansible_ssh_private_key_file: ~/.ssh/robot-hackathon
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>robots:
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>  hosts:
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>    abcwarrior.lan:
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a>      team: team-1
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>---
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>all:
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a>  vars:
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a>    ansible_user: root
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a>    ansible_ssh_private_key_file: ~/.ssh/robot-hackathon
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a>robots:
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a>  hosts:
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a>    abcwarrior.lan:
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a>      team: team-1
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>Run Ansible:</p>
-<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>robot-hackathon/infrastructure/automation$ ansible-navigator run configure-robot.yaml -i myinventory.yaml 
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>robot-hackathon/infrastructure/automation$ ansible-navigator run configure-robot.yaml -i myinventory.yaml 
 </span></code></pre></div></td></tr></tbody></table></div>
 <p>And again to reset Microshift</p>
-<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>robot-hackathon/infrastructure/automation$ ansible-navigator run microshift-reset.yaml -i myinventory.yaml 
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>robot-hackathon/infrastructure/automation$ ansible-navigator run microshift-reset.yaml -i myinventory.yaml 
 </span></code></pre></div></td></tr></tbody></table></div>
 <h3 id="camera-setup-raspi-camera-v2">Camera Setup (Raspi camera v2)<a class="headerlink" href="#camera-setup-raspi-camera-v2" title="Permanent link">¶</a></h3>
 <p>Playbook camera-test.yaml is here <a href="https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot">https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot</a></p>
@@ -1037,33 +1056,33 @@
 <li>Test camera is detected: vcgencmd get_camera</li>
 <li>Script to test image acquisition</li>
 </ul>
-<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-5-10">10</a></span>
-<span class="normal"><a href="#__codelineno-5-11">11</a></span>
-<span class="normal"><a href="#__codelineno-5-12">12</a></span>
-<span class="normal"><a href="#__codelineno-5-13">13</a></span>
-<span class="normal"><a href="#__codelineno-5-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>  import cv2
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>  # open camera
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>  cap = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>  # set dimensions
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a>  cap.set(cv2.CAP_PROP_FRAME_WIDTH, 2560)
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a>  cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1440)
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a>  # take frame
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a>  ret, frame = cap.read()
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a>  # write frame to file
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a>  cv2.imwrite('/root/ramfilesystem/image.jpg', frame)
-</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13"></a>  # release camera
-</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14"></a>  cap.release()
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>  import cv2
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>  # open camera
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>  cap = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a>  # set dimensions
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a>  cap.set(cv2.CAP_PROP_FRAME_WIDTH, 2560)
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a>  cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1440)
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a>  # take frame
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a>  ret, frame = cap.read()
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a>  # write frame to file
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a>  cv2.imwrite('/root/ramfilesystem/image.jpg', frame)
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a>  # release camera
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a>  cap.release()
 </span></code></pre></div></td></tr></tbody></table></div>
 <h3 id="microshift">Microshift<a class="headerlink" href="#microshift" title="Permanent link">¶</a></h3>
 <p>Playbook microshift-reset.yaml is here <a href="https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot">https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot</a></p>
@@ -1135,7 +1154,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="October 30, 2025 15:40:37 UTC"><span class="timeago" datetime="2025-10-30T15:40:37+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="October 30, 2025 15:40:37 UTC">2025-10-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 6, 2025 12:35:30 UTC"><span class="timeago" datetime="2025-11-06T12:35:30+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 6, 2025 12:35:30 UTC">2025-11-06</span>
   </span>
 
     
