@@ -7,6 +7,10 @@ icon: material/receipt-text-clock
 
 # Changelog
 
+## v2.1 - 2025-11-06 
+
+* [True SSO Login for Sites where possible](https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/198)
+
 ## v2 - 2025-10-24
 
 * [Include a LLM code assistent in dev spaces](https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/154)
