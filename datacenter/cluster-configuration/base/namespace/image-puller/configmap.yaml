@@ -5,6 +5,7 @@ metadata:
 data:
   IMAGES: |
     object-detection-v2-1-0=quay.io/cloud-native-robotz-hackathon/workbench-object-detection:v2.1.0;
+    object-detection-v3-0-0=quay.io/cloud-native-robotz-hackathon/workbench-object-detection:v3.0.0;
     object-detection-runtime-v2-1-0=quay.io/mmurakam/runtimes:object-detection-v2.1.0;
     code-rhel9=registry.redhat.io/devspaces/code-rhel9@sha256:50e457ca3c17e0c471a8fb44ee7f9c9c650d422087f7f52e774b88c84ce741fd;
     traefik-rhel9=registry.redhat.io/devspaces/traefik-rhel9@sha256:780c2a69b8910067d9435877b94d93c8cf168a424bfa99c90f2f0ddb7b20c2a5;
