@@ -2,10 +2,14 @@
 # FROM quay.io/mmurakam/workbenches:object-detection-v2.1.0
 FROM quay.io/modh/odh-pytorch-notebook:v3-20250827-3a59e5e
 
-RUN pip install pip==25.1.1 setuptools==75.8.2
+RUN pip install pip==25.3 setuptools==75.8.2
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt && \
-    pip uninstall -y ray && \
-    chmod -R g+w /opt/app-root/lib/python3.9/site-packages && \
+    pip uninstall -y ray
+
+ADD jupyter-webrtc.json /opt/app-root/etc/jupyter/nbconfig/notebook.d/
+
+RUN chmod -R g+w /opt/app-root/lib/python3.11/site-packages && \
     fix-permissions /opt/app-root -P
+
