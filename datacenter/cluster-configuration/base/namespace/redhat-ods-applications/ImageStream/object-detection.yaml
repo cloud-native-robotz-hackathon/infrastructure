@@ -18,10 +18,10 @@ spec:
   lookupPolicy:
     local: true
   tags:
-    - name: "3.0.0"
+    - name: "3.0.1"
       from:
         kind: DockerImage
-        name: quay.io/cloud-native-robotz-hackathon/workbench-object-detection:v3.0.0
+        name: quay.io/cloud-native-robotz-hackathon/workbench-object-detection:v3.0.1
       importPolicy: {}
       referencePolicy:
         type: Local
