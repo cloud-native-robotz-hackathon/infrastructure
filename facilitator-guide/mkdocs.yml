@@ -104,9 +104,11 @@ nav:
       - "On-Site Prerequisites": run-a-event/on-site-prerequisites.md
   - Component:
       - component/index.md
-      - Robot: component/robot.md
+      - Robot GiPiGo: component/robot-gipigo/index.md
       - Data Center: component/data-center.md
+      - Nine robot travel kit: component/nine-robot-travel-kit/index.md
 
+      - Robot Wave Rover: component/robot-waverover/index.md
   - Troubleshooting: troubleshooting/index.md
   - Development: 
       - development/index.md
