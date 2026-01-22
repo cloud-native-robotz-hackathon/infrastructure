@@ -28,5 +28,10 @@
     "version": "development",
     "title": "development",
     "aliases": []
+  },
+  {
+    "version": "v3",
+    "title": "v3",
+    "aliases": []
   }
 ]
