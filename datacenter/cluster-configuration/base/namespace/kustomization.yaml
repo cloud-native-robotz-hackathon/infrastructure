@@ -7,3 +7,4 @@ resources:
 - hub-controller/
 - openshift-ingress-operator/
 - code-assistant/
+- robot/
