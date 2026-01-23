@@ -21,6 +21,7 @@ spec:
       labels:
         app: hub-controller-live
     spec:
+      serviceAccountName: hub-controller
       containers:
       - env:
         - name: MAP
