@@ -2,24 +2,24 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: hub-controller-live
+    app: hub-controller
     app.kubernetes.io/managed-by: quarkus
     app.openshift.io/runtime: quarkus
   annotations:
     app.openshift.io/vcs-uri: git@github.com:cloud-native-robotz-hackathon/hubcontroller-rest-quarkus.git
     app.quarkus.io/vcs-uri: https://github.com/cloud-native-robotz-hackathon/hubcontroller-rest-quarkus.git
-  name: hub-controller-live
+  name: hub-controller
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hub-controller-live
+      app: hub-controller
   strategy:
     type: RollingUpdate
   template:
     metadata:
       labels:
-        app: hub-controller-live
+        app: hub-controller
     spec:
       serviceAccountName: hub-controller
       containers:
