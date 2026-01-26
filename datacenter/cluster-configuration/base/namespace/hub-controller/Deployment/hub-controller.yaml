@@ -34,7 +34,7 @@ spec:
             fieldRef:
               apiVersion: v1
               fieldPath: metadata.namespace
-        image: quay.io/cloud-native-robotz-hackathon/hubcontroller-rest-quarkus:latest-native
+        image: quay.io/cloud-native-robotz-hackathon/hubcontroller-rest-quarkus:v3-native
         imagePullPolicy: Always
         name: hub-controller
         livenessProbe:
