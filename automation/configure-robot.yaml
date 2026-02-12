@@ -18,8 +18,10 @@
     - name: Check robot image version
       fail:
         msg: "Please check robot image version"
-      #when: robot_image_version['content'] | b64decode == robot-hackathon-image.20240726
-      when: robot_image_version['content'] != "cm9ib3QtaGFja2F0aG9uLWltYWdlLjIwMjQwNzI2Cg=="
+      # image version robot-hackathon-image.20240726
+      #when: robot_image_version['content'] != "cm9ib3QtaGFja2F0aG9uLWltYWdlLjIwMjQwNzI2Cg=="
+      # image version robot-hackathon-image.20260212
+      when: robot_image_version['content'] != "cm9ib3QtaGFja2F0aG9uLWltYWdlLjIwMjYwMjEyCg=="
 
     - name: Stop and remove edgehub.service systemd unit
       ignore_errors: true
