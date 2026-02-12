@@ -1,0 +1,12 @@
+# Role for hubcontroller in the openshift-operators namespace
+# Allows restarting the skupper-site-controller pod
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: hubcontroller-role
+  namespace: openshift-operators
+rules:
+  # Pod management (for restarting skupper-site-controller)
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "delete", "watch"]
