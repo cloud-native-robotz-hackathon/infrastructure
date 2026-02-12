@@ -3,16 +3,11 @@ kind: Role
 metadata:
   name: hub-controller
 rules:
-- apiGroups:
-  - ""
-  resources:
-  - secrets
-  verbs:
-  - create
-  - delete
-  - deletecollection
-  - get
-  - list
-  - patch
-  - update
-  - watch
+  # ConfigMap management (for skupper-site ConfigMap)
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get", "list", "create", "update", "patch", "watch"]
+  # Secret management (for Skupper connection tokens)
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "list", "create", "update", "patch", "watch"]
