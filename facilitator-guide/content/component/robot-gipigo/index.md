@@ -84,7 +84,7 @@ This should only be neccessary with a new robot or when repairing/updating/repla
 
 To finish the configuration, you have to run a number of Playbooks against the robot(s).
 
-Clone the GitHub repo `[infrastructure](https://github.com/cloud-native-robotz-hackathon/infrastructure.git)`
+Clone the GitHub repo [infrastructure](https://github.com/cloud-native-robotz-hackathon/infrastructure.git).
 
 ```
 git clone https://github.com/cloud-native-robotz-hackathon/infrastructure.git
@@ -109,7 +109,7 @@ The robot name has to resolve of course. If not, use the IP address.
 
 #### Robot Base Config
 
-The Playbook `[automation/configure-robot.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/configure-robot.yaml)`:
+The Playbook [automation/configure-robot.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/configure-robot.yaml):
 
 -  Ensures the robot is running image robot-hackathon-image.20260212 before proceeding.
 - Stops and removes the deprecated edgehub service and its associated files.
@@ -127,7 +127,7 @@ After the Playbook has run, reboot the robot.
 
 #### Microshift Reset
 
-The Playbook `[automation/microshift-reset.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/microshift-reset.yaml)` performs a destructive reset and fresh configuration of MicroShift on the robot. Run it now and whenever the IP or hostname changes:
+The Playbook [automation/microshift-reset.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/microshift-reset.yaml) performs a destructive reset and fresh configuration of MicroShift on the robot. Run it now and whenever the IP or hostname changes:
 
 - Calculates current disk usage and aborts the process if it exceeds a predefined disk_limit.
 - Stops the microshift.service and deletes all existing data in /var/lib/microshift.
@@ -145,7 +145,7 @@ robot-hackathon/infrastructure/automation$ ansible-navigator run microshift-rese
 
 #### Optional: Install Self-Register Service
 
-Clone the GitHub repo `[robot-config-service](https://github.com/cloud-native-robotz-hackathon/robot-config-service.git)`
+Clone the GitHub repo [robot-config-service](https://github.com/cloud-native-robotz-hackathon/robot-config-service.git).
 
 ```
 git clone https://github.com/cloud-native-robotz-hackathon/robot-config-service.git
