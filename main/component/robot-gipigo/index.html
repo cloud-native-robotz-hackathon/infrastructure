@@ -581,21 +581,45 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Finish configuration">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#camera-setup-raspi-camera-v2" class="md-nav__link">
+  <a href="#robot-base-config" class="md-nav__link">
     <span class="md-ellipsis">
-      Camera Setup (Raspi camera v2)
+      Robot Base Config
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#microshift" class="md-nav__link">
+  <a href="#microshift-reset" class="md-nav__link">
     <span class="md-ellipsis">
-      Microshift
+      Microshift Reset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-install-self-register-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional: Install Self-Register Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#camera-setup-raspi-camera-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Camera Setup (Raspi camera v2)
     </span>
   </a>
   
@@ -977,21 +1001,45 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Finish configuration">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#camera-setup-raspi-camera-v2" class="md-nav__link">
+  <a href="#robot-base-config" class="md-nav__link">
     <span class="md-ellipsis">
-      Camera Setup (Raspi camera v2)
+      Robot Base Config
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#microshift" class="md-nav__link">
+  <a href="#microshift-reset" class="md-nav__link">
     <span class="md-ellipsis">
-      Microshift
+      Microshift Reset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-install-self-register-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional: Install Self-Register Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#camera-setup-raspi-camera-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Camera Setup (Raspi camera v2)
     </span>
   </a>
   
@@ -1089,12 +1137,12 @@
 <li>Download image Ubuntu 22.04, Microshift 4.8 : <a href="https://drive.google.com/file/d/139K2DgZnrxKIiAU-ErjdPXQHGoGOXubV">https://drive.google.com/file/d/139K2DgZnrxKIiAU-ErjdPXQHGoGOXubV</a></li>
 <li>Write to SD Card, will be resized to SD Card size at first boot
     <div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>gunzip<span class="w"> </span>robot-hackathon-image.20240726.img.gz
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>robot-hackathon-image.20240726.img<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/sdXXX<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>gunzip<span class="w"> </span>robot-hackathon-image.20260212.img.gz
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>robot-hackathon-image.20260212.img<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/sdXXX<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
 </span></code></pre></div></td></tr></tbody></table></div></li>
 <li>The image will be resized to SD card size on first boot  </li>
 <li>The image is preconfigured with:</li>
-<li>Automatic connection to the hackathon WIFI "robot-hackathon-78b09"</li>
+<li>Automatic connection to the hackathon WIFI "robot-hackathon-78b09", password in Bitwarden collection.</li>
 <li>Robot hackathon SSH key (Bitwarden Collection)</li>
 <li>Adjust inventory <code>automation/inventory.yaml</code>, add the robot to <code>robots</code>, for example:
   <div class="language-yaml highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
@@ -1118,9 +1166,10 @@
 </ul>
 <h3 id="network-setup">Network Setup<a class="headerlink" href="#network-setup" title="Permanent link">¶</a></h3>
 <ul>
-<li>If you want to configure another WIFI, attach a network cable and SSH into the robot (root / <pw> from Bitwarden collection) </pw></li>
+<li>The robot will automatically connect to a WIFI with the SSID and key/password listed above.</li>
+<li>If you want to configure another WIFI, attach a network cable and SSH into the robot (root / <pw> from Bitwarden collection) or mount the SD card.</pw></li>
 <li>
-<p>For WLAN edit /etc/netplan/50-cloud-init.yaml and add your WLAN access point, reboot or run <code>netplan apply</code>. Config example:</p>
+<p>Edit /etc/netplan/50-cloud-init.yaml and add your WIFI access point, reboot or run <code>netplan apply</code>. Config example:</p>
 <div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
@@ -1152,34 +1201,65 @@
 </li>
 </ul>
 <h3 id="finish-configuration">Finish configuration<a class="headerlink" href="#finish-configuration" title="Permanent link">¶</a></h3>
-<p>To finish the configuration, run the Playbook <code>[automation/configure-robot.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/configure-robot.yaml)</code> against the robot.</p>
+<p>To finish the configuration, you have to run a number of Playbooks against the robot(s).</p>
+<p>Clone the GitHub repo <code>[infrastructure](https://github.com/cloud-native-robotz-hackathon/infrastructure.git)</code></p>
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>git clone https://github.com/cloud-native-robotz-hackathon/infrastructure.git
+</span></code></pre></div></td></tr></tbody></table></div>
 <p>Example inventory:</p>
-<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-4-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>---
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>all:
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a>  vars:
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a>    ansible_user: root
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a>    ansible_ssh_private_key_file: ~/.ssh/robot-hackathon
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a>robots:
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a>  hosts:
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a>    abcwarrior.lan:
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a>      team: team-1
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>---
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>all:
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>  vars:
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>    ansible_user: root
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>    ansible_ssh_private_key_file: ~/.ssh/robot-hackathon
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a>robots:
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a>  hosts:
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a>    abcwarrior:
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a>      team: team-1
 </span></code></pre></div></td></tr></tbody></table></div>
-<p>Run Ansible:</p>
-<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>robot-hackathon/infrastructure/automation$ ansible-navigator run configure-robot.yaml -i myinventory.yaml 
+<p>The robot name has to resolve of course. If not, use the IP address.</p>
+<h4 id="robot-base-config">Robot Base Config<a class="headerlink" href="#robot-base-config" title="Permanent link">¶</a></h4>
+<p>The Playbook <code>[automation/configure-robot.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/configure-robot.yaml)</code>:</p>
+<ul>
+<li>Ensures the robot is running image robot-hackathon-image.20260212 before proceeding.</li>
+<li>Stops and removes the deprecated edgehub service and its associated files.</li>
+<li>Clones and installs edge-controller in a specified version from GitHub to /opt/edge-controller.</li>
+<li>Configures, enables, and restarts the edge-controller systemd unit and makes sure it runs.</li>
+<li>Updates /etc/issue (login banner), /etc/hosts, and sets the system hostname to match the inventory.</li>
+</ul>
+<p>Run it:</p>
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>robot-hackathon/infrastructure/automation$ ansible-navigator run configure-robot.yaml -i myinventory.yaml 
 </span></code></pre></div></td></tr></tbody></table></div>
-<p>And again to reset Microshift</p>
-<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>robot-hackathon/infrastructure/automation$ ansible-navigator run microshift-reset.yaml -i myinventory.yaml 
+<p>After the Playbook has run, reboot the robot.</p>
+<h4 id="microshift-reset">Microshift Reset<a class="headerlink" href="#microshift-reset" title="Permanent link">¶</a></h4>
+<p>The Playbook <code>[automation/microshift-reset.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/microshift-reset.yaml)</code> performs a destructive reset and fresh configuration of MicroShift on the robot. Run it now and whenever the IP or hostname changes:</p>
+<ul>
+<li>Calculates current disk usage and aborts the process if it exceeds a predefined disk_limit.</li>
+<li>Stops the microshift.service and deletes all existing data in /var/lib/microshift.</li>
+<li>Updates /etc/hosts with the robot's local IP and sets the cluster domain in the MicroShift config.</li>
+<li>Prepares a kustomization.yaml and a specific Pod manifest (pin-triton.yaml) to pin a Triton server image in the local registry.</li>
+<li>Restarts MicroShift and waits for the system to generate a new kubeconfig file.</li>
+<li>Prepares the kubeconfig</li>
+<li>Waits for the API to respond on port 6443 and provides the exact command needed to export the KUBECONFIG environment variable.</li>
+</ul>
+<p>Run it:</p>
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>robot-hackathon/infrastructure/automation$ ansible-navigator run microshift-reset.yaml -i myinventory.yaml 
 </span></code></pre></div></td></tr></tbody></table></div>
+<h4 id="optional-install-self-register-service">Optional: Install Self-Register Service<a class="headerlink" href="#optional-install-self-register-service" title="Permanent link">¶</a></h4>
+<p>Clone the GitHub repo <code>[robot-config-service](https://github.com/cloud-native-robotz-hackathon/robot-config-service.git)</code></p>
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>git clone https://github.com/cloud-native-robotz-hackathon/robot-config-service.git
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>Follow the instructions in the readme to install the service to the robot(s) using Ansible.</p>
+<p>After the Playbook has run, reboot the robot to activate the self-registration.</p>
 <h3 id="camera-setup-raspi-camera-v2">Camera Setup (Raspi camera v2)<a class="headerlink" href="#camera-setup-raspi-camera-v2" title="Permanent link">¶</a></h3>
 <p>Playbook camera-test.yaml is here <a href="https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot">https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot</a></p>
 <ul>
@@ -1187,41 +1267,34 @@
 <li>Test camera is detected: vcgencmd get_camera</li>
 <li>Script to test image acquisition</li>
 </ul>
-<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-7-10">10</a></span>
-<span class="normal"><a href="#__codelineno-7-11">11</a></span>
-<span class="normal"><a href="#__codelineno-7-12">12</a></span>
-<span class="normal"><a href="#__codelineno-7-13">13</a></span>
-<span class="normal"><a href="#__codelineno-7-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>  import cv2
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>  # open camera
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>  cap = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a>  # set dimensions
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a>  cap.set(cv2.CAP_PROP_FRAME_WIDTH, 2560)
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a>  cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1440)
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a>  # take frame
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a>  ret, frame = cap.read()
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a>  # write frame to file
-</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a>  cv2.imwrite('/root/ramfilesystem/image.jpg', frame)
-</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a>  # release camera
-</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a>  cap.release()
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>  import cv2
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>  # open camera
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a>  cap = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a>  # set dimensions
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a>  cap.set(cv2.CAP_PROP_FRAME_WIDTH, 2560)
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a>  cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1440)
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a>  # take frame
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a>  ret, frame = cap.read()
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a>  # write frame to file
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a>  cv2.imwrite('/root/ramfilesystem/image.jpg', frame)
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a>  # release camera
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a>  cap.release()
 </span></code></pre></div></td></tr></tbody></table></div>
-<h3 id="microshift">Microshift<a class="headerlink" href="#microshift" title="Permanent link">¶</a></h3>
-<p>Playbook microshift-reset.yaml is here <a href="https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot">https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot</a></p>
-<ul>
-<li>To reset Microshift: systemctl stop microshift.service; rm -rf /var/lib/microshift; systemctl start microshift.service</li>
-<li>To use oc locally: export KUBECONFIG=/var/lib/microshift/resources/kubeadmin/kubeconfig</li>
-<li>Or cat /var/lib/microshift/resources/kubeadmin/kubeconfig &gt; ~/.kube/config</li>
-</ul>
 <h3 id="triton">Triton<a class="headerlink" href="#triton" title="Permanent link">¶</a></h3>
 <p><a href="https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html">https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html</a></p>
 <p>Check model
@@ -1285,7 +1358,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="December 9, 2025 16:50:29 UTC"><span class="timeago" datetime="2025-12-09T16:50:29+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="December 9, 2025 16:50:29 UTC">2025-12-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="February 13, 2026 17:02:48 UTC"><span class="timeago" datetime="2026-02-13T17:02:48+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="February 13, 2026 17:02:48 UTC">2026-02-13</span>
   </span>
 
     
