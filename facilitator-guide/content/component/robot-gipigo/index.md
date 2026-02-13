@@ -33,12 +33,12 @@ This should only be neccessary with a new robot or when repairing/updating/repla
 * Download image Ubuntu 22.04, Microshift 4.8 : <https://drive.google.com/file/d/139K2DgZnrxKIiAU-ErjdPXQHGoGOXubV>
 * Write to SD Card, will be resized to SD Card size at first boot
     ```shell
-    gunzip robot-hackathon-image.20240726.img.gz
-    sudo dd if=robot-hackathon-image.20240726.img of=/dev/sdXXX status=progress
+    gunzip robot-hackathon-image.20260212.img.gz
+    sudo dd if=robot-hackathon-image.20260212.img of=/dev/sdXXX status=progress
     ```
 * The image will be resized to SD card size on first boot  
 * The image is preconfigured with:
-  * Automatic connection to the hackathon WIFI "robot-hackathon-78b09"
+  * Automatic connection to the hackathon WIFI "robot-hackathon-78b09", password in Bitwarden collection.
   * Robot hackathon SSH key (Bitwarden Collection)
 * Adjust inventory `automation/inventory.yaml`, add the robot to `robots`, for example:
   ```yaml
@@ -59,8 +59,9 @@ This should only be neccessary with a new robot or when repairing/updating/repla
 
 ### Network Setup
 
-* If you want to configure another WIFI, attach a network cable and SSH into the robot (root / <PW> from Bitwarden collection) 
-* For WLAN edit /etc/netplan/50-cloud-init.yaml and add your WLAN access point, reboot or run `netplan apply`. Config example:
+* The robot will automatically connect to a WIFI with the SSID and key/password listed above.
+* If you want to configure another WIFI, attach a network cable and SSH into the robot (root / <PW> from Bitwarden collection) or mount the SD card.
+* Edit /etc/netplan/50-cloud-init.yaml and add your WIFI access point, reboot or run `netplan apply`. Config example:
 
     ```
     network:
@@ -81,7 +82,13 @@ This should only be neccessary with a new robot or when repairing/updating/repla
 
 ### Finish configuration
 
-To finish the configuration, run the Playbook `[automation/configure-robot.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/configure-robot.yaml)` against the robot.
+To finish the configuration, you have to run a number of Playbooks against the robot(s).
+
+Clone the GitHub repo `[infrastructure](https://github.com/cloud-native-robotz-hackathon/infrastructure.git)`
+
+```
+git clone https://github.com/cloud-native-robotz-hackathon/infrastructure.git
+```
 
 Example inventory:
 
@@ -94,21 +101,59 @@ all:
 
 robots:
   hosts:
-    abcwarrior.lan:
+    abcwarrior:
       team: team-1
 ```
 
-Run Ansible:
+The robot name has to resolve of course. If not, use the IP address.
+
+#### Robot Base Config
+
+The Playbook `[automation/configure-robot.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/configure-robot.yaml)`:
+
+-  Ensures the robot is running image robot-hackathon-image.20260212 before proceeding.
+- Stops and removes the deprecated edgehub service and its associated files.
+- Clones and installs edge-controller in a specified version from GitHub to /opt/edge-controller.
+- Configures, enables, and restarts the edge-controller systemd unit and makes sure it runs.
+- Updates /etc/issue (login banner), /etc/hosts, and sets the system hostname to match the inventory.
+
+Run it:
 
 ```
 robot-hackathon/infrastructure/automation$ ansible-navigator run configure-robot.yaml -i myinventory.yaml 
 ```
 
-And again to reset Microshift
+After the Playbook has run, reboot the robot.
+
+#### Microshift Reset
+
+The Playbook `[automation/microshift-reset.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/microshift-reset.yaml)` performs a destructive reset and fresh configuration of MicroShift on the robot. Run it now and whenever the IP or hostname changes:
+
+- Calculates current disk usage and aborts the process if it exceeds a predefined disk_limit.
+- Stops the microshift.service and deletes all existing data in /var/lib/microshift.
+- Updates /etc/hosts with the robot's local IP and sets the cluster domain in the MicroShift config.
+- Prepares a kustomization.yaml and a specific Pod manifest (pin-triton.yaml) to pin a Triton server image in the local registry.
+- Restarts MicroShift and waits for the system to generate a new kubeconfig file.
+- Prepares the kubeconfig
+- Waits for the API to respond on port 6443 and provides the exact command needed to export the KUBECONFIG environment variable.
+
+Run it:
 
 ```
 robot-hackathon/infrastructure/automation$ ansible-navigator run microshift-reset.yaml -i myinventory.yaml 
 ```
+
+#### Optional: Install Self-Register Service
+
+Clone the GitHub repo `[robot-config-service](https://github.com/cloud-native-robotz-hackathon/robot-config-service.git)`
+
+```
+git clone https://github.com/cloud-native-robotz-hackathon/robot-config-service.git
+```
+
+Follow the instructions in the readme to install the service to the robot(s) using Ansible.
+
+After the Playbook has run, reboot the robot to activate the self-registration.
 
 ### Camera Setup (Raspi camera v2)
 
@@ -134,14 +179,6 @@ Playbook camera-test.yaml is here [https://github.com/cloud-native-robotz-hackat
   # release camera
   cap.release()
 ```
-
-### Microshift
-
-Playbook microshift-reset.yaml is here [https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot](https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot)
-
-* To reset Microshift: systemctl stop microshift.service; rm -rf /var/lib/microshift; systemctl start microshift.service
-* To use oc locally: export KUBECONFIG=/var/lib/microshift/resources/kubeadmin/kubeconfig
-* Or cat /var/lib/microshift/resources/kubeadmin/kubeconfig > ~/.kube/config
 
 ### Triton
 
