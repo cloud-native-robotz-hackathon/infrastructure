@@ -1236,15 +1236,27 @@
 <p>The Playbook <code>automation/configure-robot.yaml</code> does the following steps:</p>
 <ul>
 <li>Ensures the robot is running image robot-hackathon-image.20260212 before proceeding.</li>
-<li>Stops and removes the deprecated edgehub service and its associated files.</li>
 <li>Clones and installs edge-controller in a specified version from GitHub to /opt/edge-controller.</li>
+<li>Clones and installs robot-config-service in a specified version from GitHub to /opt/robot-config-service.</li>
 <li>Configures, enables, and restarts the edge-controller systemd unit and makes sure it runs.</li>
 <li>Updates /etc/issue (login banner), /etc/hosts, and sets the system hostname to match the inventory.</li>
 </ul>
 <p>Run it:</p>
 <div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
-<span class="normal"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>automation/
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>ansible-navigator<span class="w"> </span>run<span class="w"> </span>configure-robot.yaml<span class="w"> </span>-l<span class="w"> </span>&lt;ROBOT_NAME&gt;
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span>
+<span class="normal"><a href="#__codelineno-5-7">7</a></span>
+<span class="normal"><a href="#__codelineno-5-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>automation/
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"rcs_git_repo: https://github.com/cloud-native-robotz-hackathon/robot-auto-register-78b09.git"</span><span class="w"> </span>&gt;<span class="w"> </span>group_vars/all/robot-config-service.yaml
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"rcs_gh_token: github_pat_xxx"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>group_vars/all/robot-config-service.yaml
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"rcs_hubcontroller_user: hub-controller"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>group_vars/all/robot-config-service.yaml
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"rcs_hubcontroller_password: hub-controller"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>group_vars/all/robot-config-service.yaml
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a>ansible-navigator<span class="w"> </span>run<span class="w"> </span>configure-robot.yaml<span class="w"> </span>-l<span class="w"> </span>&lt;ROBOT_NAME&gt;
 </span></code></pre></div></td></tr></tbody></table></div>
 <h2 id="bill-of-materials">Bill of materials<a class="headerlink" href="#bill-of-materials" title="Permanent link">¶</a></h2>
 <table>
@@ -1422,7 +1434,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="February 17, 2026 17:17:43 UTC"><span class="timeago" datetime="2026-02-17T17:17:43+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="February 17, 2026 17:17:43 UTC">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="February 17, 2026 20:38:21 UTC"><span class="timeago" datetime="2026-02-17T20:38:21+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="February 17, 2026 20:38:21 UTC">2026-02-17</span>
   </span>
 
     
