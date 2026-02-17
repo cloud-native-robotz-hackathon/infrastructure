@@ -60,6 +60,8 @@
           wlan0: \4{wlan0}
         dest: /etc/issue
 
+    # ToDo: Check if this is needed anymore
+    #   https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/230
     - name: Rollout /etc/hosts
       ansible.builtin.lineinfile:
         path: /etc/hosts
