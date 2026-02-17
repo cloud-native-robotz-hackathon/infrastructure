@@ -104,7 +104,9 @@ nav:
       - "On-Site Prerequisites": run-a-event/on-site-prerequisites.md
   - Component:
       - component/index.md
-      - Robot GoPiGo: component/robot-gopigo/index.md
+      - Robot GoPiGo: 
+        - component/robot-gopigo/index.md
+        - Auto register: robot/auto-register.md
       - Data Center: component/data-center.md
       - Nine robot travel kit: component/nine-robot-travel-kit/index.md
       - Wifi Router: component/wifi-router.md
