@@ -38,29 +38,13 @@ This should only be neccessary with a new robot or when repairing/updating/repla
     ```
 * The image will be resized to SD card size on first boot  
 * The image is preconfigured with:
-  * Automatic connection to the hackathon WIFI "robot-hackathon-78b09", password in Bitwarden collection.
-  * Robot hackathon SSH key (Bitwarden Collection)
-* Adjust inventory `automation/inventory.yaml`, add the robot to `robots`, for example:
-  ```yaml
-  robots:
-  hosts:
-    ....
-    <NAME OF THE ROBOT>:
-      team: team-X
-      ansible_host: 192.168.8.xxx
-  ```
-* Run playbook to configure the robot
-  ```
-  ansible-navigator run ./configure-robot.yaml -l <NAME OF THE ROBOT>
-  ```
-* Login into the robot and reboot.
-* Now the boot screen should look like this:
-  ![](bootscreen.png)
+    * Automatic connection to the hackathon WIFI "robot-hackathon-78b09", password in Bitwarden collection.
+    * Robot hackathon SSH key (Bitwarden Collection)
 
 ### Network Setup
 
 * The robot will automatically connect to a WIFI with the SSID and key/password listed above.
-* If you want to configure another WIFI, attach a network cable and SSH into the robot (root / <PW> from Bitwarden collection) or mount the SD card.
+* If you want to configure another WIFI, attach a network cable and SSH into the robot (root / <PW> from Bitwarden collection) or mount the SD card and change on disk.
 * Edit /etc/netplan/50-cloud-init.yaml and add your WIFI access point, reboot or run `netplan apply`. Config example:
 
     ```
@@ -90,7 +74,7 @@ Clone the GitHub repo [infrastructure](https://github.com/cloud-native-robotz-ha
 git clone https://github.com/cloud-native-robotz-hackathon/infrastructure.git
 ```
 
-Example inventory:
+Create an inventory, example:
 
 ```
 ---
@@ -101,15 +85,15 @@ all:
 
 robots:
   hosts:
-    abcwarrior:
-      team: team-1
+    <robotname>:
+      team: team-<number>
 ```
 
 The robot name has to resolve of course. If not, use the IP address.
 
 #### Robot Base Config
 
-The Playbook [automation/configure-robot.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/configure-robot.yaml):
+The Playbook [automation/configure-robot.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/configure-robot.yaml) does the following steps:
 
 -  Ensures the robot is running image robot-hackathon-image.20260212 before proceeding.
 - Stops and removes the deprecated edgehub service and its associated files.
@@ -195,3 +179,21 @@ Check model
 |2|Raspberry Pi 4 B - 8 GB Memory Version|79|<https://www.berrybase.de/raspberry-pi-4-computer-modell-b-8gb-ram>|
 |3|Raspberry Pi Camera Modules v2|17|<https://www.berrybase.de/raspberry-pi-camera-module-8mp-v2>|
 |4|3D Printed Camera Mounts Custom, you have to print it.|30|<https://github.com/cloud-native-robotz-hackathon/3dprint-parts>|
+
+
+* Adjust inventory `automation/inventory.yaml`, add the robot to `robots`, for example:
+  ```yaml
+  robots:
+  hosts:
+    ....
+    <NAME OF THE ROBOT>:
+      team: team-X
+      ansible_host: 192.168.8.xxx
+  ```
+* Run playbook to configure the robot
+  ```
+  ansible-navigator run ./configure-robot.yaml -l <NAME OF THE ROBOT>
+  ```
+* Login into the robot and reboot.
+* Now the boot screen should look like this:
+  ![](bootscreen.png)
