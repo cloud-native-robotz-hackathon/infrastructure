@@ -107,7 +107,7 @@ nav:
       - Robot GiPiGo: component/robot-gipigo/index.md
       - Data Center: component/data-center.md
       - Nine robot travel kit: component/nine-robot-travel-kit/index.md
-
+      - Wifi Router: component/wifi-router.md
       - Robot Wave Rover: component/robot-waverover/index.md
   - Troubleshooting: troubleshooting/index.md
   - Development: 
