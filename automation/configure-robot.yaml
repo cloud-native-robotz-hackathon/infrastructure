@@ -24,22 +24,6 @@
       # image version robot-hackathon-image.20260212
       when: robot_image_version['content'] != "cm9ib3QtaGFja2F0aG9uLWltYWdlLjIwMjYwMjEyCg=="
 
-    - name: Stop and remove edgehub.service systemd unit
-      ignore_errors: true
-      ansible.builtin.systemd:
-        name: edgehub.service
-        force: true
-        state: stopped
-
-    # Remove old edge-controller aka edgehub
-    - name: Remove old edge-controller aka edgehub
-      ansible.builtin.file:
-        path: "{{ item }}"
-        state: absent
-      with_items:
-        - /lib/systemd/system/edgehub.service
-        - /usr/local/bin/edgehub.py
-
     - name: Check version
       ansible.builtin.uri:
         url: "http://{{ansible_host}}:5000/version"
