@@ -20,3 +20,17 @@ icon: fontawesome/solid/person-walking-luggage
 ## Pictures
 
 ![](pelicase-a.JPG){ width="150" }
+
+## List of robots
+
+|Team|Robot name|
+|---|---|
+|1|gort|
+|2|t-1000|
+|3|marvin|
+|4|c3po|
+|5|r2d2|
+|6|marc13|
+|7|data|
+|8|terminator|
+|9|ultron|
