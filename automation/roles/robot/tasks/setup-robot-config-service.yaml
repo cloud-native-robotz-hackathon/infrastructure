@@ -4,4 +4,44 @@
     repo: https://github.com/cloud-native-robotz-hackathon/robot-config-service.git
     dest: /opt/robot-config-service
     version: "{{ robot_config_service_version  }}"
-  register: robot_config_service_git_result
+  register: git_result
+
+- name: Rollout environment file
+  ansible.builtin.copy:
+    content: |
+      RCS_GIT_REPO={{ rcs_git_repo }}
+      RCS_GH_TOKEN={{ rcs_gh_token }}
+
+      RCS_HUBCONTROLLER_USER={{ rcs_hubcontroller_user }}
+      RCS_HUBCONTROLLER_PASSWORD={{ rcs_hubcontroller_password }}
+  
+      # # Environment variables (can be overridden in /etc/systemd/system/robot-config-service.service.d/override.conf)
+      # # REDIRECT_URL is a fixed URL that redirects to the current OpenShift event cluster
+      # Environment="REDIRECT_URL=https://your-redirect-service.example.com/redirect"
+      # Environment="ANSIBLE_PLAYBOOK_PATH=/opt/robot-config-service/ansible/configure-skupper.yml"
+      # Environment="LOG_LEVEL=INFO"
+      # # Basic authentication for API endpoints (must be set in override.conf for security)
+      # # Environment="API_USERNAME=your_username"
+      # # Environment="API_PASSWORD=your_password"
+    dest: /etc/default/robot-config-service
+    mode: '0644'
+
+- name: Install systemd.service
+  ansible.builtin.copy:
+    remote_src: true
+    src: /opt/robot-config-service/robot-config-service.service
+    dest: /etc/systemd/system/robot-config-service.service
+    mode: '0644'
+
+- name: Enable edge-controller service
+  ansible.builtin.systemd:
+    name: robot-config-service.service
+    enabled: true
+    daemon_reload: true
+
+- name: Restart edge-controller
+  ansible.builtin.systemd:
+    name: robot-config-service.service
+    state: restarted
+    daemon_reload: true
+  when: git_result.changed
