@@ -1,9 +1,9 @@
 #!/bin/bash
 
-IMAGE=docs-local
+IMAGE=quay.io/cloud-native-robotz-hackathon/facilitator-guide-builder:202602141820
 
-echo "Building documentation container..."
-podman build -t $IMAGE .
+# echo "Building documentation container..."
+# podman build -t $IMAGE .
 
 echo "Starting documentation server with live reload on http://localhost:8080"
 echo "Press Ctrl+C to stop the server"
