@@ -59,3 +59,4 @@ package*
 node_modules
 .firebaserc
 .firebase
+automation/group_vars/all/robot-config-service.yaml

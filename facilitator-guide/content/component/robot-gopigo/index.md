@@ -89,9 +89,9 @@ cd infrastructure/
 
 The Playbook `automation/configure-robot.yaml` does the following steps:
 
--  Ensures the robot is running image robot-hackathon-image.20260212 before proceeding.
-- Stops and removes the deprecated edgehub service and its associated files.
+- Ensures the robot is running image robot-hackathon-image.20260212 before proceeding.
 - Clones and installs edge-controller in a specified version from GitHub to /opt/edge-controller.
+- Clones and installs robot-config-service in a specified version from GitHub to /opt/robot-config-service.
 - Configures, enables, and restarts the edge-controller systemd unit and makes sure it runs.
 - Updates /etc/issue (login banner), /etc/hosts, and sets the system hostname to match the inventory.
 
@@ -99,6 +99,12 @@ Run it:
 
 ```shell
 cd automation/
+
+echo "rcs_git_repo: https://github.com/cloud-native-robotz-hackathon/robot-auto-register-78b09.git" > group_vars/all/robot-config-service.yaml
+echo "rcs_gh_token: github_pat_xxx" >> group_vars/all/robot-config-service.yaml
+echo "rcs_hubcontroller_user: hub-controller" >> group_vars/all/robot-config-service.yaml
+echo "rcs_hubcontroller_password: hub-controller" >> group_vars/all/robot-config-service.yaml
+
 ansible-navigator run configure-robot.yaml -l <ROBOT_NAME>
 ```
 
