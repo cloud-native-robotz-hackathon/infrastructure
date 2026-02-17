@@ -108,109 +108,22 @@ echo "rcs_hubcontroller_password: hub-controller" >> group_vars/all/robot-config
 ansible-navigator run configure-robot.yaml -l <ROBOT_NAME>
 ```
 
-## Bill of materials
-
-|#|Item|price in Euro|Example Shop|
-|---|---|---|---|
-|1|GoPiGo Kits|178|<https://gopigo.io/gopigo/>|
-|2|Raspberry Pi 4 B - 8 GB Memory Version|79|<https://www.berrybase.de/raspberry-pi-4-computer-modell-b-8gb-ram>|
-|3|Raspberry Pi Camera Modules v2|17|<https://www.berrybase.de/raspberry-pi-camera-module-8mp-v2>|
-|4|3D Printed Camera Mounts Custom, you have to print it.|30|<https://github.com/cloud-native-robotz-hackathon/3dprint-parts>|
-
-
-
-
-
-#### Optional: Install Self-Register Service
-
-Clone the GitHub repo [robot-config-service](https://github.com/cloud-native-robotz-hackathon/robot-config-service.git).
-
-```
-git clone https://github.com/cloud-native-robotz-hackathon/robot-config-service.git
-```
-
-Follow the instructions in the readme to install the service to the robot(s) using Ansible.
-
-After the Playbook has run, reboot the robot to activate the self-registration.
-
+## Advanced rarely used topics
 
 ### Camera Setup (Raspi camera v2)
 
-Playbook camera-test.yaml is here [https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot](https://github.com/cloud-native-robotz-hackathon/infrastructure/tree/main/robot)
+Playbook camera-test.yaml is here `camera-test.yaml` to fetch camera image:
 
-* Cable orientation: blue “bar” on cable oriented to USB ports, blue bar at camera away from lens
-* Test camera is detected: vcgencmd get_camera
-* Script to test image acquisition
-
-```
-  import cv2
-  # open camera
-  cap = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)
-
-  # set dimensions
-  cap.set(cv2.CAP_PROP_FRAME_WIDTH, 2560)
-  cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1440)
-
-  # take frame
-  ret, frame = cap.read()
-  # write frame to file
-  cv2.imwrite('/root/ramfilesystem/image.jpg', frame)
-  # release camera
-  cap.release()
+```shell
+cd automation/
+ansible-navigator run ./camera-test.yaml -l gort
 ```
 
-### Triton
+Open all `camera-test*jpg` files.
 
-[https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting\_started/quickstart.html](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html)
+Cable orientation: blue “bar” on cable oriented to USB ports, blue bar at camera away from lens
 
-Check model
-`curl --location --request GET 'http://localhost:8000/v2/models/densenet_onnx/stats'`
-
-
-
-### BACKUP
-
-
-
-### Microshift Reset
-
-The Playbook [automation/microshift-reset.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/microshift-reset.yaml) performs a destructive reset and fresh configuration of MicroShift on the robot. Run it now and whenever the IP or hostname changes:
-
-- Calculates current disk usage and aborts the process if it exceeds a predefined disk_limit.
-- Stops the microshift.service and deletes all existing data in /var/lib/microshift.
-- Updates /etc/hosts with the robot's local IP and sets the cluster domain in the MicroShift config.
-- Prepares a kustomization.yaml and a specific Pod manifest (pin-triton.yaml) to pin a Triton server image in the local registry.
-- Restarts MicroShift and waits for the system to generate a new kubeconfig file.
-- Prepares the kubeconfig
-- Waits for the API to respond on port 6443 and provides the exact command needed to export the KUBECONFIG environment variable.
-
-Run it:
-
-```
-robot-hackathon/infrastructure/automation$ ansible-navigator run microshift-reset.yaml -i myinventory.yaml 
-```
-
-
-* Adjust inventory `automation/inventory.yaml`, add the robot to `robots`, for example:
-  ```yaml
-  robots:
-  hosts:
-    ....
-    <NAME OF THE ROBOT>:
-      team: team-X
-      ansible_host: 192.168.8.xxx
-  ```
-* Run playbook to configure the robot
-  ```
-  ansible-navigator run ./configure-robot.yaml -l <NAME OF THE ROBOT>
-  ```
-* Login into the robot and reboot.
-* Now the boot screen should look like this:
-  ![](bootscreen.png)
-
-
-
-### Network Setup
+### Custom network configurartion
 
 * The robot will automatically connect to a WIFI with the SSID and key/password listed above.
 * If you want to configure another WIFI, attach a network cable and SSH into the robot (root / <PW> from Bitwarden collection) or mount the SD card and change on disk.
@@ -232,3 +145,7 @@ robot-hackathon/infrastructure/automation$ ansible-navigator run microshift-rese
                 password: "<PASSWORD>"
             dhcp4: true
     ```
+* Reboot the robot
+
+* Now the boot screen should look like this, and show the new IP address
+  ![](bootscreen.png)
