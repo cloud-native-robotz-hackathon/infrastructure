@@ -64,15 +64,11 @@
       ansible.builtin.include_role:
         name: robot
         tasks_from: setup-edge-controller.yaml
-      vars:
-        edge_controller_version: "{{ edge_controller_version }}"
 
     - name: Setup robot-config-service
       ansible.builtin.include_role:
         name: robot
         tasks_from: setup-robot-config-service.yaml
-      vars:
-        robot_config_service_version: "{{ robot_config_service_version }}"
 
     - name: reboot
       ansible.builtin.reboot:
