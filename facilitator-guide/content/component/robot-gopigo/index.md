@@ -1,6 +1,6 @@
 ---
-title: Robot - GiPiGo
-hero: "Robot - GiPiGo"
+title: Robot - GoPiGo
+hero: "Robot - GoPiGo"
 icon: material/robot
 ---
 
