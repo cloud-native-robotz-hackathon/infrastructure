@@ -1,0 +1,7 @@
+---
+- name: Rollout new version of robot-config-service "{{ robot_config_service_version  }}"
+  ansible.builtin.git:
+    repo: https://github.com/cloud-native-robotz-hackathon/robot-config-service.git
+    dest: /opt/robot-config-service
+    version: "{{ robot_config_service_version  }}"
+  register: robot_config_service_git_result

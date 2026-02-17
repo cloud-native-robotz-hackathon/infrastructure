@@ -1,0 +1,28 @@
+---
+- name: Rollout new version of edge-controller "{{ edge_controller_version  }}"
+  ansible.builtin.git:
+    repo: https://github.com/cloud-native-robotz-hackathon/edge-controller
+    dest: /opt/edge-controller
+    version: "{{ edge_controller_version  }}"
+  register: git_result
+
+- name: Install systemd.service
+  ansible.builtin.copy:
+    remote_src: true
+    src: /opt/edge-controller/edge-controller.service
+    dest: /etc/systemd/system/edge-controller.service
+    mode: '0644'
+
+- name: Enable edge-controller service
+  ansible.builtin.systemd:
+    name: edge-controller.service
+    enabled: true
+    daemon_reload: true
+
+- name: Restart edge-controller
+  ansible.builtin.systemd:
+    name: edge-controller.service
+    state: restarted
+    daemon_reload: true
+  when: git_result.changed
+
