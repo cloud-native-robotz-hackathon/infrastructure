@@ -28,7 +28,7 @@ It is roughly 350 Euro per robot + 200 Euro the optional WiFi router.
 
 This should only be neccessary with a new robot or when repairing/updating/replacing a robot.
 
-### Install image and prepare robot
+### Step 1) Install image
 
 * Download image Ubuntu 22.04, Microshift 4.8 : <https://drive.google.com/file/d/139K2DgZnrxKIiAU-ErjdPXQHGoGOXubV>
 * Write to SD Card, will be resized to SD Card size at first boot
@@ -41,59 +41,53 @@ This should only be neccessary with a new robot or when repairing/updating/repla
     * Automatic connection to the hackathon WIFI "robot-hackathon-78b09", password in Bitwarden collection.
     * Robot hackathon SSH key (Bitwarden Collection)
 
-### Network Setup
+### Step 2) Network & Hostname configuration
 
-* The robot will automatically connect to a WIFI with the SSID and key/password listed above.
-* If you want to configure another WIFI, attach a network cable and SSH into the robot (root / <PW> from Bitwarden collection) or mount the SD card and change on disk.
-* Edit /etc/netplan/50-cloud-init.yaml and add your WIFI access point, reboot or run `netplan apply`. Config example:
+* Boot robot with brand new image
+* Go to Wifi router Admin page: <https://192.168.8.1> (Admin password is stored in Bitwarden, collection `Robot hackathon` item `Wifi router admin access`)
+    * Navigate to "CLIENTS", findout new "Unknown" IP address:
 
-    ```
-    network:
-        ethernets:
-            eth0:
-                dhcp4: true
-                optional: true
-        version: 2
-        Wifis:
-            wlan0:
-            access-points: 
-            "robot-hackathon-78b09":
-                password: "PASSWORD"
-            "otherssid":
-                password: "<PASSWORD>"
-            dhcp4: true
+        ![](wifi-router-unknown.png){width=1024}
+
+* Verify that IP address match the robot in front of you. via folloing curl command to move robot forward:
+    ```shell
+    curl -X POST http://192.168.8.<REPLACE IP>:5000/forward/5 
     ```
 
-### Finish configuration
+    Robot should move forward.
+
+* Connect to the robot to configure the hostname:
+
+    ```shell
+    ssh -i ~/.ssh/robot-hackathon -l root 192.168.8.<REPLACE IP>
+    ```
+
+    Change hostname and reboot via:
+
+    Pick robot name aka hostname from the [nine robot travel kit](../nine-robot-travel-kit/#list-of-robots)
+
+    ```shell
+    hostnamectl set-hostname <REPLACE_ROBOT_NAME>
+    reboot
+    ```
+
+* Now the robot should appear with the right hostname aka robot name
+
+    ![](wifi-router-known.png){width=1024}
+
+
+### Step 3) Finish configuration via ansible
 
 To finish the configuration, you have to run a number of Playbooks against the robot(s).
 
 Clone the GitHub repo [infrastructure](https://github.com/cloud-native-robotz-hackathon/infrastructure.git).
 
-```
+```shell
 git clone https://github.com/cloud-native-robotz-hackathon/infrastructure.git
+cd infrastructure/
 ```
 
-Create an inventory, example:
-
-```
----
-all:
-  vars:
-    ansible_user: root
-    ansible_ssh_private_key_file: ~/.ssh/robot-hackathon
-
-robots:
-  hosts:
-    <robotname>:
-      team: team-<number>
-```
-
-The robot name has to resolve of course. If not, use the IP address.
-
-#### Robot Base Config
-
-The Playbook [automation/configure-robot.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/configure-robot.yaml) does the following steps:
+The Playbook `automation/configure-robot.yaml` does the following steps:
 
 -  Ensures the robot is running image robot-hackathon-image.20260212 before proceeding.
 - Stops and removes the deprecated edgehub service and its associated files.
@@ -103,29 +97,23 @@ The Playbook [automation/configure-robot.yaml](https://github.com/cloud-native-r
 
 Run it:
 
+```shell
+cd automation/
+ansible-navigator run configure-robot.yaml -l <ROBOT_NAME>
 ```
-robot-hackathon/infrastructure/automation$ ansible-navigator run configure-robot.yaml -i myinventory.yaml 
-```
 
-After the Playbook has run, reboot the robot.
+## Bill of materials
 
-#### Microshift Reset
+|#|Item|price in Euro|Example Shop|
+|---|---|---|---|
+|1|GoPiGo Kits|178|<https://gopigo.io/gopigo/>|
+|2|Raspberry Pi 4 B - 8 GB Memory Version|79|<https://www.berrybase.de/raspberry-pi-4-computer-modell-b-8gb-ram>|
+|3|Raspberry Pi Camera Modules v2|17|<https://www.berrybase.de/raspberry-pi-camera-module-8mp-v2>|
+|4|3D Printed Camera Mounts Custom, you have to print it.|30|<https://github.com/cloud-native-robotz-hackathon/3dprint-parts>|
 
-The Playbook [automation/microshift-reset.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/microshift-reset.yaml) performs a destructive reset and fresh configuration of MicroShift on the robot. Run it now and whenever the IP or hostname changes:
 
-- Calculates current disk usage and aborts the process if it exceeds a predefined disk_limit.
-- Stops the microshift.service and deletes all existing data in /var/lib/microshift.
-- Updates /etc/hosts with the robot's local IP and sets the cluster domain in the MicroShift config.
-- Prepares a kustomization.yaml and a specific Pod manifest (pin-triton.yaml) to pin a Triton server image in the local registry.
-- Restarts MicroShift and waits for the system to generate a new kubeconfig file.
-- Prepares the kubeconfig
-- Waits for the API to respond on port 6443 and provides the exact command needed to export the KUBECONFIG environment variable.
 
-Run it:
 
-```
-robot-hackathon/infrastructure/automation$ ansible-navigator run microshift-reset.yaml -i myinventory.yaml 
-```
 
 #### Optional: Install Self-Register Service
 
@@ -138,6 +126,7 @@ git clone https://github.com/cloud-native-robotz-hackathon/robot-config-service.
 Follow the instructions in the readme to install the service to the robot(s) using Ansible.
 
 After the Playbook has run, reboot the robot to activate the self-registration.
+
 
 ### Camera Setup (Raspi camera v2)
 
@@ -171,14 +160,29 @@ Playbook camera-test.yaml is here [https://github.com/cloud-native-robotz-hackat
 Check model
 `curl --location --request GET 'http://localhost:8000/v2/models/densenet_onnx/stats'`
 
-## Bill of materials
 
-|#|Item|price in Euro|Example Shop|
-|---|---|---|---|
-|1|GoPiGo Kits|178|<https://gopigo.io/gopigo/>|
-|2|Raspberry Pi 4 B - 8 GB Memory Version|79|<https://www.berrybase.de/raspberry-pi-4-computer-modell-b-8gb-ram>|
-|3|Raspberry Pi Camera Modules v2|17|<https://www.berrybase.de/raspberry-pi-camera-module-8mp-v2>|
-|4|3D Printed Camera Mounts Custom, you have to print it.|30|<https://github.com/cloud-native-robotz-hackathon/3dprint-parts>|
+
+### BACKUP
+
+
+
+### Microshift Reset
+
+The Playbook [automation/microshift-reset.yaml](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/microshift-reset.yaml) performs a destructive reset and fresh configuration of MicroShift on the robot. Run it now and whenever the IP or hostname changes:
+
+- Calculates current disk usage and aborts the process if it exceeds a predefined disk_limit.
+- Stops the microshift.service and deletes all existing data in /var/lib/microshift.
+- Updates /etc/hosts with the robot's local IP and sets the cluster domain in the MicroShift config.
+- Prepares a kustomization.yaml and a specific Pod manifest (pin-triton.yaml) to pin a Triton server image in the local registry.
+- Restarts MicroShift and waits for the system to generate a new kubeconfig file.
+- Prepares the kubeconfig
+- Waits for the API to respond on port 6443 and provides the exact command needed to export the KUBECONFIG environment variable.
+
+Run it:
+
+```
+robot-hackathon/infrastructure/automation$ ansible-navigator run microshift-reset.yaml -i myinventory.yaml 
+```
 
 
 * Adjust inventory `automation/inventory.yaml`, add the robot to `robots`, for example:
@@ -197,3 +201,28 @@ Check model
 * Login into the robot and reboot.
 * Now the boot screen should look like this:
   ![](bootscreen.png)
+
+
+
+### Network Setup
+
+* The robot will automatically connect to a WIFI with the SSID and key/password listed above.
+* If you want to configure another WIFI, attach a network cable and SSH into the robot (root / <PW> from Bitwarden collection) or mount the SD card and change on disk.
+* Edit /etc/netplan/50-cloud-init.yaml and add your WIFI access point, reboot or run `netplan apply`. Config example:
+
+    ```
+    network:
+        ethernets:
+            eth0:
+                dhcp4: true
+                optional: true
+        version: 2
+        Wifis:
+            wlan0:
+            access-points: 
+            "robot-hackathon-78b09":
+                password: "PASSWORD"
+            "otherssid":
+                password: "<PASSWORD>"
+            dhcp4: true
+    ```
