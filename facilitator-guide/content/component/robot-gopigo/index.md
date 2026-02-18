@@ -49,18 +49,20 @@ This should only be neccessary with a new robot or when repairing/updating/repla
 
         ![](wifi-router-unknown.png){width=1024}
 
-* Verify that IP address match the robot in front of you. via folloing curl command to move robot forward:
-    ```shell
-    curl -X POST http://192.168.8.<REPLACE IP>:5000/forward/5 
-    ```
-
-    Robot should move forward.
-
 * Connect to the robot to configure the hostname:
 
     ```shell
     ssh -i ~/.ssh/robot-hackathon -l root 192.168.8.<REPLACE IP>
     ```
+
+    Optional check via camera where you are:
+
+    ```
+    python3 camera-test.py
+    python3 -m http.server
+    ```
+
+    Open via Browser: `http://192.168.8.<REPLACE IP>:8000/testimage.jpg
 
     Change hostname and reboot via:
 
@@ -75,6 +77,7 @@ This should only be neccessary with a new robot or when repairing/updating/repla
 
     ![](wifi-router-known.png){width=1024}
 
+* Toggle/Enable the "Reserved IP" switch
 
 ### Step 3) Finish configuration via ansible
 
