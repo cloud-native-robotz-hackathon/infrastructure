@@ -87,7 +87,7 @@ git clone https://github.com/cloud-native-robotz-hackathon/infrastructure.git
 cd infrastructure/
 ```
 
-The Playbook `automation/configure-robot.yaml` does the following steps:
+The Playbook `automation/bootstrap-robot.yaml` does the following steps:
 
 - Ensures the robot is running image robot-hackathon-image.20260212 before proceeding.
 - Clones and installs edge-controller in a specified version from GitHub to /opt/edge-controller.
@@ -105,7 +105,7 @@ echo "rcs_gh_token: github_pat_xxx" >> group_vars/all/robot-config-service.yaml
 echo "rcs_hubcontroller_user: hub-controller" >> group_vars/all/robot-config-service.yaml
 echo "rcs_hubcontroller_password: hub-controller" >> group_vars/all/robot-config-service.yaml
 
-ansible-navigator run configure-robot.yaml -l <ROBOT_NAME>
+ansible-navigator run bootstrap-robot.yaml -l <ROBOT_NAME>
 ```
 
 ## Advanced rarely used topics
