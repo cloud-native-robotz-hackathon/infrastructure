@@ -2,7 +2,7 @@
 - hosts: robots
   gather_facts: true
   vars:
-    edge_controller_version: v2.1.1
+    edge_controller_version: v2.1.2
     robot_config_service_version: master
   handlers:
     - name: restart edge-controller
@@ -19,10 +19,6 @@
     - name: Check robot image version
       fail:
         msg: "Please check robot image version"
-      # image version robot-hackathon-image.20240726
-      #when: robot_image_version['content'] != "cm9ib3QtaGFja2F0aG9uLWltYWdlLjIwMjQwNzI2Cg=="
-      # image version robot-hackathon-image.20260212
-      #when: robot_image_version['content'] != "cm9ib3QtaGFja2F0aG9uLWltYWdlLjIwMjYwMjEyCg=="
       # image version robot-hackathon-image.20260218
       when: robot_image_version['content'] != "cm9ib3QtaGFja2F0aG9uLWltYWdlLjIwMjYwMjE4Cg=="
 
