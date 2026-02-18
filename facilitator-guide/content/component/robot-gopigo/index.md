@@ -58,8 +58,9 @@ This should only be neccessary with a new robot or when repairing/updating/repla
     Optional check via camera where you are:
 
     ```
-    python3 camera-test.py
-    python3 -m http.server
+    curl -L -O https://raw.githubusercontent.com/cloud-native-robotz-hackathon/infrastructure/refs/heads/v3/robot/lights-on.py
+    chmod +x ./lights-on.py
+    ./lights-on.py
     ```
 
     Open via Browser: `http://192.168.8.<REPLACE IP>:8000/testimage.jpg
