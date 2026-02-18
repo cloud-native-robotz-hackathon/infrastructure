@@ -38,10 +38,3 @@
     name: robot-config-service.service
     enabled: true
     daemon_reload: true
-
-- name: Restart robot-config-service
-  ansible.builtin.systemd:
-    name: robot-config-service.service
-    state: restarted
-    daemon_reload: true
-  when: git_result.changed
