@@ -4,6 +4,7 @@
     repo: https://github.com/cloud-native-robotz-hackathon/robot-config-service.git
     dest: /opt/robot-config-service
     version: "{{ robot_config_service_version  }}"
+    force: true
   register: git_result
 
 - name: Rollout environment file
@@ -15,14 +16,6 @@
       RCS_HUBCONTROLLER_USER={{ rcs_hubcontroller_user }}
       RCS_HUBCONTROLLER_PASSWORD={{ rcs_hubcontroller_password }}
   
-      # # Environment variables (can be overridden in /etc/systemd/system/robot-config-service.service.d/override.conf)
-      # # REDIRECT_URL is a fixed URL that redirects to the current OpenShift event cluster
-      # Environment="REDIRECT_URL=https://your-redirect-service.example.com/redirect"
-      # Environment="ANSIBLE_PLAYBOOK_PATH=/opt/robot-config-service/ansible/configure-skupper.yml"
-      # Environment="LOG_LEVEL=INFO"
-      # # Basic authentication for API endpoints (must be set in override.conf for security)
-      # # Environment="API_USERNAME=your_username"
-      # # Environment="API_PASSWORD=your_password"
     dest: /etc/default/robot-config-service
     mode: '0644'
 
