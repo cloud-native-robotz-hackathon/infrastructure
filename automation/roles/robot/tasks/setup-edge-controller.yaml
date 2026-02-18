@@ -4,6 +4,7 @@
     repo: https://github.com/cloud-native-robotz-hackathon/edge-controller
     dest: /opt/edge-controller
     version: "{{ edge_controller_version  }}"
+    force: true
   register: git_result
 
 - name: Install systemd.service
