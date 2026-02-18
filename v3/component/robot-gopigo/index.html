@@ -1065,15 +1065,15 @@
 </ul>
 </li>
 <li>
-<p>Verify that IP address match the robot in front of you. via folloing curl command to move robot forward:
-    </p><div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://192.168.8.&lt;REPLACE<span class="w"> </span>IP&gt;:5000/forward/5<span class="w"> </span>
-</span></code></pre></div></td></tr></tbody></table></div><p></p>
-<p>Robot should move forward.</p>
-</li>
-<li>
 <p>Connect to the robot to configure the hostname:</p>
-<div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/robot-hackathon<span class="w"> </span>-l<span class="w"> </span>root<span class="w"> </span><span class="m">192</span>.168.8.&lt;REPLACE<span class="w"> </span>IP&gt;
+<div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/robot-hackathon<span class="w"> </span>-l<span class="w"> </span>root<span class="w"> </span><span class="m">192</span>.168.8.&lt;REPLACE<span class="w"> </span>IP&gt;
 </span></code></pre></div></td></tr></tbody></table></div>
+<p>Optional check via camera where you are:</p>
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>python3 camera-test.py
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>python3 -m http.server
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>Open via Browser: `http://192.168.8.<replace ip>:8000/testimage.jpg</replace></p>
 <p>Change hostname and reboot via:</p>
 <p>Pick robot name aka hostname from the <a href="../nine-robot-travel-kit/#list-of-robots">nine robot travel kit</a></p>
 <div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
@@ -1084,6 +1084,9 @@
 <li>
 <p>Now the robot should appear with the right hostname aka robot name</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="wifi-router-known.png" data-desc-position="bottom"><img alt="" src="wifi-router-known.png" width="1024"></a></p>
+</li>
+<li>
+<p>Toggle/Enable the "Reserved IP" switch</p>
 </li>
 </ul>
 <h3 id="step-3-finish-configuration-via-ansible">Step 3) Finish configuration via ansible<a class="headerlink" href="#step-3-finish-configuration-via-ansible" title="Permanent link">¶</a></h3>
@@ -1190,7 +1193,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="February 18, 2026 11:47:09 UTC"><span class="timeago" datetime="2026-02-18T11:47:09+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="February 18, 2026 11:47:09 UTC">2026-02-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="February 18, 2026 11:50:26 UTC"><span class="timeago" datetime="2026-02-18T11:50:26+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="February 18, 2026 11:50:26 UTC">2026-02-18</span>
   </span>
 
     
