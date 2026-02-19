@@ -30,11 +30,11 @@ This should only be neccessary with a new robot or when repairing/updating/repla
 
 ### Step 1) Install image
 
-* Download image Ubuntu 22.04, Microshift 4.8 : <https://drive.google.com/file/d/139K2DgZnrxKIiAU-ErjdPXQHGoGOXubV>
+* Download latest image Ubuntu 22.04, Microshift 4.8 from: https://drive.google.com/drive/folders/1huFhZTknLdMx4BAWrlbNhOonxboOjHLn
 * Write to SD Card, will be resized to SD Card size at first boot
     ```shell
-    gunzip robot-hackathon-image.20260212.img.gz
-    sudo dd if=robot-hackathon-image.20260212.img of=/dev/sdXXX status=progress
+    gunzip robot-hackathon-image.<version>>.img.gz
+    sudo dd if=robot-hackathon-image.<version>.img of=/dev/sdXXX status=progress
     ```
 * The image will be resized to SD card size on first boot  
 * The image is preconfigured with:
@@ -43,7 +43,7 @@ This should only be neccessary with a new robot or when repairing/updating/repla
 
 ### Step 2) Network & Hostname configuration
 
-* Boot robot with brand new image
+* Boot robot with new image
 * Go to Wifi router Admin page: <https://192.168.8.1> (Admin password is stored in Bitwarden, collection `Robot hackathon` item `Wifi router admin access`)
     * Navigate to "CLIENTS", findout new "Unknown" IP address:
 
@@ -63,7 +63,7 @@ This should only be neccessary with a new robot or when repairing/updating/repla
     ./lights-on.py
     ```
 
-    Open via Browser: `http://192.168.8.<REPLACE IP>:8000/testimage.jpg
+    Open via Browser: `http://192.168.8.\<REPLACE IP>:8000/testimage.jpg
 
     Change hostname and reboot via:
 
@@ -99,7 +99,7 @@ The Playbook `automation/bootstrap-robot.yaml` does the following steps:
 - Configures, enables, and restarts the edge-controller systemd unit and makes sure it runs.
 - Updates /etc/issue (login banner), /etc/hosts, and sets the system hostname to match the inventory.
 
-Run it:
+Create the vars file with the connection details and run the Playbook:
 
 ```shell
 cd automation/
