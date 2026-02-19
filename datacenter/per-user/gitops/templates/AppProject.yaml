@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: "{{ .Values.team }}"
+  namespace: openshift-gitops
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - name: '*'
+    namespace: '*'
+    server: :"https://{{ .Values.robot_name }}.robot.svc.cluster.local.:6443"
+  roles:
+  - groups:
+    - "{{ .Values.team }}"
+    name: "{{ .Values.team }}-admin"
+    policies:
+    - "p, proj:{{ .Values.team }}:{{ .Values.team }}-admin, applications, *, {{ .Values.team }}/*, allow"
+  sourceRepos:
+  - '*'
