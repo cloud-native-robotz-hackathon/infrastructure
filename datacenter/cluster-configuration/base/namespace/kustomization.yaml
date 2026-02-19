@@ -5,6 +5,7 @@ resources:
 - image-puller/
 - openshift-config/
 - openshift-operators/
+- openshift-gitops/
 - openshift-ingress-operator/
 - code-assistant/
 - robot/
