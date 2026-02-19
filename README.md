@@ -16,8 +16,6 @@
 
 This repository contains all infrastructure components needed to set up and manage the Cloud Native Robotz Hackathon environment. The setup includes a complete OpenShift-based infrastructure spanning from datacenter training environments to edge gateways and individual robot configurations.
 
-![Infrastructure Overview](overview.drawio.v2.png)
-
 Detailed informations are available in the [facilitator-guide](https://cloud-native-robotz-hackathon.github.io/infrastructure/)
 
 ## Architecture Components
