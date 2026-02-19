@@ -4,7 +4,6 @@ resources:
 - redhat-ods-applications/
 - image-puller/
 - openshift-config/
-- hub-controller/
 - openshift-ingress-operator/
 - code-assistant/
 - robot/
