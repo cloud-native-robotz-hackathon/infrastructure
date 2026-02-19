@@ -27,11 +27,6 @@ spec:
           - secretRef:
             name: dashboard-pass
         env:
-        - name: MAP
-          valueFrom:
-            configMapKeyRef:
-              key: MAP
-              name: robot-mapping-configmap
         - name: KUBERNETES_NAMESPACE
           valueFrom:
             fieldRef:
