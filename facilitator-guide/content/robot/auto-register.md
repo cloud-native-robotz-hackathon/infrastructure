@@ -24,3 +24,14 @@ export TOKEN="github_pat_xxx"
 curl -H "Authorization: token $TOKEN" \
     https://raw.githubusercontent.com/cloud-native-robotz-hackathon/robot-auto-register-78b09/main/terminator
 ```
+
+
+#### Run `configure-robot.yml` manualy
+
+```shell
+export RCS_HUBCONTROLLER_USER=admin
+export RCS_HUBCONTROLLER_PASSWORD=xxx
+export RCS_HUBCONTROLLER_URL=https://web-hub-controller.apps.cluster-kxpkk.kxpkk.sandbox3582.opentlc.com
+cd /opt/robot-config-service/ansible
+ansible-playbook -i inventory configure-robot.yml
+```
