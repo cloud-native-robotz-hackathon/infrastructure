@@ -23,7 +23,10 @@ spec:
     spec:
       serviceAccountName: hub-controller
       containers:
-      - env:
+      - envFrom:
+          - secretRef:
+            name: dashboard-pass
+        env:
         - name: MAP
           valueFrom:
             configMapKeyRef:
