@@ -1,0 +1,11 @@
+# Default values for service-mesh-system.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+api_username: admin
+api_password: foo
+
+team_robot_map:
+  - team: team-demo
+    robot_name: demo-robot
+
