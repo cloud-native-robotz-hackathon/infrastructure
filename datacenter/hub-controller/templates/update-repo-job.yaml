@@ -1,0 +1,65 @@
+---
+kind: Job
+apiVersion: batch/v1
+metadata:
+  generateName: repo-updater
+  namespace: hub-controller
+spec:
+  activeDeadlineSeconds: 600
+  manualSelector: false
+  template:
+    metadata:
+      generateName: update-repo-
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+        kubernetes.io/arch: amd64
+      restartPolicy: Never
+      volumes:
+        - name: workdir
+          emptyDir: {}
+      containers:
+        - name: git
+          volumeMounts:
+            - name: workdir
+              mountPath: /workdir
+          image: quay.io/hummingbird/git:2
+          workingDir: /workdir
+          envFrom:
+            - secretRef:
+                name: repo-updater-config
+          command:
+            - sh
+            - -c
+            - |
+
+                export CLEAN_URI=$(echo $RU_REPO_URL | sed -E 's/^\s*.*:\/\///g')
+                export HC_URL=https://web-hub-controller.{{ .Values.openshift_cluster_ingress_domain }}/
+
+                
+                git clone https://robot:${RU_REPO_TOKEN}@${CLEAN_URI} --branch=main main
+
+                cd main/
+
+                for robot in $RU_ROBOT_NAMES; 
+                do 
+                  echo $HC_URL > $robot;  
+                  git add $robot; 
+                done;
+
+                git config --global user.name "robot-auto-register"
+                git config --global user.email "devnull@redhat.com"
+
+                git commit -m 'Auto register robots at cluster {{ .Values.openshift_cluster_ingress_domain }}'
+
+                git push
+
+          imagePullPolicy: IfNotPresent
+
+  {{ if .Values.ru_enabled }}
+  suspend: false  
+  {{ else }}
+  suspend: true
+  {{ end }}
+  parallelism: 1
+  
