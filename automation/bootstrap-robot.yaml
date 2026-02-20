@@ -24,13 +24,24 @@
 
     # ToDo: Check if this is needed anymore
     #   https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/230
-    - name: Rollout /etc/hosts
-      ansible.builtin.lineinfile:
-        path: /etc/hosts
-        search_string: "{{ ansible_default_ipv4.address }}"
-        line: "{{ ansible_default_ipv4.address }} robot.local {{ inventory_hostname }}"
-        owner: root
-        group: root
+    # - name: Rollout /etc/hosts
+    #   ansible.builtin.lineinfile:
+    #     path: /etc/hosts
+    #     search_string: "{{ ansible_default_ipv4.address }}"
+    #     line: "{{ ansible_default_ipv4.address }} robot.local {{ inventory_hostname }}"
+    #     owner: root
+    #     group: root
+    #     mode: '0644'
+
+    - name: Rollout /etc/motd
+      ansible.builtin.copy:
+        content: |
+
+            Watch robot config service:
+
+                tail -f /var/log/robot-config-service.log /var/log/robot-config-service-ansible-core.log
+
+        dest: /etc/motd
         mode: '0644'
 
     - name: "Setup edge-controller {{ edge_controller_version }}"

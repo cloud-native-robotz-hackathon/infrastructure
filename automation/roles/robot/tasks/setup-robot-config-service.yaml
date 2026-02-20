@@ -15,7 +15,9 @@
 
       RCS_HUBCONTROLLER_USER={{ rcs_hubcontroller_user }}
       RCS_HUBCONTROLLER_PASSWORD={{ rcs_hubcontroller_password }}
-  
+
+      SERVICE_STARTUP_DELAY=0
+
     dest: /etc/default/robot-config-service
     mode: '0644'
 
