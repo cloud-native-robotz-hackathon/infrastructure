@@ -2,7 +2,7 @@
 kind: Job
 apiVersion: batch/v1
 metadata:
-  generateName: repo-updater
+  name: repo-updater
   namespace: hub-controller
 spec:
   activeDeadlineSeconds: 600
