@@ -1039,13 +1039,13 @@
 <p>This should only be neccessary with a new robot or when repairing/updating/replacing a robot.</p>
 <h3 id="step-1-install-image">Step 1) Install image<a class="headerlink" href="#step-1-install-image" title="Permanent link">¶</a></h3>
 <ul>
-<li>Download latest image Ubuntu 22.04, Microshift 4.8 from: https://drive.google.com/drive/folders/1huFhZTknLdMx4BAWrlbNhOonxboOjHLn</li>
+<li>Download latest image (Ubuntu 22.04, Microshift 4.8) from: https://drive.google.com/drive/folders/1huFhZTknLdMx4BAWrlbNhOonxboOjHLn</li>
 <li>Write to SD Card, will be resized to SD Card size at first boot
     <div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>gunzip<span class="w"> </span>robot-hackathon-image.&lt;version&gt;&gt;.img.gz
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>robot-hackathon-image.&lt;version&gt;.img<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/sdXXX<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
 </span></code></pre></div></td></tr></tbody></table></div></li>
-<li>The image will be resized to SD card size on first boot  </li>
+<li>The image will be resized to SD card size on first boot</li>
 <li>The image is preconfigured with:<ul>
 <li>Automatic connection to the hackathon WIFI "robot-hackathon-78b09", password in Bitwarden collection.</li>
 <li>Robot hackathon SSH key (Bitwarden Collection)</li>
@@ -1075,9 +1075,9 @@
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>chmod +x ./lights-on.py
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>./lights-on.py
 </span></code></pre></div></td></tr></tbody></table></div>
-<p>Open via Browser: `http://192.168.8.\<replace ip>:8000/testimage.jpg</replace></p>
+<p>(If available) open via Browser: <code>http://192.168.8.&lt;REPLACE IP&gt;:8000/testimage.jpg</code></p>
 <p>Change hostname and reboot via:</p>
-<p>Pick robot name aka hostname from the <a href="../nine-robot-travel-kit/#list-of-robots">nine robot travel kit</a></p>
+<p>Pick robot name aka hostname from the <a href="../nine-robot-travel-kit/#list-of-robots">nine robot travel kit</a> or choose your own. When choosing your own make sure to update the env robot mapping in the provisioning form and the ansible inventory</p>
 <div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>hostnamectl<span class="w"> </span>set-hostname<span class="w"> </span>&lt;REPLACE_ROBOT_NAME&gt;
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>reboot
@@ -1092,7 +1092,7 @@
 </li>
 </ul>
 <h3 id="step-3-finish-configuration-via-ansible">Step 3) Finish configuration via ansible<a class="headerlink" href="#step-3-finish-configuration-via-ansible" title="Permanent link">¶</a></h3>
-<p>To finish the configuration, you have to run a number of Playbooks against the robot(s).</p>
+<p>To finish the configuration, you have to run a number of Playbooks against the robot(s) from your laptop.</p>
 <p>Clone the GitHub repo <a href="https://github.com/cloud-native-robotz-hackathon/infrastructure.git">infrastructure</a>.</p>
 <div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/cloud-native-robotz-hackathon/infrastructure.git
@@ -1106,7 +1106,7 @@
 <li>Configures, enables, and restarts the edge-controller systemd unit and makes sure it runs.</li>
 <li>Updates /etc/issue (login banner), /etc/hosts, and sets the system hostname to match the inventory.</li>
 </ul>
-<p>Create the vars file with the connection details and run the Playbook:</p>
+<p>Create the vars file with the connection details and run the Playbook. You can get these values from the Readme in the referenced Github repo and the Bitwarden vault.</p>
 <div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
 <span class="normal"><a href="#__codelineno-5-2">2</a></span>
 <span class="normal"><a href="#__codelineno-5-3">3</a></span>
@@ -1123,6 +1123,7 @@
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a>
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a>ansible-navigator<span class="w"> </span>run<span class="w"> </span>bootstrap-robot.yaml<span class="w"> </span>-l<span class="w"> </span>&lt;ROBOT_NAME&gt;
 </span></code></pre></div></td></tr></tbody></table></div>
+<p>Then log into the Hubcontroller (<hubcontroller_url>/dashboard.html) (username / pass in Bitwarden) and you should see a tile with your registered robot.</hubcontroller_url></p>
 <h2 id="advanced-rarely-used-topics">Advanced rarely used topics<a class="headerlink" href="#advanced-rarely-used-topics" title="Permanent link">¶</a></h2>
 <h3 id="camera-setup-raspi-camera-v2">Camera Setup (Raspi camera v2)<a class="headerlink" href="#camera-setup-raspi-camera-v2" title="Permanent link">¶</a></h3>
 <p>Playbook camera-test.yaml is here <code>camera-test.yaml</code> to fetch camera image:</p>
@@ -1159,7 +1160,7 @@
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a>    version: 2
 </span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a>    Wifis:
 </span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a>        wlan0:
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a>        access-points: 
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a>        access-points:
 </span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a>        "robot-hackathon-78b09":
 </span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a>            password: "PASSWORD"
 </span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a>        "otherssid":
@@ -1195,7 +1196,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="February 19, 2026 08:40:06 UTC"><span class="timeago" datetime="2026-02-19T08:40:06+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="February 19, 2026 08:40:06 UTC">2026-02-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 6, 2026 12:38:13 UTC"><span class="timeago" datetime="2026-03-06T12:38:13+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 6, 2026 12:38:13 UTC">2026-03-06</span>
   </span>
 
     
