@@ -30,13 +30,13 @@ This should only be neccessary with a new robot or when repairing/updating/repla
 
 ### Step 1) Install image
 
-* Download latest image Ubuntu 22.04, Microshift 4.8 from: https://drive.google.com/drive/folders/1huFhZTknLdMx4BAWrlbNhOonxboOjHLn
+* Download latest image (Ubuntu 22.04, Microshift 4.8) from: https://drive.google.com/drive/folders/1huFhZTknLdMx4BAWrlbNhOonxboOjHLn
 * Write to SD Card, will be resized to SD Card size at first boot
     ```shell
     gunzip robot-hackathon-image.<version>>.img.gz
     sudo dd if=robot-hackathon-image.<version>.img of=/dev/sdXXX status=progress
     ```
-* The image will be resized to SD card size on first boot  
+* The image will be resized to SD card size on first boot
 * The image is preconfigured with:
     * Automatic connection to the hackathon WIFI "robot-hackathon-78b09", password in Bitwarden collection.
     * Robot hackathon SSH key (Bitwarden Collection)
@@ -63,11 +63,11 @@ This should only be neccessary with a new robot or when repairing/updating/repla
     ./lights-on.py
     ```
 
-    Open via Browser: `http://192.168.8.\<REPLACE IP>:8000/testimage.jpg
+    (If available) open via Browser: `http://192.168.8.<REPLACE IP>:8000/testimage.jpg`
 
     Change hostname and reboot via:
 
-    Pick robot name aka hostname from the [nine robot travel kit](../nine-robot-travel-kit/#list-of-robots)
+    Pick robot name aka hostname from the [nine robot travel kit](../nine-robot-travel-kit/#list-of-robots) or choose your own. When choosing your own make sure to update the env robot mapping in the provisioning form and the ansible inventory
 
     ```shell
     hostnamectl set-hostname <REPLACE_ROBOT_NAME>
@@ -82,7 +82,7 @@ This should only be neccessary with a new robot or when repairing/updating/repla
 
 ### Step 3) Finish configuration via ansible
 
-To finish the configuration, you have to run a number of Playbooks against the robot(s).
+To finish the configuration, you have to run a number of Playbooks against the robot(s) from your laptop.
 
 Clone the GitHub repo [infrastructure](https://github.com/cloud-native-robotz-hackathon/infrastructure.git).
 
@@ -99,7 +99,7 @@ The Playbook `automation/bootstrap-robot.yaml` does the following steps:
 - Configures, enables, and restarts the edge-controller systemd unit and makes sure it runs.
 - Updates /etc/issue (login banner), /etc/hosts, and sets the system hostname to match the inventory.
 
-Create the vars file with the connection details and run the Playbook:
+Create the vars file with the connection details and run the Playbook. You can get these values from the Readme in the referenced Github repo and the Bitwarden vault.
 
 ```shell
 cd automation/
@@ -111,6 +111,9 @@ echo "rcs_hubcontroller_password: hub-controller" >> group_vars/all/robot-config
 
 ansible-navigator run bootstrap-robot.yaml -l <ROBOT_NAME>
 ```
+
+Then log into the Hubcontroller (<HUBCONTROLLER_URL>/dashboard.html) (username / pass in Bitwarden) and you should see a tile with your registered robot.
+
 
 ## Advanced rarely used topics
 
@@ -142,7 +145,7 @@ Cable orientation: blue “bar” on cable oriented to USB ports, blue bar at ca
         version: 2
         Wifis:
             wlan0:
-            access-points: 
+            access-points:
             "robot-hackathon-78b09":
                 password: "PASSWORD"
             "otherssid":
