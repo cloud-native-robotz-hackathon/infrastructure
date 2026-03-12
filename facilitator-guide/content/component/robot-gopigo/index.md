@@ -30,7 +30,7 @@ This should only be neccessary with a new robot or when repairing/updating/repla
 
 ### Step 1) Install image
 
-* Download latest image (Ubuntu 22.04, Microshift 4.8) from: https://drive.google.com/drive/folders/1huFhZTknLdMx4BAWrlbNhOonxboOjHLn
+* Download latest image Ubuntu 22.04, Microshift 4.8 from: <https://drive.google.com/drive/folders/1huFhZTknLdMx4BAWrlbNhOonxboOjHLn>
 * Write to SD Card, will be resized to SD Card size at first boot
     ```shell
     gunzip robot-hackathon-image.<version>>.img.gz
