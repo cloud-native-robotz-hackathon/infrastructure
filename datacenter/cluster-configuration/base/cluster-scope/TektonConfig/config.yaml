@@ -1,0 +1,11 @@
+# https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/237
+---
+apiVersion: operator.tekton.dev/v1alpha1
+kind: TektonConfig
+metadata:
+  name: config
+  annotations:
+    argocd.argoproj.io/sync-options: "ServerSideApply=true,Validate=false"
+spec:
+  pipeline:
+    coschedule: disabled
