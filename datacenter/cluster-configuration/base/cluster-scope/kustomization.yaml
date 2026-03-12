@@ -7,3 +7,4 @@ resources:
 # Disabled: https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/182
 # - OAuth/
 - Auth/
+- TektonConfig/
