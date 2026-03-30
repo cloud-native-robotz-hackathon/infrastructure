@@ -55,11 +55,12 @@ spec:
                 git push
 
           imagePullPolicy: IfNotPresent
-
-  {{ if .Values.ru_enabled }}
-  suspend: false  
-  {{ else }}
+  {{- if eq .Values.ru_enabled "False" }}
   suspend: true
-  {{ end }}
+  {{- else if .Values.ru_enabled }}
+  suspend: false
+  {{- else }}
+  suspend: true
+  {{- end }}
   parallelism: 1
   
