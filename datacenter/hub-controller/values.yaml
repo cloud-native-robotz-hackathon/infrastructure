@@ -5,6 +5,11 @@
 api_username: admin
 api_password: foo
 
+openshift_cluster_ingress_domain: "apps.example.com"
+ru_enabled: "False"
+ru_repo_url: ""
+ru_repo_token: ""
+
 team_robot_map:
   - team: team-demo
     robot_name: demo-robot
