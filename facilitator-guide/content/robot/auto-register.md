@@ -7,7 +7,7 @@ linktitle: Robot Auto Register
 
 ![](auto-register-flow.drawio)
 
-### How to setup an `robot-auto-register` repository
+### How to setup your own `robot-auto-register` repository
 
 Create new private repo, for example `robot-auto-register-78b09`
 
