@@ -3,6 +3,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Provision the OpenShift data center on Red Hat Demo Platform, optional robot auto-registration, and console branding.">
+      
       
         <meta name="author" content="Robot Team">
       
@@ -87,7 +89,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#data-center" class="md-skip">
+        <a href="#overview" class="md-skip">
           Skip to content
         </a>
       
@@ -619,19 +621,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#data-center" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Data Center
+      Overview
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Data Center">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provision-on-red-hat-demo-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provision on Red Hat Demo Platform
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robot-auto-registration-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Robot auto registration (optional)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customize-openshift-console-branding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customize OpenShift console branding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customize OpenShift console branding">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#how-to-adjust-openshift-cluster-design" class="md-nav__link">
+  <a href="#login-and-oauth-html-templates" class="md-nav__link">
     <span class="md-ellipsis">
-      How to adjust openshift cluster design
+      Login and OAuth HTML templates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console-logo-light-dark" class="md-nav__link">
+    <span class="md-ellipsis">
+      Console logo (light / dark)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publish-and-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publish and sync
     </span>
   </a>
   
@@ -943,19 +990,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#data-center" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Data Center
+      Overview
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Data Center">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provision-on-red-hat-demo-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provision on Red Hat Demo Platform
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robot-auto-registration-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Robot auto registration (optional)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customize-openshift-console-branding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customize OpenShift console branding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customize OpenShift console branding">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#how-to-adjust-openshift-cluster-design" class="md-nav__link">
+  <a href="#login-and-oauth-html-templates" class="md-nav__link">
     <span class="md-ellipsis">
-      How to adjust openshift cluster design
+      Login and OAuth HTML templates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console-logo-light-dark" class="md-nav__link">
+    <span class="md-ellipsis">
+      Console logo (light / dark)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publish-and-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publish and sync
     </span>
   </a>
   
@@ -987,22 +1079,48 @@
 
   <h1>Data Center</h1>
 
-<h2 id="data-center">Data Center<a class="headerlink" href="#data-center" title="Permanent link">¶</a></h2>
-<p>The data center environment is available via Red Hat Demo Platform: Search for robot</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<p>The <strong>data center</strong> is the hosted OpenShift environment for the hackathon. Facilitators provision it through <strong>Red Hat Demo Platform</strong> (RHDP), optionally enable <strong>robot auto-registration</strong> during order, and can customize console login branding via GitOps in this repository.</p>
+<h2 id="provision-on-red-hat-demo-platform">Provision on Red Hat Demo Platform<a class="headerlink" href="#provision-on-red-hat-demo-platform" title="Permanent link">¶</a></h2>
+<ol>
+<li>Open the <a href="https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?search=robot">RHDP catalog</a> and search for <strong>robot</strong>, or use the <a href="https://catalog.demo.redhat.com/catalog?search=Cloud+Native+Robot+Hackathon&amp;item=babylon-catalog-prod%2Fsandboxes-gpte.cloud-native-robot.prod">Cloud Native Robot Hackathon</a> catalog entry directly.</li>
+<li>Complete the order wizard using the field guidance in <a href="../../run-a-event/full-day/#order-openshift-data-center-env">Full day — Order OpenShift Data Center env</a>.</li>
+</ol>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="demo-portal.png" data-desc-position="bottom"><img alt="" src="demo-portal.png"></a></p>
-<p><a href="https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?search=robot">https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?search=robot</a></p>
-<h3 id="how-to-adjust-openshift-cluster-design">How to adjust openshift cluster design<a class="headerlink" href="#how-to-adjust-openshift-cluster-design" title="Permanent link">¶</a></h3>
+<h2 id="robot-auto-registration-optional">Robot auto registration (optional)<a class="headerlink" href="#robot-auto-registration-optional" title="Permanent link">¶</a></h2>
+<p>In the provisioning form, enable <strong>robot auto registration</strong> if teams should register robots against a GitHub repo automatically:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="demo-robot-auto-registration.png" data-desc-position="bottom"><img alt="" src="demo-robot-auto-registration.png"></a></p>
+<p>Values depend on your teams, robot names, and the associated <strong>robot-auto-register</strong> repository. For setup details and examples, see <strong><a href="../../robot/auto-register/">Robot Auto Register</a></strong>.</p>
+<p>Example repository URL:</p>
 <ul>
-<li>Login in into OpenShift Cluster (data-center)</li>
-<li>Go to <code>datacenter/cluster-configuration/base/namespace/openshift-config/Secret</code></li>
-<li>Adjust errors-template.html, login-template.html and providers-template.html</li>
-<li>Run <code>./update-secrets.sh</code></li>
-<li>Go to <code>datacenter/cluster-configuration/base/namespace/openshift-config/ConfigMap</code></li>
-<li>Adjust openshift-robot.png (Optional the openshift-robot.xcf via Gimp and export as png )</li>
-<li>Run <code>./update-secrets.sh</code></li>
-<li>Commit all changes and push it.</li>
-<li>Open ArgoCD and refresh and sync cluster-configuration </li>
+<li><a href="https://github.com/cloud-native-robotz-hackathon/robot-auto-register-78b09.git">https://github.com/cloud-native-robotz-hackathon/robot-auto-register-78b09.git</a></li>
 </ul>
+<h2 id="customize-openshift-console-branding">Customize OpenShift console branding<a class="headerlink" href="#customize-openshift-console-branding" title="Permanent link">¶</a></h2>
+<p>Branding lives under <strong><code>datacenter/cluster-configuration/</code></strong> in the <a href="https://github.com/cloud-native-robotz-hackathon/infrastructure">infrastructure</a> repo. Work from a clone of that repository on your machine.</p>
+<h3 id="login-and-oauth-html-templates">Login and OAuth HTML templates<a class="headerlink" href="#login-and-oauth-html-templates" title="Permanent link">¶</a></h3>
+<ol>
+<li>Log in to the <strong>data center</strong> OpenShift cluster as an admin (see <a href="../../run-a-event/full-day/">Full day</a> for ordering and access).</li>
+<li>Edit the HTML sources in<br>
+<code>datacenter/cluster-configuration/base/namespace/openshift-config/Secret/</code><br>
+   — <code>errors-template.html</code>, <code>login-template.html</code>, and <code>providers-template.html</code>.</li>
+<li>From that <strong><code>Secret/</code></strong> directory, run:</li>
+</ol>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>./update-secrets.sh
+</span></code></pre></div></td></tr></tbody></table></div>
+<h3 id="console-logo-light-dark">Console logo (light / dark)<a class="headerlink" href="#console-logo-light-dark" title="Permanent link">¶</a></h3>
+<ol>
+<li>In<br>
+<code>datacenter/cluster-configuration/base/namespace/openshift-config/ConfigMap/</code><br>
+   replace or edit <strong><code>openshift-robot-black.png</code></strong> and <strong><code>openshift-robot-white.png</code></strong> as needed (for example export from GIMP as PNG).</li>
+<li>From that <strong><code>ConfigMap/</code></strong> directory, run:</li>
+</ol>
+<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>./update-configmap.sh
+</span></code></pre></div></td></tr></tbody></table></div>
+<h3 id="publish-and-sync">Publish and sync<a class="headerlink" href="#publish-and-sync" title="Permanent link">¶</a></h3>
+<ol>
+<li>Commit and push your changes.</li>
+<li>In <strong>Argo CD</strong>, refresh and sync the <strong><code>cluster-configuration</code></strong> application so the cluster picks up the updates.</li>
+</ol>
 
 
 
@@ -1025,7 +1143,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="December 9, 2025 17:05:02 UTC"><span class="timeago" datetime="2025-12-09T17:05:02+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="December 9, 2025 17:05:02 UTC">2025-12-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 31, 2026 15:58:00 UTC"><span class="timeago" datetime="2026-03-31T15:58:00+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 31, 2026 15:58:00 UTC">2026-03-31</span>
   </span>
 
     
