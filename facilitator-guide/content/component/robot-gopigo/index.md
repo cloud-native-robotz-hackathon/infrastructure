@@ -93,7 +93,7 @@ cd infrastructure/
 
 The Playbook `automation/bootstrap-robot.yaml` does the following steps:
 
-- Ensures the robot is running image robot-hackathon-image.20260212 before proceeding.
+- Ensures the robot is running [latest](https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/bootstrap-robot.yaml#L19-L23) image before proceeding.
 - Clones and installs edge-controller in a specified version from GitHub to /opt/edge-controller.
 - Clones and installs robot-config-service in a specified version from GitHub to /opt/robot-config-service.
 - Configures, enables, and restarts the edge-controller systemd unit and makes sure it runs.
@@ -113,7 +113,6 @@ ansible-navigator run bootstrap-robot.yaml -l <ROBOT_NAME>
 ```
 
 Then log into the Hubcontroller (<HUBCONTROLLER_URL>/dashboard.html) (username / pass in Bitwarden) and you should see a tile with your registered robot.
-
 
 ## Advanced rarely used topics
 
