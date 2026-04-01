@@ -7,6 +7,17 @@ icon: material/receipt-text-clock
 
 # Changelog
 
+## v3 - 2026-04-01
+
+* The most significant change is the new robot auto register service at the data center. There is no need anymore to run playbooks. Just Deploy demo env and boot the robot - magic happends and robot is connect to the data center. If you have a robot at home, please re-install the robot based in the new robot image (20260218) and information in the lab guide. (Links provided later)
+
+* Demo env / data center is upgraded to OpenShift 4.20 & Operators #223
+* We have now an awesome robot dashboard and leaderboard board.
+* A couple facilitator guide updates
+* Workbench Image is updated to Python 3.11 #191
+* Fixed: Demo env is sometimes broken after stop & start #206
+* Not used in the lab but available, a Jupyter Notebook uses the webcam of the laptop, and try to detect the fedora. #135
+
 ## v2.1 - 2025-11-06 
 
 * [True SSO Login for Sites where possible](https://github.com/cloud-native-robotz-hackathon/infrastructure/issues/198)
