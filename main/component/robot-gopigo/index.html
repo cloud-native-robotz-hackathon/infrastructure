@@ -3,19 +3,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Provision the OpenShift data center on Red Hat Demo Platform, optional robot auto-registration, and console branding.">
-      
       
         <meta name="author" content="Robot Team">
       
       
-        <link rel="canonical" href="https://cloud-native-robotz-hackathon.github.io/main/component/data-center/">
+        <link rel="canonical" href="https://cloud-native-robotz-hackathon.github.io/main/component/robot-gopigo/">
       
       
-        <link rel="prev" href="../../robot/auto-register/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../nine-robot-travel-kit/">
+        <link rel="next" href="../../robot/auto-register/">
       
       
       <link rel="icon" href="../../images/favicon-32x32.png">
@@ -23,7 +21,7 @@
     
     
       
-        <title>Data Center - Facilitator guide</title>
+        <title>Robot - GoPiGo - Facilitator guide</title>
       
     
     
@@ -89,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#bom" class="md-skip">
           Skip to content
         </a>
       
@@ -128,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Data Center
+              Robot - GoPiGo
             
           </span>
         </div>
@@ -480,6 +478,8 @@
                 
   
   
+    
+  
   
   
     
@@ -495,15 +495,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../robot-gopigo/" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   
@@ -518,13 +518,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             Robot GoPiGo
@@ -568,32 +568,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1M9 5h1V3H9zm0 8h1v-2H9zm0 8h1v-2H9zM5 3v2h2V3zm0 8v2h2v-2zm0 8v2h2v-2z"></path></svg>
-  
-  <span class="md-ellipsis">
-    Data Center
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../data-center/" class="md-nav__link">
         
   
   
@@ -606,93 +584,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#provision-on-red-hat-demo-platform" class="md-nav__link">
-    <span class="md-ellipsis">
-      Provision on Red Hat Demo Platform
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#robot-auto-registration-optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      Robot auto registration (optional)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#customize-openshift-console-branding" class="md-nav__link">
-    <span class="md-ellipsis">
-      Customize OpenShift console branding
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Customize OpenShift console branding">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#login-and-oauth-html-templates" class="md-nav__link">
-    <span class="md-ellipsis">
-      Login and OAuth HTML templates
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#console-logo-light-dark" class="md-nav__link">
-    <span class="md-ellipsis">
-      Console logo (light / dark)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#publish-and-sync" class="md-nav__link">
-    <span class="md-ellipsis">
-      Publish and sync
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -990,64 +881,88 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#bom" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      BOM
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#provision-on-red-hat-demo-platform" class="md-nav__link">
+  <a href="#pictures" class="md-nav__link">
     <span class="md-ellipsis">
-      Provision on Red Hat Demo Platform
+      Pictures
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#robot-auto-registration-optional" class="md-nav__link">
+  <a href="#setup-robot-from-scratch" class="md-nav__link">
     <span class="md-ellipsis">
-      Robot auto registration (optional)
+      Setup Robot from Scratch
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#customize-openshift-console-branding" class="md-nav__link">
-    <span class="md-ellipsis">
-      Customize OpenShift console branding
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Customize OpenShift console branding">
+    <nav class="md-nav" aria-label="Setup Robot from Scratch">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#login-and-oauth-html-templates" class="md-nav__link">
+  <a href="#step-1-install-image" class="md-nav__link">
     <span class="md-ellipsis">
-      Login and OAuth HTML templates
+      Step 1) Install image
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#console-logo-light-dark" class="md-nav__link">
+  <a href="#step-2-network-hostname-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Console logo (light / dark)
+      Step 2) Network &amp; Hostname configuration
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#publish-and-sync" class="md-nav__link">
+  <a href="#step-3-finish-configuration-via-ansible" class="md-nav__link">
     <span class="md-ellipsis">
-      Publish and sync
+      Step 3) Finish configuration via ansible
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-rarely-used-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced rarely used topics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced rarely used topics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#camera-setup-raspi-camera-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Camera Setup (Raspi camera v2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-network-configurartion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom network configurartion
     </span>
   </a>
   
@@ -1077,50 +992,188 @@
   
 
 
-  <h1>Data Center</h1>
+  <h1>Robot - GoPiGo</h1>
 
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
-<p>The <strong>data center</strong> is the hosted OpenShift environment for the hackathon. Facilitators provision it through <strong>Red Hat Demo Platform</strong> (RHDP), optionally enable <strong>robot auto-registration</strong> during order, and can customize console login branding via GitOps in this repository.</p>
-<h2 id="provision-on-red-hat-demo-platform">Provision on Red Hat Demo Platform<a class="headerlink" href="#provision-on-red-hat-demo-platform" title="Permanent link">¶</a></h2>
-<ol>
-<li>Open the <a href="https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?search=robot">RHDP catalog</a> and search for <strong>robot</strong>, or use the <a href="https://catalog.demo.redhat.com/catalog?search=Cloud+Native+Robot+Hackathon&amp;item=babylon-catalog-prod%2Fsandboxes-gpte.cloud-native-robot.prod">Cloud Native Robot Hackathon</a> catalog entry directly.</li>
-<li>Complete the order wizard using the field guidance in <a href="../../run-a-event/full-day/#order-openshift-data-center-env">Full day — Order OpenShift Data Center env</a>.</li>
-</ol>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="demo-portal.png" data-desc-position="bottom"><img alt="" src="demo-portal.png"></a></p>
-<h2 id="robot-auto-registration-optional">Robot auto registration (optional)<a class="headerlink" href="#robot-auto-registration-optional" title="Permanent link">¶</a></h2>
-<p>In the provisioning form, enable <strong>robot auto registration</strong> if teams should register robots against a GitHub repo automatically:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="demo-robot-auto-registration.png" data-desc-position="bottom"><img alt="" src="demo-robot-auto-registration.png"></a></p>
-<p>Values depend on your teams, robot names, and the associated <strong>robot-auto-register</strong> repository. For setup details and examples, see <strong><a href="../../robot/auto-register/">Robot Auto Register</a></strong>.</p>
-<p>Example repository URL:</p>
+<h2 id="bom">BOM<a class="headerlink" href="#bom" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Example Shop Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GoPiGo Kit</strong></td>
+<td><a href="https://gopigo.io/gopigo/">https://gopigo.io/gopigo/</a></td>
+</tr>
+<tr>
+<td><strong>Raspberry Pi 4 B - 8 GB Memory Version</strong></td>
+<td><a href="https://www.berrybase.de/en/raspberry-pi-4-computer-modell-b-8gb-ram">https://www.berrybase.de/en/raspberry-pi-4-computer-modell-b-8gb-ram</a></td>
+</tr>
+<tr>
+<td><strong>Raspberry Pi Camera Modules v2</strong></td>
+<td><a href="https://www.berrybase.de/en/raspberry-pi-camera-module-8mp-v2">https://www.berrybase.de/en/raspberry-pi-camera-module-8mp-v2</a></td>
+</tr>
+<tr>
+<td><strong>SD Card</strong><br> * 128 GB recommended<br> * 64 GB minimum</td>
+<td><a href="https://www.berrybase.de/en/sandisk-extreme-microsdxc-a2-uhs-i-u3-v30-190mb-s-speicherkarte-adapter-128gb">https://www.berrybase.de/en/sandisk-extreme-microsdxc-a2-uhs-i-u3-v30-190mb-s-speicherkarte-adapter-128gb</a></td>
+</tr>
+<tr>
+<td><strong>3D Printed Camera Mounts</strong><br>🛠️ custom, <strong>you have to print it.</strong></td>
+<td><a href="https://github.com/cloud-native-robotz-hackathon/3dprint-parts">https://github.com/cloud-native-robotz-hackathon/3dprint-parts</a></td>
+</tr>
+<tr>
+<td><strong>WiFi Router</strong>, optional but recommended</td>
+<td><a href="https://store-eu.gl-inet.com/collections/new-arrivals/products/flint-3-gl-be9300-tri-band-wi-fi-7-home-router">https://store-eu.gl-inet.com/collections/new-arrivals/products/flint-3-gl-be9300-tri-band-wi-fi-7-home-router</a></td>
+</tr>
+</tbody>
+</table>
+<p>It is roughly 350 Euro per robot + 200 Euro the optional WiFi router.</p>
+<h2 id="pictures">Pictures<a class="headerlink" href="#pictures" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="robot-a.JPG" data-desc-position="bottom"><img alt="" src="robot-a.JPG" width="150"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="robot-b.JPG" data-desc-position="bottom"><img alt="" src="robot-b.JPG" width="150"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="robot-c.JPG" data-desc-position="bottom"><img alt="" src="robot-c.JPG" width="150"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="robot-d.JPG" data-desc-position="bottom"><img alt="" src="robot-d.JPG" width="150"></a></p>
+<h2 id="setup-robot-from-scratch">Setup Robot from Scratch<a class="headerlink" href="#setup-robot-from-scratch" title="Permanent link">¶</a></h2>
+<p>This should only be neccessary with a new robot or when repairing/updating/replacing a robot.</p>
+<h3 id="step-1-install-image">Step 1) Install image<a class="headerlink" href="#step-1-install-image" title="Permanent link">¶</a></h3>
 <ul>
-<li><a href="https://github.com/cloud-native-robotz-hackathon/robot-auto-register-78b09.git">https://github.com/cloud-native-robotz-hackathon/robot-auto-register-78b09.git</a></li>
+<li>Download latest image Ubuntu 22.04, Microshift 4.8 from: <a href="https://drive.google.com/drive/folders/1huFhZTknLdMx4BAWrlbNhOonxboOjHLn">https://drive.google.com/drive/folders/1huFhZTknLdMx4BAWrlbNhOonxboOjHLn</a></li>
+<li>Write to SD Card, will be resized to SD Card size at first boot
+    <div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>gunzip<span class="w"> </span>robot-hackathon-image.&lt;version&gt;&gt;.img.gz
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>robot-hackathon-image.&lt;version&gt;.img<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/sdXXX<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
+</span></code></pre></div></td></tr></tbody></table></div></li>
+<li>The image will be resized to SD card size on first boot</li>
+<li>The image is preconfigured with:<ul>
+<li>Automatic connection to the hackathon WIFI "robot-hackathon-78b09", password in Bitwarden collection.</li>
+<li>Robot hackathon SSH key (Bitwarden Collection)</li>
 </ul>
-<h2 id="customize-openshift-console-branding">Customize OpenShift console branding<a class="headerlink" href="#customize-openshift-console-branding" title="Permanent link">¶</a></h2>
-<p>Branding lives under <strong><code>datacenter/cluster-configuration/</code></strong> in the <a href="https://github.com/cloud-native-robotz-hackathon/infrastructure">infrastructure</a> repo. Work from a clone of that repository on your machine.</p>
-<h3 id="login-and-oauth-html-templates">Login and OAuth HTML templates<a class="headerlink" href="#login-and-oauth-html-templates" title="Permanent link">¶</a></h3>
-<ol>
-<li>Log in to the <strong>data center</strong> OpenShift cluster as an admin (see <a href="../../run-a-event/full-day/">Full day</a> for ordering and access).</li>
-<li>Edit the HTML sources in<br>
-<code>datacenter/cluster-configuration/base/namespace/openshift-config/Secret/</code><br>
-   — <code>errors-template.html</code>, <code>login-template.html</code>, and <code>providers-template.html</code>.</li>
-<li>From that <strong><code>Secret/</code></strong> directory, run:</li>
-</ol>
-<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>./update-secrets.sh
+</li>
+</ul>
+<h3 id="step-2-network-hostname-configuration">Step 2) Network &amp; Hostname configuration<a class="headerlink" href="#step-2-network-hostname-configuration" title="Permanent link">¶</a></h3>
+<ul>
+<li>Boot robot with new image</li>
+<li>
+<p>Go to Wifi router Admin page: <a href="https://192.168.8.1">https://192.168.8.1</a> (Admin password is stored in Bitwarden, collection <code>Robot hackathon</code> item <code>Wifi router admin access</code>)</p>
+<ul>
+<li>
+<p>Navigate to "CLIENTS", findout new "Unknown" IP address:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="wifi-router-unknown.png" data-desc-position="bottom"><img alt="" src="wifi-router-unknown.png" width="1024"></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Connect to the robot to configure the hostname:</p>
+<div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/robot-hackathon<span class="w"> </span>-l<span class="w"> </span>root<span class="w"> </span><span class="m">192</span>.168.8.&lt;REPLACE<span class="w"> </span>IP&gt;
 </span></code></pre></div></td></tr></tbody></table></div>
-<h3 id="console-logo-light-dark">Console logo (light / dark)<a class="headerlink" href="#console-logo-light-dark" title="Permanent link">¶</a></h3>
-<ol>
-<li>In<br>
-<code>datacenter/cluster-configuration/base/namespace/openshift-config/ConfigMap/</code><br>
-   replace or edit <strong><code>openshift-robot-black.png</code></strong> and <strong><code>openshift-robot-white.png</code></strong> as needed (for example export from GIMP as PNG).</li>
-<li>From that <strong><code>ConfigMap/</code></strong> directory, run:</li>
-</ol>
-<div class="language-bash highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>./update-configmap.sh
+<p>Optional check via camera where you are:</p>
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>curl -L -O https://raw.githubusercontent.com/cloud-native-robotz-hackathon/infrastructure/refs/heads/v3/robot/lights-on.py
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>chmod +x ./lights-on.py
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>./lights-on.py
 </span></code></pre></div></td></tr></tbody></table></div>
-<h3 id="publish-and-sync">Publish and sync<a class="headerlink" href="#publish-and-sync" title="Permanent link">¶</a></h3>
-<ol>
-<li>Commit and push your changes.</li>
-<li>In <strong>Argo CD</strong>, refresh and sync the <strong><code>cluster-configuration</code></strong> application so the cluster picks up the updates.</li>
-</ol>
+<p>(If available) open via Browser: <code>http://192.168.8.&lt;REPLACE IP&gt;:8000/testimage.jpg</code></p>
+<p>Change hostname and reboot via:</p>
+<p>Pick robot name aka hostname from the <a href="../nine-robot-travel-kit/#list-of-robots">nine robot travel kit</a> or choose your own. When choosing your own make sure to update the env robot mapping in the provisioning form and the ansible inventory</p>
+<div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>hostnamectl<span class="w"> </span>set-hostname<span class="w"> </span>&lt;REPLACE_ROBOT_NAME&gt;
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>reboot
+</span></code></pre></div></td></tr></tbody></table></div>
+</li>
+<li>
+<p>Now the robot should appear with the right hostname aka robot name</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="wifi-router-known.png" data-desc-position="bottom"><img alt="" src="wifi-router-known.png" width="1024"></a></p>
+</li>
+<li>
+<p>Toggle/Enable the "Reserved IP" switch</p>
+</li>
+</ul>
+<h3 id="step-3-finish-configuration-via-ansible">Step 3) Finish configuration via ansible<a class="headerlink" href="#step-3-finish-configuration-via-ansible" title="Permanent link">¶</a></h3>
+<p>To finish the configuration, you have to run a number of Playbooks against the robot(s) from your laptop.</p>
+<p>Clone the GitHub repo <a href="https://github.com/cloud-native-robotz-hackathon/infrastructure.git">infrastructure</a>.</p>
+<div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/cloud-native-robotz-hackathon/infrastructure.git
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="nb">cd</span><span class="w"> </span>infrastructure/
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>The Playbook <code>automation/bootstrap-robot.yaml</code> does the following steps:</p>
+<ul>
+<li>Ensures the robot is running <a href="https://github.com/cloud-native-robotz-hackathon/infrastructure/blob/main/automation/bootstrap-robot.yaml#L19-L23">latest</a> image before proceeding.</li>
+<li>Clones and installs edge-controller in a specified version from GitHub to /opt/edge-controller.</li>
+<li>Clones and installs robot-config-service in a specified version from GitHub to /opt/robot-config-service.</li>
+<li>Configures, enables, and restarts the edge-controller systemd unit and makes sure it runs.</li>
+<li>Updates /etc/issue (login banner), /etc/hosts, and sets the system hostname to match the inventory.</li>
+</ul>
+<p>Create the vars file with the connection details and run the Playbook. You can get these values from the Readme in the referenced Github repo and the Bitwarden vault.</p>
+<div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span>
+<span class="normal"><a href="#__codelineno-5-7">7</a></span>
+<span class="normal"><a href="#__codelineno-5-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>automation/
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"rcs_git_repo: https://github.com/cloud-native-robotz-hackathon/robot-auto-register-78b09.git"</span><span class="w"> </span>&gt;<span class="w"> </span>group_vars/all/robot-config-service.yaml
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"rcs_gh_token: github_pat_xxx"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>group_vars/all/robot-config-service.yaml
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"rcs_hubcontroller_user: hub-controller"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>group_vars/all/robot-config-service.yaml
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"rcs_hubcontroller_password: hub-controller"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>group_vars/all/robot-config-service.yaml
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a>ansible-navigator<span class="w"> </span>run<span class="w"> </span>bootstrap-robot.yaml<span class="w"> </span>-l<span class="w"> </span>&lt;ROBOT_NAME&gt;
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>Then log into the Hubcontroller (<hubcontroller_url>/dashboard.html) (username / pass in Bitwarden) and you should see a tile with your registered robot.</hubcontroller_url></p>
+<h2 id="advanced-rarely-used-topics">Advanced rarely used topics<a class="headerlink" href="#advanced-rarely-used-topics" title="Permanent link">¶</a></h2>
+<h3 id="camera-setup-raspi-camera-v2">Camera Setup (Raspi camera v2)<a class="headerlink" href="#camera-setup-raspi-camera-v2" title="Permanent link">¶</a></h3>
+<p>Playbook camera-test.yaml is here <code>camera-test.yaml</code> to fetch camera image:</p>
+<div class="language-shell highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>automation/
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>ansible-navigator<span class="w"> </span>run<span class="w"> </span>./camera-test.yaml<span class="w"> </span>-l<span class="w"> </span>gort
+</span></code></pre></div></td></tr></tbody></table></div>
+<p>Open all <code>camera-test*jpg</code> files.</p>
+<p>Cable orientation: blue “bar” on cable oriented to USB ports, blue bar at camera away from lens</p>
+<h3 id="custom-network-configurartion">Custom network configurartion<a class="headerlink" href="#custom-network-configurartion" title="Permanent link">¶</a></h3>
+<ul>
+<li>The robot will automatically connect to a WIFI with the SSID and key/password listed above.</li>
+<li>If you want to configure another WIFI, attach a network cable and SSH into the robot (root / <pw> from Bitwarden collection) or mount the SD card and change on disk.</pw></li>
+<li>
+<p>Edit /etc/netplan/50-cloud-init.yaml and add your WIFI access point, reboot or run <code>netplan apply</code>. Config example:</p>
+<p></p><div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>network:
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>    ethernets:
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>        eth0:
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a>            dhcp4: true
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a>            optional: true
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a>    version: 2
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a>    Wifis:
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a>        wlan0:
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a>        access-points:
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a>        "robot-hackathon-78b09":
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a>            password: "PASSWORD"
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a>        "otherssid":
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a>            password: "&lt;PASSWORD&gt;"
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a>        dhcp4: true
+</span></code></pre></div></td></tr></tbody></table></div>
+* Reboot the robot<p></p>
+</li>
+<li>
+<p>Now the boot screen should look like this, and show the new IP address
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="bootscreen.png" data-desc-position="bottom"><img alt="" src="bootscreen.png"></a></p>
+</li>
+</ul>
 
 
 
@@ -1143,7 +1196,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 31, 2026 15:58:00 UTC"><span class="timeago" datetime="2026-03-31T15:58:00+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 31, 2026 15:58:00 UTC">2026-03-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 31, 2026 15:38:32 UTC"><span class="timeago" datetime="2026-03-31T15:38:32+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 31, 2026 15:38:32 UTC">2026-03-31</span>
   </span>
 
     
@@ -1153,7 +1206,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="October 16, 2025 13:51:37 UTC"><span class="timeago" datetime="2025-10-16T13:51:37+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="October 16, 2025 13:51:37 UTC">2025-10-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="September 10, 2025 14:26:16 UTC"><span class="timeago" datetime="2025-09-10T14:26:16+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="September 10, 2025 14:26:16 UTC">2025-09-10</span>
   </span>
 
     
