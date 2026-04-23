@@ -8,9 +8,10 @@ icon: material/run
 
 |Check|When|What|
 |---|---|---|
-| |Before 1-2 Days| [Order OpenShift Data Center env](#order-openshift-data-center-env) |
-| |Before 1-2 Days| [Adjust OpenShift design](#adjust-openshift-design) |
-| |Location|[Setting up the environment](#setting-up-the-environment)|
+| |1-2 Days Before Event| [Order OpenShift Data Center env](#order-openshift-data-center-env) |
+| |1-2 Days Before Event| [Update auto-register repo](#update-auto-register-repo)|
+| |Location|[Setting up the environment](#setting-up-the-environment-on-site)|
+| |Location|[Assign team E-Mails to users](#assign-team-e-mails-to-users) |
 
 ## Order OpenShift Data Center env
 
@@ -22,6 +23,8 @@ This includes deploying the hackathon environment in [demo.redhat.com](https://c
 |Region|Close as possible: `eu-central-1`|
 |GPU Worker Nodes|At least one for the Code Assistent|
 |Enable workshop user interface|True|
+
+!! Ensure, that the list of robots includes the ones, that are available to you.
 
 ### Check GitOps sync state
 
@@ -74,15 +77,11 @@ team-9-devspaces        Synced        Healthy
 team-9-label-studio     Synced        Healthy
 ```
 
-## Setting up the environment on site
+## Update auto-register repo
 
-### Wifi Router
-
-* Start the Wifi router and attach to the local Wifi or wire
-  * SSID: `robot-hackathon-78b09`
-  * Wifi-Password: Stored in RH Bitwarden collection
-  * The router is a preconfigured GL.iNet AXT1800, the configuration to restore is here (always use latest!): [gDrive router backup](https://drive.google.com/drive/folders/19ZIPrv9bnL4JvYXGgUOYihp5AsKfzZPa?usp=drive_link) (RH internal only)
-  * Check connectivity to Internet
+Get RW Access to the Repository https://github.com/cloud-native-robotz-hackathon/robot-auto-register-78b09.
+Put the web-hub-controller URL into the file.
+You can get the Route via `oc get route web -n hub-controller -ojson | jq .spec.host`
 
 ### 🤖 Robot's
 
@@ -91,7 +90,7 @@ team-9-label-studio     Synced        Healthy
 * Boot all Robots.
 * Wait a couple of minutes...
 * Connect your Laptop to Wifi `robot-hackathon-78b09`
-* Check connection via ansile
+* Check connection via ansible
 
     At the infrastructure repo:
 
@@ -107,32 +106,17 @@ team-9-label-studio     Synced        Healthy
     % ansible-navigator run ./move-robots.yaml
     ```
 
-### Conntect 🤖 Robot's to Data Center
+## Setting up the environment on site
 
-Connect robots to data center, via Skupper.
+### Wifi Router
 
-At the [cloud-native-robotz-hackathon/infrastructure](https://github.com/cloud-native-robotz-hackathon/infrastructure) repo:
+* Start the Wifi router and attach to the local Wifi or wire
+  * SSID: `robot-hackathon-78b09`
+  * Wifi-Password: Stored in RH Bitwarden collection, and on the robot in the netplan configuration
+  * The router is a preconfigured GL.iNet AXT1800, the configuration to restore is here (always use latest!): [gDrive router backup](https://drive.google.com/drive/folders/19ZIPrv9bnL4JvYXGgUOYihp5AsKfzZPa?usp=drive_link) (RH internal only)
+  * Check connectivity to Internet
 
-```shell
-cd infrastructure/automation/
-
-# Login into data center
-export KUBECONFIG=kubeconfig-data-center
-rm $KUBECONFIG
-oc login -u admin --insecure-skip-tls-verify https://api.cluster-...
-
-# Reset MicroShift at all robots
-ansible-navigator run microshift-reset.yaml
-
-# Setup skupper tunnels
-ansible-navigator run skupper-tunnel.yaml
-
-# Update the robot to team mapping
-ansible-navigator run update-robot-to-team.yaml
-
-# Finally check the different network connections:
-ansible-navigator run check-environments.yaml
-```
+Note: If you use your own router and not the preconfigured one, you need to ensure, that the robots are available via their name. This can be done either by DHCP configs, or in .ssh/config
 
 ## Assign team E-Mails to users
 
