@@ -877,6 +877,72 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#creating-devspaces-errors-with-config-map-missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating DevSpaces errors with config-map missing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating DevSpaces errors with config-map missing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#triage_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contacting-robot-via-httprobocoprobotsvcclusterlocal80run-does-result-in-application-is-not-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contacting Robot via http://robocop.robot.svc.cluster.local:80/run does result in "Application is not available"
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contacting Robot via http://robocop.robot.svc.cluster.local:80/run does result in &quot;Application is not available&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#triage_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1222,6 +1288,72 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#creating-devspaces-errors-with-config-map-missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating DevSpaces errors with config-map missing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating DevSpaces errors with config-map missing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#triage_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contacting-robot-via-httprobocoprobotsvcclusterlocal80run-does-result-in-application-is-not-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contacting Robot via http://robocop.robot.svc.cluster.local:80/run does result in "Application is not available"
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contacting Robot via http://robocop.robot.svc.cluster.local:80/run does result in &quot;Application is not available&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#triage_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1376,6 +1508,22 @@ fatal: [robocop]: UNREACHABLE! =&gt; {"changed": false, "msg": "Failed to connec
 <li>Ensure the WLAN is up, before the robot starts.</li>
 <li>Reboot robot.</li>
 </ul>
+<h2 id="creating-devspaces-errors-with-config-map-missing">Creating DevSpaces errors with config-map missing<a class="headerlink" href="#creating-devspaces-errors-with-config-map-missing" title="Permanent link">¶</a></h2>
+<h3 id="triage_2">Triage<a class="headerlink" href="#triage_2" title="Permanent link">¶</a></h3>
+<div class="language-text highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>Error creating DevWorkspace deployment: Detected unrecoverable event FailedMount 3 times: MountVolume.SetUp failed for volume "continue-config-volume" : configmap "continue-config" not found
+</span></code></pre></div></td></tr></tbody></table></div>
+<h3 id="solution_4">Solution<a class="headerlink" href="#solution_4" title="Permanent link">¶</a></h3>
+<ul>
+<li>Ensure you are logged in as a team-X and not as admin-user</li>
+</ul>
+<h2 id="contacting-robot-via-httprobocoprobotsvcclusterlocal80run-does-result-in-application-is-not-available">Contacting Robot via <code>http://robocop.robot.svc.cluster.local:80/run</code> does result in "</h2><h1>Application is not available</h1>"<a class="headerlink" href="#contacting-robot-via-httprobocoprobotsvcclusterlocal80run-does-result-in-application-is-not-available" title="Permanent link">¶</a>
+<h3 id="triage_3">Triage<a class="headerlink" href="#triage_3" title="Permanent link">¶</a></h3>
+<p><code>curl -X POST     -H "Host: starterapp-python-robot-app.apps.robocop"     http://robocop.robot.svc.cluster.local:80/run</code>
+* Check GitOps / ArgoCD with your Team Number</p>
+<h3 id="solution_5">Solution<a class="headerlink" href="#solution_5" title="Permanent link">¶</a></h3>
+<ul>
+<li>Enforce ArgoCD Sync</li>
+</ul>
 
 
 
@@ -1398,7 +1546,7 @@ fatal: [robocop]: UNREACHABLE! =&gt; {"changed": false, "msg": "Failed to connec
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 23, 2026 13:34:47 UTC"><span class="timeago" datetime="2026-04-23T13:34:47+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 23, 2026 13:34:47 UTC">2026-04-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 19, 2026 11:45:54 UTC"><span class="timeago" datetime="2026-05-19T11:45:54+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 19, 2026 11:45:54 UTC">2026-05-19</span>
   </span>
 
     
