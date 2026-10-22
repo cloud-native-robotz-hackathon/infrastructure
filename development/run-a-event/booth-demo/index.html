@@ -370,6 +370,21 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.5 5.5c1.09 0 2-.92 2-2a2 2 0 0 0-2-2c-1.11 0-2 .88-2 2 0 1.08.89 2 2 2M9.89 19.38l1-4.38L13 17v6h2v-7.5l-2.11-2 .61-3A7.3 7.3 0 0 0 19 13v-2c-1.91 0-3.5-1-4.31-2.42l-1-1.58c-.4-.62-1-1-1.69-1-.31 0-.5.08-.81.08L6 8.28V13h2V9.58l1.79-.7L8.19 17l-4.9-1-.4 2z"></path></svg>
+  
+  <span class="md-ellipsis">
+    Format: Booth/Demo
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -383,6 +398,67 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#talking-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Talking Points
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Talking Points">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-platform-from-core-to-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      ONE Platform "From Core to Edge"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      (AI) Development
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-inferencing" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Inferencing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -886,6 +962,56 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#talking-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Talking Points
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Talking Points">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-platform-from-core-to-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      ONE Platform "From Core to Edge"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      (AI) Development
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-inferencing" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Inferencing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -904,6 +1030,67 @@
 
 
 <h1 id="booth-demo">Booth demo<a class="headerlink" href="#booth-demo" title="Permanent link">¶</a></h1>
+<p>Depending on the space available, you might not be able to run a full robot hackathon there. The robot primarily tries to gain attention.
+Thus, it's recommended to complete the workshop in advance as preparation, and then use the booth time to showcase the technology and results. For the demo, you can use a customized version of the <a href="starter-app.py"><code>starter-app.py</code></a> (located in this booth-demo folder), which simply turns the robot clockwise and performs a "happy dance" when it detects a Red Hat. Using this also allows to have the robot plugged in ALL THE TIME, which is helpful, as a low voltage on the batteries can cause strange errors like "robot not moving".</p>
+<h2 id="talking-points">Talking Points<a class="headerlink" href="#talking-points" title="Permanent link">¶</a></h2>
+<h3 id="one-platform-from-core-to-edge">ONE Platform "From Core to Edge"<a class="headerlink" href="#one-platform-from-core-to-edge" title="Permanent link">¶</a></h3>
+<p>Say:</p>
+<ul>
+<li>Red Hat OpenShift is the Infrastructure everything runs on (Fully blown Openshift to Microshift on the Edge)</li>
+<li>"Data Center Showcase". The Robot is:<ul>
+<li>Taking Photos (initiated from the starter-app)</li>
+<li>Sending them to the Inference Endpoint at the Core</li>
+<li>The response is used by the starter-app on the Core to make a movement decision</li>
+<li>The Movement is send to the robot</li>
+</ul>
+</li>
+<li>"Edge Showcase". The Robot is:<ul>
+<li>Taking photos (intiated from the starter-app ON THE ROBOT)</li>
+<li>Sending them to the Inference Endpoint, running on the Robot</li>
+<li>The response is used by the starter-app on the ROBOT to make a movement decision</li>
+<li>The movement is done afterwards</li>
+</ul>
+</li>
+</ul>
+<p>Show:</p>
+<ul>
+<li>The Starter App in DevSpaces and the "GUI" in another Tab. Configure DevSpaces in the way, that it shows the "current.jpg" and "current_boxes.jpg".</li>
+<li>Start the Robot Run</li>
+<li>Show the Happy - Dance when the Robot sees the Red Hat</li>
+<li>The intiation of the robot run via CLI</li>
+<li>Start the Robot Run with the CLI</li>
+<li>Show the Happy - Dance when the Robot sees the Red Hat</li>
+</ul>
+<h3 id="ai-development">(AI) Development<a class="headerlink" href="#ai-development" title="Permanent link">¶</a></h3>
+<p>Say:</p>
+<ul>
+<li>Red Hat DevSpaces delivers the capabilities to develop on the same platform as the production environment</li>
+<li>Red Hat DevSpaces allows to connect to models for AI-assisted Development</li>
+<li>Red Hat OpenShift AI allows to train and re-train models</li>
+<li>Red Hat OpenShift Pipelines allows to build and package the Application and the model</li>
+</ul>
+<p>Show:</p>
+<ul>
+<li>DevSpaces and the Continue Plugin (prepare it with some prompts already)</li>
+<li>Show the hosted Model</li>
+<li>Show the ML Training Pipeline</li>
+<li>Show Tekton Pipeline in Red Hat OpenShift</li>
+</ul>
+<h3 id="ai-inferencing">AI Inferencing<a class="headerlink" href="#ai-inferencing" title="Permanent link">¶</a></h3>
+<p>Say:</p>
+<ul>
+<li>Red Hat OpenShift AI allows to host Models for inferencing (as used in the Showcase)</li>
+<li>We provide</li>
+<li>validated models</li>
+<li>ML-Pipelines and toolings to modify/finetune them</li>
+<li>vLLM and llm-d for more efficient and sophisticated use-cases</li>
+<li>You can start small utilizing Red Hat AI Inferencing Server</li>
+<li>We provide special NVidia Day-0 Versions of our Software to allow bleeding-edge development and experiencing.</li>
+</ul>
+<p>Show:</p>
+<ul>
+<li>Red Hat OpenShift AI Model hosting</li>
+</ul>
 
 
 
@@ -926,7 +1113,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="September 18, 2025 12:19:45 UTC"><span class="timeago" datetime="2025-09-18T12:19:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="September 18, 2025 12:19:45 UTC">2025-09-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 19, 2026 12:43:49 UTC"><span class="timeago" datetime="2026-05-19T12:43:49+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 19, 2026 12:43:49 UTC">2026-05-19</span>
   </span>
 
     
