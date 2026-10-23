@@ -7,6 +7,14 @@ icon: material/receipt-text-clock
 
 # Changelog
 
+## v3.5 - 2026-10-23 // work-in-progress
+
+* Update OpenShift to 4.22.x  #245 
+* Update OpenShift AI to 3.5.x #227
+  * Switch to kfp training pipeline creation
+  * Switch to single-model serving runtime
+
+
 ## v3 - 2026-04-01
 
 * The most significant change is the new robot auto register service at the data center. There is no need anymore to run playbooks. Just Deploy demo env and boot the robot - magic happends and robot is connect to the data center. If you have a robot at home, please re-install the robot based in the new robot image (20260218) and information in the lab guide. (Links provided later)
