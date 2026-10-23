@@ -17,7 +17,18 @@ metadata:
 spec:
   lookupPolicy:
     local: true
-  tags:
+     - name: "2.1.0"
+      from:
+        kind: DockerImage
+        name: quay.io/cloud-native-robotz-hackathon/odh-tec:56eb8b2
+      importPolicy:
+        importMode: Legacy
+      referencePolicy:
+        type: Local
+      annotations:
+        opendatahub.io/notebook-build-commit: 56eb8b2
+        opendatahub.io/notebook-python-dependencies: ''
+        opendatahub.io/notebook-software: '[{"name":"ODH Tec","version":"2.1.0"}]' tags:
     - name: "2.1.1"
       from:
         kind: DockerImage
@@ -31,15 +42,4 @@ spec:
         opendatahub.io/notebook-python-dependencies: ''
         opendatahub.io/notebook-software: '[{"name":"ODH Tec","version":"2.1.1"}]'
         opendatahub.io/workbench-image-recommended: "true"
-    - name: "2.1.0"
-      from:
-        kind: DockerImage
-        name: quay.io/cloud-native-robotz-hackathon/odh-tec:56eb8b2
-      importPolicy:
-        importMode: Legacy
-      referencePolicy:
-        type: Local
-      annotations:
-        opendatahub.io/notebook-build-commit: 56eb8b2
-        opendatahub.io/notebook-python-dependencies: ''
-        opendatahub.io/notebook-software: '[{"name":"ODH Tec","version":"2.1.0"}]'
+
