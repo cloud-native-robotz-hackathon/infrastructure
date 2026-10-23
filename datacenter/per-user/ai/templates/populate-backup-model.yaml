@@ -18,7 +18,8 @@ spec:
       restartPolicy: Never
       containers:
       - name: upload
-        image: quay.io/cloud-native-robotz-hackathon/model-container:trained-uploader-1.25.83-20250701T092029
+        image: quay.io/cloud-native-robotz-hackathon/model-container:trained-uploader-1.25.83-20261023T113305
+        imagePullPolicy: Always
         envFrom:
         - secretRef:
             name: workbench-bucket-ai-connection
