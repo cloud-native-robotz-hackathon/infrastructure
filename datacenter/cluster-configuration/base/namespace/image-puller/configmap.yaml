@@ -17,6 +17,10 @@ data:
     object-detection-pipeline-runtime-v2-2-5=quay.io/cloud-native-robotz-hackathon/pipeline-runtime-image:v2.25;
     ubi-awscli=quay.io/cloud-native-robotz-hackathon/ubi-awscli:1.25.83;
     buildah=registry.redhat.io/ubi9/buildah:9.4;
+    pipeline-creation-1=registry.redhat.io/rhoai/odh-data-science-pipelines-argo-argoexec-rhel9@sha256:f998e7d0109c0d648d0dacd1695f59b4a984967d0ba968eb45b82145be00446f
+    pipeline-creation-2=registry.redhat.io/rhoai/odh-ml-pipelines-launcher-rhel9@sha256:f1ff0be915c5a2e2915dc4655396d09524f5fc18e71d29e916cd8cda79a1071f
+    pipeline-creation-3=registry.redhat.io/rhoai/odh-ml-pipelines-driver-rhel9@sha256:bc23d5925fbff1415b4ffe79945671de4c9a773c69ada0d9ed30c792f8d27caa
+    pipeline-creation-4=registry.redhat.io/rhoai/odh-ml-pipelines-launcher-rhel9@sha256:f1ff0be915c5a2e2915dc4655396d09524f5fc18e71d29e916cd8cda79a1071f
   DAEMONSET_NAME: image-puller
   CACHING_INTERVAL_HOURS: "1"
   NAMESPACE: image-puller
