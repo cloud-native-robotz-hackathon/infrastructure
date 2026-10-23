@@ -17,7 +17,8 @@ metadata:
 spec:
   lookupPolicy:
     local: true
-     - name: "2.1.0"
+  tags:
+    - name: "2.1.0"
       from:
         kind: DockerImage
         name: quay.io/cloud-native-robotz-hackathon/odh-tec:56eb8b2
@@ -28,7 +29,7 @@ spec:
       annotations:
         opendatahub.io/notebook-build-commit: 56eb8b2
         opendatahub.io/notebook-python-dependencies: ''
-        opendatahub.io/notebook-software: '[{"name":"ODH Tec","version":"2.1.0"}]' tags:
+        opendatahub.io/notebook-software: '[{"name":"ODH Tec","version":"2.1.0"}]'
     - name: "2.1.1"
       from:
         kind: DockerImage
