@@ -7,20 +7,20 @@ data:
     object-detection-v2-1-0=quay.io/cloud-native-robotz-hackathon/workbench-object-detection:v2.1.0;
     object-detection-v3-0-1=quay.io/cloud-native-robotz-hackathon/workbench-object-detection:v3.0.1;
     object-detection-runtime-v2-1-0=quay.io/mmurakam/runtimes:object-detection-v2.1.0;
-    code-rhel9=registry.redhat.io/devspaces/code-rhel9@sha256:50e457ca3c17e0c471a8fb44ee7f9c9c650d422087f7f52e774b88c84ce741fd;
-    traefik-rhel9=registry.redhat.io/devspaces/traefik-rhel9@sha256:780c2a69b8910067d9435877b94d93c8cf168a424bfa99c90f2f0ddb7b20c2a5;
-    devworkspace-project-clone-rhel9=registry.redhat.io/devworkspace/devworkspace-project-clone-rhel9@sha256:afa28466d9b8c9d6421bb7789bccb68ecde9ea2c38617825e75c53ba357d4b76;
+    code-rhel9=registry.redhat.io/devspaces/code-rhel9@sha256:1fb92b9888ca3c1fb6074febb2e8516aef11ecd930ab946680b5d30b022be78c
+    traefik-rhel9=registry.redhat.io/devspaces/traefik-rhel9@sha256:63bedb79f8f926b71db2370e90e7124bc07b7cbfa72af0551e8153c1bb6a2a06
     udi-rhel9=registry.redhat.io/devspaces/udi-rhel9@sha256:cca6cbf5adcb5ce83392795573fe258d468568bddc3ad3618297e9e6234cfb79;
     s3-browser-v1-2-0=quay.io/cloud-native-robotz-hackathon/odh-tec:56eb8b2;
+    s3-browser-v1-2-0=quay.io/cloud-native-robotz-hackathon/odh-tec:3eeef5c;
     openvino-model0-server=quay.io/modh/openvino_model_server@sha256:5225aaf5a581ccb8e6f934a5d9fdd9d3d5ad90009dcee6b75d422acce29c33f3;
     odh-modelmesh-runtime-adapter-rhel8=registry.redhat.io/rhoai/odh-modelmesh-rhel9@sha256:b24773d3d2d60701c4b967d20682ea0ab4cd4b378652e214e148a0a575151cac;
     object-detection-pipeline-runtime-v2-2-5=quay.io/cloud-native-robotz-hackathon/pipeline-runtime-image:v2.25;
     ubi-awscli=quay.io/cloud-native-robotz-hackathon/ubi-awscli:1.25.83;
     buildah=registry.redhat.io/ubi9/buildah:9.4;
-    pipeline-creation-1=registry.redhat.io/rhoai/odh-data-science-pipelines-argo-argoexec-rhel9@sha256:f998e7d0109c0d648d0dacd1695f59b4a984967d0ba968eb45b82145be00446f
-    pipeline-creation-2=registry.redhat.io/rhoai/odh-ml-pipelines-launcher-rhel9@sha256:f1ff0be915c5a2e2915dc4655396d09524f5fc18e71d29e916cd8cda79a1071f
-    pipeline-creation-3=registry.redhat.io/rhoai/odh-ml-pipelines-driver-rhel9@sha256:bc23d5925fbff1415b4ffe79945671de4c9a773c69ada0d9ed30c792f8d27caa
-    pipeline-creation-4=registry.redhat.io/rhoai/odh-ml-pipelines-launcher-rhel9@sha256:f1ff0be915c5a2e2915dc4655396d09524f5fc18e71d29e916cd8cda79a1071f
+    pipeline-creation-1=registry.redhat.io/rhoai/odh-data-science-pipelines-argo-argoexec-rhel9@sha256:f998e7d0109c0d648d0dacd1695f59b4a984967d0ba968eb45b82145be00446f;
+    pipeline-creation-2=registry.redhat.io/rhoai/odh-ml-pipelines-launcher-rhel9@sha256:f1ff0be915c5a2e2915dc4655396d09524f5fc18e71d29e916cd8cda79a1071f;
+    pipeline-creation-3=registry.redhat.io/rhoai/odh-ml-pipelines-driver-rhel9@sha256:bc23d5925fbff1415b4ffe79945671de4c9a773c69ada0d9ed30c792f8d27caa;
+    pipeline-creation-4=registry.redhat.io/rhoai/odh-ml-pipelines-launcher-rhel9@sha256:f1ff0be915c5a2e2915dc4655396d09524f5fc18e71d29e916cd8cda79a1071f;
   DAEMONSET_NAME: image-puller
   CACHING_INTERVAL_HOURS: "1"
   NAMESPACE: image-puller
