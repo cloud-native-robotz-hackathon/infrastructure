@@ -1,0 +1,350 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.1 Chrome/142.0.7444.265 Electron/39.8.0 Safari/537.36" version="29.6.1" pages="2">
+  <diagram name="overview" id="AGXg1ZaBBKFiWvMPyo2R">
+    <mxGraphModel dx="2048" dy="1185" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="_WYQPuJIRMUwfEzrzotB-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#cdeb8b;strokeColor=#36393d;align=center;verticalAlign=top;fontSize=27;" value="&lt;b&gt;Robot&lt;/b&gt;" vertex="1">
+          <mxGeometry height="680" width="1450" x="530" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="_WYQPuJIRMUwfEzrzotB-15" parent="1" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn1.iconfinder.com/data/icons/unicons-line-vol-5/24/robot-128.png" value="" vertex="1">
+          <mxGeometry height="69" width="69" x="530" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="robot-config-service&lt;div&gt;(systemd)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="200" x="770" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-3" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" value="" vertex="1">
+          <mxGeometry height="100" width="70" x="680" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-4" edge="1" parent="1" source="pyWumfJl0PBCmgZ7gJ_C-9" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=2;exitPerimeter=0;" target="pyWumfJl0PBCmgZ7gJ_C-3" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1080" y="640" as="sourcePoint" />
+            <mxPoint x="1130" y="590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="&lt;div&gt;microshift&lt;/div&gt;&lt;div&gt;(systemd)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="200" x="770" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-6" edge="1" parent="1" source="pyWumfJl0PBCmgZ7gJ_C-3" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;exitPerimeter=0;" target="pyWumfJl0PBCmgZ7gJ_C-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="700" y="445" as="sourcePoint" />
+            <mxPoint x="720" y="445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-7" edge="1" parent="1" source="pyWumfJl0PBCmgZ7gJ_C-3" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;exitPerimeter=0;" target="pyWumfJl0PBCmgZ7gJ_C-5" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="750" y="275" as="sourcePoint" />
+            <mxPoint x="770" y="275" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-9" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;" value="Boot" vertex="1">
+          <mxGeometry height="100" width="100" x="560" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="Fetch hub controller url&lt;div&gt;from git repo&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="140" x="1000" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-11" edge="1" parent="1" source="pyWumfJl0PBCmgZ7gJ_C-2" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" target="pyWumfJl0PBCmgZ7gJ_C-10" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="690" y="350" as="sourcePoint" />
+            <mxPoint x="710" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-13" edge="1" parent="1" source="pyWumfJl0PBCmgZ7gJ_C-10" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" target="pyWumfJl0PBCmgZ7gJ_C-14" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1040" y="270" as="sourcePoint" />
+            <mxPoint x="1070" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-14" parent="1" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" value="get Event ID&lt;div&gt;(EID)&lt;/div&gt;&lt;div&gt;from HubController&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="190" x="1170" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-16" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" value="Decide &lt;br&gt;new event id &lt;br&gt;or existing one" vertex="1">
+          <mxGeometry height="135" width="160" x="1390" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-17" edge="1" parent="1" source="pyWumfJl0PBCmgZ7gJ_C-14" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;entryPerimeter=0;" target="pyWumfJl0PBCmgZ7gJ_C-16" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1180" y="240" as="sourcePoint" />
+            <mxPoint x="1232" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-18" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;" value="END" vertex="1">
+          <mxGeometry height="100" width="100" x="1850" y="197.5" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-19" edge="1" parent="1" source="pyWumfJl0PBCmgZ7gJ_C-16" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;entryPerimeter=0;exitPerimeter=0;" target="pyWumfJl0PBCmgZ7gJ_C-29" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1350" y="300" as="sourcePoint" />
+            <mxPoint x="1402" y="303" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-20" connectable="0" parent="pyWumfJl0PBCmgZ7gJ_C-19" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Existing/Old EID" vertex="1">
+          <mxGeometry relative="1" x="-0.2" y="-1" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-21" edge="1" parent="1" source="pyWumfJl0PBCmgZ7gJ_C-16" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeWidth=2;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="pyWumfJl0PBCmgZ7gJ_C-28" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1360" y="520" as="sourcePoint" />
+            <mxPoint x="1470" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-22" connectable="0" parent="pyWumfJl0PBCmgZ7gJ_C-21" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="New or different Event ID" vertex="1">
+          <mxGeometry relative="1" x="0.248" y="-3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="Run robot-config-service ansible" vertex="1">
+          <mxGeometry height="40" width="185" x="1380" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-25" edge="1" parent="1" source="pyWumfJl0PBCmgZ7gJ_C-38" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeWidth=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" target="pyWumfJl0PBCmgZ7gJ_C-27" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1480" y="740" as="sourcePoint" />
+            <mxPoint x="1630" y="740" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-27" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;" value="END" vertex="1">
+          <mxGeometry height="100" width="100" x="1422.5" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-28" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.stored_data;whiteSpace=wrap;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" value="&lt;div&gt;State: &quot;EID different&quot;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="180" x="1380" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-29" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.stored_data;whiteSpace=wrap;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" value="&lt;div&gt;State: &quot;EID known&quot;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="32.5" width="180" x="1660" y="231.25" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-30" edge="1" parent="1" source="pyWumfJl0PBCmgZ7gJ_C-28" style="endArrow=none;html=1;rounded=0;strokeWidth=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="pyWumfJl0PBCmgZ7gJ_C-35" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1460" y="520" as="sourcePoint" />
+            <mxPoint x="1460" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-31" edge="1" parent="1" source="pyWumfJl0PBCmgZ7gJ_C-29" style="endArrow=none;html=1;rounded=0;exitX=0.93;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" target="pyWumfJl0PBCmgZ7gJ_C-18" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1480" y="520" as="sourcePoint" />
+            <mxPoint x="1480" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-34" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;" value="Notes" vertex="1">
+          <mxGeometry height="125" width="220" x="690" y="495" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-32" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.stored_data;whiteSpace=wrap;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" value="Call Back to Hub Controller" vertex="1">
+          <mxGeometry height="60" width="180" x="710" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-35" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="Get Skupper token" vertex="1">
+          <mxGeometry height="40" width="175" x="1382.5" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-36" edge="1" parent="1" source="pyWumfJl0PBCmgZ7gJ_C-37" style="endArrow=none;html=1;rounded=0;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" target="pyWumfJl0PBCmgZ7gJ_C-35" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1650" y="560" as="sourcePoint" />
+            <mxPoint x="1472" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-37" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.stored_data;whiteSpace=wrap;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" value="&lt;div&gt;State: &quot;pre-ansible&quot;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="180" x="1380" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-38" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.stored_data;whiteSpace=wrap;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" value="&lt;div&gt;State: &quot;done&quot;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="180" x="1382.5" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-39" edge="1" parent="1" source="pyWumfJl0PBCmgZ7gJ_C-23" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeWidth=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="pyWumfJl0PBCmgZ7gJ_C-38" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1750" y="680" as="sourcePoint" />
+            <mxPoint x="1600" y="710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pyWumfJl0PBCmgZ7gJ_C-40" edge="1" parent="1" source="pyWumfJl0PBCmgZ7gJ_C-37" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeWidth=2;exitPerimeter=0;" target="pyWumfJl0PBCmgZ7gJ_C-23" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1750" y="610" as="sourcePoint" />
+            <mxPoint x="1600" y="640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_WYQPuJIRMUwfEzrzotB-1" parent="1" style="sketch=0;html=1;aspect=fixed;strokeColor=none;shadow=0;fillColor=#3B8DF1;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;shape=mxgraph.gcp2.globe_world" value="" vertex="1">
+          <mxGeometry height="95" width="100" x="20" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_WYQPuJIRMUwfEzrzotB-2" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;strokeWidth=5;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="490" y="810" as="sourcePoint" />
+            <mxPoint x="490" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_WYQPuJIRMUwfEzrzotB-3" parent="1" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Data_Factory.svg;" value="" vertex="1">
+          <mxGeometry height="90" width="90" x="509" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="_WYQPuJIRMUwfEzrzotB-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;" value="&lt;div align=&quot;center&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 16px;&quot; align=&quot;center&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;DataCenter&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 14px;&quot; align=&quot;center&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;span style=&quot;&quot;&gt;( OpenShift Cluster )&lt;/span&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="200" width="275" x="60" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="_WYQPuJIRMUwfEzrzotB-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;" value="&lt;div align=&quot;center&quot;&gt;&lt;b&gt;&lt;font style=&quot;font-size: 19px;&quot;&gt;Public&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;Auto register git repo&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="200" x="220" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_WYQPuJIRMUwfEzrzotB-6" parent="1" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.git_repository;" value="" vertex="1">
+          <mxGeometry height="50" width="50" x="220" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_WYQPuJIRMUwfEzrzotB-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;verticalAlign=top;" value="&lt;b&gt;Hub controller&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Kubernetes Job how publish robot names and hub controller URL into Git repo&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="240" x="80" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="_WYQPuJIRMUwfEzrzotB-8" parent="1" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=job" value="" vertex="1">
+          <mxGeometry height="48" width="50" x="270" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="_WYQPuJIRMUwfEzrzotB-11" edge="1" parent="1" source="_WYQPuJIRMUwfEzrzotB-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.785;entryY=1.014;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=2;" target="_WYQPuJIRMUwfEzrzotB-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_WYQPuJIRMUwfEzrzotB-16" edge="1" parent="1" source="pyWumfJl0PBCmgZ7gJ_C-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;startArrow=classic;startFill=1;" target="_WYQPuJIRMUwfEzrzotB-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="414" as="sourcePoint" />
+            <mxPoint x="427" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Copy of Page-1" id="uofwn6v-8GrZXD_8PEwr">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-0" />
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-1" parent="APvOVzkkPL93kdAsUBTZ-0" />
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-2" parent="APvOVzkkPL93kdAsUBTZ-1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="robot-config-service&lt;div&gt;(systemd)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="200" x="240" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-3" parent="APvOVzkkPL93kdAsUBTZ-1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" value="" vertex="1">
+          <mxGeometry height="100" width="70" x="150" y="85" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-4" edge="1" parent="APvOVzkkPL93kdAsUBTZ-1" source="APvOVzkkPL93kdAsUBTZ-8" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=2;exitPerimeter=0;" target="APvOVzkkPL93kdAsUBTZ-3" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="550" y="480" as="sourcePoint" />
+            <mxPoint x="600" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-5" parent="APvOVzkkPL93kdAsUBTZ-1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="&lt;div&gt;microshift&lt;/div&gt;&lt;div&gt;(systemd)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="200" x="240" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-6" edge="1" parent="APvOVzkkPL93kdAsUBTZ-1" source="APvOVzkkPL93kdAsUBTZ-3" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;exitPerimeter=0;" target="APvOVzkkPL93kdAsUBTZ-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="170" y="285" as="sourcePoint" />
+            <mxPoint x="190" y="285" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-7" edge="1" parent="APvOVzkkPL93kdAsUBTZ-1" source="APvOVzkkPL93kdAsUBTZ-3" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;exitPerimeter=0;" target="APvOVzkkPL93kdAsUBTZ-5" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="220" y="115" as="sourcePoint" />
+            <mxPoint x="240" y="115" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-8" parent="APvOVzkkPL93kdAsUBTZ-1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;" value="Boot" vertex="1">
+          <mxGeometry height="100" width="100" x="30" y="85" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-9" parent="APvOVzkkPL93kdAsUBTZ-1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="Fetch hub controller url" vertex="1">
+          <mxGeometry height="50" width="140" x="470" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-10" edge="1" parent="APvOVzkkPL93kdAsUBTZ-1" source="APvOVzkkPL93kdAsUBTZ-2" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" target="APvOVzkkPL93kdAsUBTZ-9" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="160" y="190" as="sourcePoint" />
+            <mxPoint x="180" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-11" edge="1" parent="APvOVzkkPL93kdAsUBTZ-1" source="APvOVzkkPL93kdAsUBTZ-9" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" target="APvOVzkkPL93kdAsUBTZ-12" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="510" y="110" as="sourcePoint" />
+            <mxPoint x="540" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-12" parent="APvOVzkkPL93kdAsUBTZ-1" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" value="get Event ID&lt;div&gt;(EID)&lt;/div&gt;&lt;div&gt;from HubController&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="190" x="640" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-13" parent="APvOVzkkPL93kdAsUBTZ-1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" value="Decide &lt;br&gt;new event id &lt;br&gt;or existing one" vertex="1">
+          <mxGeometry height="135" width="160" x="860" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-14" edge="1" parent="APvOVzkkPL93kdAsUBTZ-1" source="APvOVzkkPL93kdAsUBTZ-12" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;entryPerimeter=0;" target="APvOVzkkPL93kdAsUBTZ-13" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="650" y="80" as="sourcePoint" />
+            <mxPoint x="702" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-15" parent="APvOVzkkPL93kdAsUBTZ-1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;" value="END" vertex="1">
+          <mxGeometry height="100" width="100" x="1320" y="37.5" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-16" edge="1" parent="APvOVzkkPL93kdAsUBTZ-1" source="APvOVzkkPL93kdAsUBTZ-13" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;entryPerimeter=0;exitPerimeter=0;" target="APvOVzkkPL93kdAsUBTZ-24" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="820" y="140" as="sourcePoint" />
+            <mxPoint x="872" y="143" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-17" connectable="0" parent="APvOVzkkPL93kdAsUBTZ-16" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Existing/Old EID" vertex="1">
+          <mxGeometry relative="1" x="-0.2" y="-1" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-18" edge="1" parent="APvOVzkkPL93kdAsUBTZ-1" source="APvOVzkkPL93kdAsUBTZ-13" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeWidth=2;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="APvOVzkkPL93kdAsUBTZ-23" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="830" y="360" as="sourcePoint" />
+            <mxPoint x="940" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-19" connectable="0" parent="APvOVzkkPL93kdAsUBTZ-18" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="New or different Event ID" vertex="1">
+          <mxGeometry relative="1" x="0.248" y="-3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-20" parent="APvOVzkkPL93kdAsUBTZ-1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="Run robot-config-service ansible" vertex="1">
+          <mxGeometry height="40" width="185" x="850" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-21" edge="1" parent="APvOVzkkPL93kdAsUBTZ-1" source="APvOVzkkPL93kdAsUBTZ-32" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeWidth=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" target="APvOVzkkPL93kdAsUBTZ-22" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="950" y="580" as="sourcePoint" />
+            <mxPoint x="1100" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-22" parent="APvOVzkkPL93kdAsUBTZ-1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;" value="END" vertex="1">
+          <mxGeometry height="100" width="100" x="892.5" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-23" parent="APvOVzkkPL93kdAsUBTZ-1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.stored_data;whiteSpace=wrap;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" value="&lt;div&gt;State: &quot;EID different&quot;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="180" x="850" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-24" parent="APvOVzkkPL93kdAsUBTZ-1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.stored_data;whiteSpace=wrap;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" value="&lt;div&gt;State: &quot;EID known&quot;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="32.5" width="180" x="1130" y="71.25" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-25" edge="1" parent="APvOVzkkPL93kdAsUBTZ-1" source="APvOVzkkPL93kdAsUBTZ-23" style="endArrow=none;html=1;rounded=0;strokeWidth=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="APvOVzkkPL93kdAsUBTZ-29" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="930" y="360" as="sourcePoint" />
+            <mxPoint x="930" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-26" edge="1" parent="APvOVzkkPL93kdAsUBTZ-1" source="APvOVzkkPL93kdAsUBTZ-24" style="endArrow=none;html=1;rounded=0;exitX=0.93;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" target="APvOVzkkPL93kdAsUBTZ-15" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="950" y="360" as="sourcePoint" />
+            <mxPoint x="950" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-27" parent="APvOVzkkPL93kdAsUBTZ-1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;" value="Notes" vertex="1">
+          <mxGeometry height="125" width="220" x="160" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-28" parent="APvOVzkkPL93kdAsUBTZ-1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.stored_data;whiteSpace=wrap;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" value="Call Back to Hub Controller" vertex="1">
+          <mxGeometry height="60" width="180" x="180" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-29" parent="APvOVzkkPL93kdAsUBTZ-1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" value="Get Skupper token" vertex="1">
+          <mxGeometry height="40" width="175" x="852.5" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-30" edge="1" parent="APvOVzkkPL93kdAsUBTZ-1" source="APvOVzkkPL93kdAsUBTZ-31" style="endArrow=none;html=1;rounded=0;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" target="APvOVzkkPL93kdAsUBTZ-29" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1120" y="400" as="sourcePoint" />
+            <mxPoint x="942" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-31" parent="APvOVzkkPL93kdAsUBTZ-1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.stored_data;whiteSpace=wrap;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" value="&lt;div&gt;State: &quot;pre-ansible&quot;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="180" x="850" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-32" parent="APvOVzkkPL93kdAsUBTZ-1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.stored_data;whiteSpace=wrap;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" value="&lt;div&gt;State: &quot;done&quot;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="180" x="852.5" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-33" edge="1" parent="APvOVzkkPL93kdAsUBTZ-1" source="APvOVzkkPL93kdAsUBTZ-20" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeWidth=2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="APvOVzkkPL93kdAsUBTZ-32" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1220" y="520" as="sourcePoint" />
+            <mxPoint x="1070" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="APvOVzkkPL93kdAsUBTZ-34" edge="1" parent="APvOVzkkPL93kdAsUBTZ-1" source="APvOVzkkPL93kdAsUBTZ-31" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeWidth=2;exitPerimeter=0;" target="APvOVzkkPL93kdAsUBTZ-20" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1220" y="450" as="sourcePoint" />
+            <mxPoint x="1070" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
