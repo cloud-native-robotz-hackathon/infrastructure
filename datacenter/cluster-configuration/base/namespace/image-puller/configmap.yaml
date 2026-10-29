@@ -7,8 +7,8 @@ data:
     object-detection-v2-1-0=quay.io/cloud-native-robotz-hackathon/workbench-object-detection:v2.1.0;
     object-detection-v3-0-1=quay.io/cloud-native-robotz-hackathon/workbench-object-detection:v3.0.1;
     object-detection-runtime-v2-1-0=quay.io/mmurakam/runtimes:object-detection-v2.1.0;
-    code-rhel9=registry.redhat.io/devspaces/code-rhel9@sha256:1fb92b9888ca3c1fb6074febb2e8516aef11ecd930ab946680b5d30b022be78c
-    traefik-rhel9=registry.redhat.io/devspaces/traefik-rhel9@sha256:63bedb79f8f926b71db2370e90e7124bc07b7cbfa72af0551e8153c1bb6a2a06
+    code-rhel9=registry.redhat.io/devspaces/code-rhel9@sha256:1fb92b9888ca3c1fb6074febb2e8516aef11ecd930ab946680b5d30b022be78c;
+    traefik-rhel9=registry.redhat.io/devspaces/traefik-rhel9@sha256:63bedb79f8f926b71db2370e90e7124bc07b7cbfa72af0551e8153c1bb6a2a06;
     udi-rhel9=registry.redhat.io/devspaces/udi-rhel9@sha256:cca6cbf5adcb5ce83392795573fe258d468568bddc3ad3618297e9e6234cfb79;
     s3-browser-v1-2-0=quay.io/cloud-native-robotz-hackathon/odh-tec:56eb8b2;
     s3-browser-v1-2-0=quay.io/cloud-native-robotz-hackathon/odh-tec:3eeef5c;
